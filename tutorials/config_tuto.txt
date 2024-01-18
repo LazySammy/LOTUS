@@ -1,0 +1,176 @@
+### GLOBAL ARGUMENTS
+## LOTUS
+# Module(s) to run (Filter, Summarise, Compare, Merge)
+module(s) = Merge
+# Sequencing method (WES / WGS) : Whole Genome Sequencing (WGS) or Whole Exome Sequencing (WES)
+sequencing = WES
+# VCF annotation method (Funcotator / ANNOVAR)
+vcf_annotation_method = ANNOVAR
+# Discard weak variants (yes / no), they will be filtered out or kept as weak variants
+discard_weak_variants = yes
+# If you want to use results from some modules to run another module
+# (to avoid re-running filter and summarise to run compare module for example),
+# you can specify the folder here (False / folder_name), False will create a new folder with date-hour name format
+previous_folder = annovar_filtered_PON_germline
+
+## Input
+# Dataset file name : table containing the filenames corresponding to your pairs of samples
+dataset = dataset.xlsx
+# Comparison column 1 : name of column containing the first sample of each pair (time 1)
+time1_column_name = comp1
+# Comparison column 2 : name of column containing the second sample of each pair (time 2)
+time2_column_name = comp2
+
+## Secondary
+# Program version
+version = 1.0
+# Log file
+log = LOTUS.log
+# Run verbosity (True / False) : True for numerous information during execution, False for only essential information
+verbose_prints = False
+# Execution with colors (True / False) : True for colored execution, False for non-colored execution
+colored_execution = True
+---------------------------
+
+---------------------------
+### FILTER
+# Output file for filtered variants
+output_filtered = filtered.vcf
+# Output file for passed variants
+output_passed = passed.vcf
+# Working method (Direct / InMemory) :
+# InMemory -> more speed but higher memory consumption) / "Direct" slow speed but low memory consumption
+working-method = Direct
+# Funcotator, Annovar : Minimum coverage depth (DP)
+DP = 20
+# Funcotator : Minimum base quality (MBQ)
+MBQ = 10
+# Annovar : Minimum mapping quality strand bias threshold (MQSBZ) : values between -MQSBZ and MQSBZ will be kept
+MQSBZ = 0.5
+# Funcotator : Minimum allele frequency (AF)
+AF = 5
+# Funcotator : Population allele frequency (POPAF)
+POPAF = 0.00001
+# Unpaired reads (True / False) : True for single-end sequencing, False for paired-end sequencing
+unpaired = True
+---------------------------
+
+---------------------------
+### SUMMARISE
+## Parameters
+# Reference genome file (reference_genome.pk)
+genome = reference_genome.pk
+# Enrichment (True or False)
+enrichment = True
+# Supplementary information from filtered file (True or False)
+sup_info_from_filtered_file = False
+
+## Outputs
+# Statistics file name (None, filename) : None for no table / filename without file extension
+Stats_file_name = stats
+# Indel deletion profile (None / filename) : None for no indel deletion profile / filename without file extension
+indel_profile_deletion = None
+# Indel insertion profile (None / filename) : None for no indel insertion profile / filename without file extension
+indel_profile_insertion = None
+# Indel profile name (None / filename) : None for no indel profile / filename without file extension
+indel = indel_profile
+# Indel profile format (png,svg,etc) : formats you want to plot (one or several)
+indel_profile = png
+# SNP profile name (None / filename) : None for no SNP profile / filename without file extension
+profile = SNP_profile
+# SNP profile formats (png, svg, etc) : tsv will always be created, you can add other formats (one or several)
+SNP_profile = tsv, png
+# Mutation types statistics table file name (None, filename) : None for no table / filename without file extension
+mutations_types_stats_name = mutation_types
+# Mutation types statistics file format (xlsx, csv, etc) : formats you want to plot (one or several)
+mutations_types_stats_format = xlsx
+# Mutated genes file name (None / filename) : None for no table / filename without file extension
+S_genes = MutatedGenes
+# Mutated genes file format (xlsx, csv, etc) : formats you want to get (one or several)
+S_MutatedGenes = xlsx
+# ToppGene file name (None / filename) : None for no table / filename without file extension
+S_ToppGene_name = ToppGene
+# ToppGene file format(s) (xlsx, csv, etc) : formats you want to get (one or several)
+S_ToppGene_format(s) = xlsx
+# Panther file name (None / filename) : None for no table / filename without file extension
+S_Panther_name = Panther
+# Panther file format(s) (xlsx, csv, etc) : formats you want to plot (one or several)
+S_Panther_format(s) = xlsx
+---------------------------
+
+---------------------------
+### COMPARE
+## Parameters
+# GFF3 file (filename) : annotated human genome (GRCh38 version advised), filename with file extension
+gff3 = Homo_sapiens.GRCh38.108.chr.gff3
+# Enrichment (True / False) : perform Gene Ontology enrichment analysis for mutated genes found in pair
+C_enrichment = True
+
+## Outputs
+# SNP profile file name (None / filename) : None for no profile / filename without file extension
+C_SNP_profile_name = SNP_profile
+# SNP profile file (png, svg, etc) : formats you want to plot (one or several)
+C_SNP_profile = png
+# Indel profile file name (None / filename) : None for no profile / filename without file extension
+C_indel_profile_name = indel_profile
+# Indel profile file (png, svg, etc) : formats you want to plot (one or several)
+C_indel_profile = png
+# Compared mutated genes file name (None / filename) : None for no profile / filename without file extension
+C_MutatedGenes_name = compared
+# Compared mutated genes file format (xlsx, csv, etc) : formats you want to get (one or several)
+C_MutatedGenes = xlsx
+# ToppGene file name (None / filename) : None for no profile / filename without file extension
+C_ToppGene_name = ToppGene
+# ToppGene file format(s) (xlsx, csv, etc) : formats you want to get (one or several)
+C_ToppGene_format(s) = xlsx
+# Panther file name (None / filename) : None for no profile / filename without file extension
+C_Panther_name = Panther
+# Panther file format(s) (xlsx, csv, etc) : formats you want to get (one or several)
+C_Panther_format(s) = xlsx
+---------------------------
+
+---------------------------
+### MERGE
+## Inputs
+# Cytoband file name and extension : cytoband file contains the cytoband of each chromosome (Grch38 version advised)
+cytoband = hg38_cytoband.tsv
+# Name of input dataset table column containing the names of your pairs (None / column name)
+pairs_ids_column_name = patient id
+
+## Parameters
+# Chromosome step (integer) : number of base pairs between each chromosome step
+chromosome-step = 500000
+# Perform enrichment analysis based on every mutated gene found in all of your samples (True / False)
+M_enrichment = true
+# Minimum degree of mutated genes to keep (integer) : minimum number of samples in which a gene must be mutated to be kept
+min_degree = 1
+# Maximum degree of mutated genes to keep (integer) : maximum number of samples in which a gene must be mutated to be kept
+max_degree = 0
+# Minimum subset size (integer) : minimum number of samples in which a gene must be mutated to be kept
+min_subset_size = 1
+# Maximum subset size (integer) : maximum number of samples in which a gene must be mutated to be kept
+max_subset_size = 0
+
+## Outputs
+# Chromosome plot file name (None / filename) : None for no plot / filename without file extension
+chromosomes_plot_name = chromosomes
+# Chromosome plot file format(s) (png, svg, etc) : formats you want to plot (one or several)
+chromosomes_plot_format(s) = png
+# Mutated genes file name (None / filename) : None for no table / filename without file extension
+M_MutatedGenes_name = genes_union
+# Mutated genes file format(s) (xlsx, csv, etc) : formats you want to get (one or several)
+M_MutatedGenes_format(s) = xlsx
+# ToppGene file name (None / filename) : None for no table / filename without file extension
+M_Panther_name = Panther
+# ToppGene file format(s) (xlsx, csv, etc) : formats you want to get (one or several)
+M_Panther_format(s) = xlsx
+# Panther file name (None / filename) : None for no table / filename without file extension
+M_ToppGene_name = ToppGene
+# Panther file format(s) (xlsx, csv, etc) : formats you want to get (one or several)
+M_ToppGene_format(s) = xlsx
+# Upset plot file name (None / filename) : None for no plot / filename without file extension
+upset_plot_name = upset
+# Upset plot file format(s) (png, svg, etc) : formats you want to plot (one or several)
+upset_plot_format(s) = png
+# Upset plot threshold (integer) : minimum number of samples in which a gene must be mutated to be kept
+upset_plot_threshold = 3
