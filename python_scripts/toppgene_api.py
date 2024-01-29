@@ -121,7 +121,15 @@ def ToppGene_GOEA(module, dict_parameters, list_genes : list, toppgene_name : st
 			else:
 				print('No valid Gene !')
 		except:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			print("Too many genes are concerned for ToppGene GO to be run.")
+=======
 			print("The VCF is heavy, too many genes are concerned for ToppGene GO to be run.")
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+			print("The VCF is heavy, too many genes are concerned for ToppGene GO to be run.")
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 
 
 

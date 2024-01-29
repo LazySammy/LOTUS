@@ -7,6 +7,13 @@ import sys
 
 def manage_parameters(config_file):
     current_time = datetime.now().strftime('%d-%m-%y(%Hh%M)')  # Utilisez '_' au lieu de '|'
+<<<<<<< HEAD
+<<<<<<< HEAD
+    dict_parameters = {}
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 
     with open(config_file, 'r') as file:
         # getting module name
@@ -35,9 +42,22 @@ def manage_parameters(config_file):
                 section_line = ''
             if section_line == 'global' or section_line in module_value.lower():
                 filtered_lines.append(line)
+<<<<<<< HEAD
+<<<<<<< HEAD
+            if line.startswith('C_variants_selection_approach'):
+                dict_parameters['C_variants_selection_approach'] = line.split('=')[1].strip()
+
+        # filling parameters dictionary with parameters
+=======
 
         # filling parameters dictionary with parameters
         dict_parameters = {}
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+
+        # filling parameters dictionary with parameters
+        dict_parameters = {}
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
         for line in filtered_lines:
             line.strip().replace(" ", "")
             if "=" in line:
@@ -53,7 +73,16 @@ def manage_parameters(config_file):
                 else:
                     dict_parameters[parameter] = value
     previous = dict_parameters['previous_folder']
+<<<<<<< HEAD
+<<<<<<< HEAD
+    if not 'C_variants_selection_approach' in dict_parameters.keys():
+        print('a')
+=======
 
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     if 'enrichment' in dict_parameters.keys():
         if dict_parameters['enrichment'].upper() == 'FALSE' or dict_parameters['enrichment'].upper() == 'NONE':
             dict_parameters['Panther_enrichment'] = 'None'

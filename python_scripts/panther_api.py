@@ -99,4 +99,12 @@ def Panther_GOEA(module, dict_para, list_genes: list, panther_name: str, logger=
         except ValueError as valerr:
             print('Error in the post request or the API has changed !')
         except:
+<<<<<<< HEAD
+<<<<<<< HEAD
+            print("Too many genes are concerned for Panther GO to be run.")
+=======
             print("The VCF is heavy, too many genes are concerned for Panther GO to be run.")
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+            print("The VCF is heavy, too many genes are concerned for Panther GO to be run.")
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb

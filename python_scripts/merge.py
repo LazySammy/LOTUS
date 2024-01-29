@@ -26,7 +26,14 @@ from python_scripts.chromosomes_plot import create_chromosomes_plot
 from python_scripts.path_modification import true_stem
 import matplotlib.pyplot as plt
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 def get_informations_for_genes(args, info_file, logger):
     '''
     Extract informations from the external cancer databases file.
@@ -46,8 +53,16 @@ def read_config(args, config_file):
     '''
     with open(config_file, 'r') as f:
         for line in f:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
             if args['verbose_prints'].upper() == 'TRUE':
                 print(line)
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+            if args['verbose_prints'].upper() == 'TRUE':
+                print(line)
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
             line = line.strip()
             if line != '':
                 line = line.split(',')
@@ -309,7 +324,15 @@ def create_mutation_types_barplot(args, dic_mutation_types_t1, dic_mutation_type
     ax.set_ylabel('Count', fontsize=14.5, labelpad=10)
     mode = counting_method.lower()
     mode = mode.capitalize()
+<<<<<<< HEAD
+<<<<<<< HEAD
+    ax.set_title(mode + ' mutation types comparison between time 1 and time 2\n(crossover of all patients from the cohort)', fontsize=16, pad=10)
+=======
     ax.set_title(mode + ' mutation types comparison between time 1 and time 2\n(crossover all patients of the cohort)', fontsize=16, pad=10)
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+    ax.set_title(mode + ' mutation types comparison between time 1 and time 2\n(crossover all patients of the cohort)', fontsize=16, pad=10)
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     ax.set_xticks(x)
     ax.set_xticklabels(labels, fontsize=15)
     ax.set_ylim(0, max(max(values_t1), max(values_t2)) * 1.1)
@@ -333,7 +356,17 @@ def create_mutation_types_barplot(args, dic_mutation_types_t1, dic_mutation_type
     if 'JPG' in file_formats:
         plt.savefig(path + '.jpg', dpi=400)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    plt.close()
+
+def create_mutation_subtypes_barplot(args, dic_mutation_subtypes_t1, dic_mutation_subtypes_t2, counting_method):
+=======
 def create_muation_subtypes_barplot(args, dic_mutation_subtypes_t1, dic_mutation_subtypes_t2, counting_method):
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+def create_muation_subtypes_barplot(args, dic_mutation_subtypes_t1, dic_mutation_subtypes_t2, counting_method):
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     if '.' in dic_mutation_subtypes_t1.keys():
         dic_mutation_subtypes_t1['unknown'] += dic_mutation_subtypes_t1['.']
         del dic_mutation_subtypes_t1['.']
@@ -347,6 +380,22 @@ def create_muation_subtypes_barplot(args, dic_mutation_subtypes_t1, dic_mutation
     values_t2 = [dic_mutation_subtypes_t2[label] for label in labels]
     x = np.arange(len(labels))
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    bar_width = 0.3
+    bar_gap = 0.2
+
+    fig, ax = plt.subplots(figsize=(12, 12))
+
+    x_indexes = np.arange(len(labels))
+    x1 = x_indexes - bar_width / 2 - bar_gap / 2
+    x2 = x_indexes + bar_width / 2 + bar_gap / 2
+
+    rects1 = ax.bar(x1, values_t1, bar_width, label='time 1', color=(0, 0.5, 0), edgecolor='black', linewidth=1, align="center")
+    rects2 = ax.bar(x2, values_t2, bar_width, label='time 2', color=(0, 0, 0.5), edgecolor='black', linewidth=1, align="center")
+=======
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     bar_width = 0.4
     bar_gap = 0.3
 
@@ -354,6 +403,10 @@ def create_muation_subtypes_barplot(args, dic_mutation_subtypes_t1, dic_mutation
 
     rects1 = ax.bar(x - bar_width - bar_gap / 2, values_t1, bar_width, label='time 1', color=(0, 0.5, 0), edgecolor='black', linewidth=1, align="center")
     rects2 = ax.bar(x + bar_gap / 2, values_t2, bar_width, label='time 2', color=(0, 0, 0.5), edgecolor='black', linewidth=1, align="center")
+<<<<<<< HEAD
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 
     for rect in rects1:
         height = rect.get_height()
@@ -377,6 +430,19 @@ def create_muation_subtypes_barplot(args, dic_mutation_subtypes_t1, dic_mutation
 
     mode = counting_method.lower()
     mode = mode.capitalize()
+<<<<<<< HEAD
+<<<<<<< HEAD
+    ax.set_title(mode + ' mutation subtypes comparison between time 1 and time 2\n(crossover of all patients from the cohort)', fontsize=16, pad=10)
+
+    ax.set_xticks(x_indexes)
+    ax.set_xticklabels(labels, rotation=90, fontsize=13, ha='right')  # Adjust ha='right'
+    ax.set_ylim(0, max(max(values_t1), max(values_t2)) * 1.1)
+
+    ax.tick_params(axis='y', labelsize=13)
+    ax.tick_params(axis='x', pad=10)  # Add padding to x-axis ticks
+=======
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     ax.set_title(mode + ' mutation subtypes comparison between time 1 and time 2\n(crossover all patients of the cohort)', fontsize=16, pad=10)
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=90, fontsize=15)
@@ -386,11 +452,22 @@ def create_muation_subtypes_barplot(args, dic_mutation_subtypes_t1, dic_mutation
     ax.set_xticks(x - offset, minor=False)
     ax.set_xticklabels(labels, minor=False)
     ax.tick_params(axis='y', labelsize=13)
+<<<<<<< HEAD
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     plt.tick_params(bottom=False)
 
     ax.legend(fontsize=14, edgecolor='white')
     plt.tight_layout()
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    fig.autofmt_xdate()
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     file_formats = args['M_subtypes_barplot_format(s)'].upper()
     path = args['output_path'] + 'merge/' + args['M_subtypes_barplot_name']
     if 'PNG' in file_formats:
@@ -402,8 +479,19 @@ def create_muation_subtypes_barplot(args, dic_mutation_subtypes_t1, dic_mutation
     if 'JPG' in file_formats:
         plt.savefig(path + '.jpg', dpi=400)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    plt.close()
+
+def merge_results(args, file_paths, category, output, upset_output, infos, cytoband_file, chromosomes_output, step, nb_files, enrichment, logger):
+=======
 def merge_results(args, file_paths, category, output, upset_output, infos, cytoband_file, chromosomes_output, step,
                   weakness_threshold, min_subset_size, max_subset_size, min_degree, max_degree, nb_files, enrichment, logger):
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+def merge_results(args, file_paths, category, output, upset_output, infos, cytoband_file, chromosomes_output, step,
+                  weakness_threshold, min_subset_size, max_subset_size, min_degree, max_degree, nb_files, enrichment, logger):
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 
     # Count mutation types and subtypes (and plot them)
     if args['vcf_annotation_method'].upper() == 'ANNOVAR':
@@ -411,6 +499,26 @@ def merge_results(args, file_paths, category, output, upset_output, infos, cytob
     mutation_types_counting_method = args['mutations_types_counting'].upper()
 
     if mutation_types_counting_method == 'UNIQUE' and annovar:
+<<<<<<< HEAD
+<<<<<<< HEAD
+        print('Counting and plotting unique mutations types and subtypes...')
+        dic_unique_mutation_types_t1, dic_unique_mutation_types_t2, dic_unique_mutation_subtypes_t1, dic_unique_mutation_subtypes_t2 = count_mutation_types(args, 'UNIQUE')
+        create_mutation_types_barplot(args, dic_unique_mutation_types_t1, dic_unique_mutation_types_t2, 'UNIQUE')
+        create_mutation_subtypes_barplot(args, dic_unique_mutation_subtypes_t1, dic_unique_mutation_subtypes_t2, 'UNIQUE')
+    elif mutation_types_counting_method == 'UNIQUE' and not annovar:
+        print('Counting and plotting unique mutations types...')
+        dic_unique_mutation_types_t1, dic_unique_mutation_types_t2 = count_mutation_types(args, 'UNIQUE')
+        create_mutation_types_barplot(args, dic_unique_mutation_types_t1, dic_unique_mutation_types_t2, 'UNIQUE')
+    elif mutation_types_counting_method == 'TOTAL' and annovar:
+        print('Counting and plotting unique mutations types and subtypes...')
+        dic_total_mutation_types_t1, dic_total_mutation_types_t2, dic_total_mutation_subtypes_t1, dic_total_mutation_subtypes_t2 = count_mutation_types(args, 'TOTAL')
+        create_mutation_types_barplot(args, dic_total_mutation_types_t1, dic_total_mutation_types_t2, 'TOTAL')
+        create_mutation_subtypes_barplot(args, dic_total_mutation_subtypes_t1, dic_total_mutation_subtypes_t2, 'TOTAL')
+    elif mutation_types_counting_method == 'TOTAL' and not annovar:
+        print('Counting and plotting unique mutations types...')
+=======
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
         print('Couting and plotting unique mutations types and subtypes...')
         dic_unique_mutation_types_t1, dic_unique_mutation_types_t2, dic_unique_mutation_subtypes_t1, dic_unique_mutation_subtypes_t2 = count_mutation_types(args, 'UNIQUE')
         create_mutation_types_barplot(args, dic_unique_mutation_types_t1, dic_unique_mutation_types_t2, 'UNIQUE')
@@ -426,6 +534,10 @@ def merge_results(args, file_paths, category, output, upset_output, infos, cytob
         create_muation_subtypes_barplot(args, dic_total_mutation_subtypes_t1, dic_total_mutation_subtypes_t2, 'TOTAL')
     elif mutation_types_counting_method == 'TOTAL' and not annovar:
         print('Couting and plotting unique mutations types...')
+<<<<<<< HEAD
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
         dic_total_mutation_types_t1, dic_total_mutation_types_t2 = count_mutation_types(args, 'TOTAL')
         create_mutation_types_barplot(args, dic_total_mutation_types_t1, dic_total_mutation_types_t2, 'TOTAL',)
 
@@ -451,15 +563,37 @@ def merge_results(args, file_paths, category, output, upset_output, infos, cytob
     pbar_files = tqdm(total=int(nb_files / 2), bar_format='{l_bar}{bar:30}{r_bar}', ncols=150, smoothing=1)
     pbar_files.set_description(color + f' -> Extracting information from \033[3mCompare\033[0m'+color+' results ('+str(round(nb_files/2)) + ' patients)')
     dic_unique_variants = {}
+<<<<<<< HEAD
+<<<<<<< HEAD
+    dic_genes_in_pairs = {}
+
     for name in file_paths:
+        id = name.split('sons/')[1].split('/')[0]
+        dic_genes_in_pairs[id] = []
+=======
+    for name in file_paths:
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+    for name in file_paths:
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
         if 'tsv' in name:
             df_from_compare = pd.read_csv(name, sep='\t', index_col=0)
         elif 'xlsx' in name:
             df_from_compare = pd.read_excel(name, index_col=0)
         elif 'csv' in name:
             df_from_compare = pd.read_csv(name, index_col=0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+        # if args['verbose_prints'].upper() == 'TRUE':
+        #     print(name)
+=======
         if args['verbose_prints'].upper() == 'TRUE':
             print(name)
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+        if args['verbose_prints'].upper() == 'TRUE':
+            print(name)
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
         if not name in names:
             names.add(name)
         # df_from_compare.to_excel('test.xlsx', index=False)
@@ -470,6 +604,23 @@ def merge_results(args, file_paths, category, output, upset_output, infos, cytob
         col_passed2 = df_from_compare.columns.values.tolist()[9]
         logger.info(f'Processing of samples B1: {col_passed1} and B2: {col_passed2}')  # b1 and b2 are the names of the samples
         # row is an object: doesn't have gene column (used as index)
+<<<<<<< HEAD
+<<<<<<< HEAD
+        selection = args['C_variants_selection_approach'].upper()
+        union = False
+        change = False
+        common = False
+        if selection == 'UNION':
+            union = True
+        elif selection == 'CHANGE':
+            change = True
+        elif selection == 'COMMON':
+            common = True
+
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
         if args['vcf_annotation_method'].upper() == 'FUNCOTATOR':
             passed_index = 5 #because we removed index column
             gb_index = 6
@@ -481,6 +632,41 @@ def merge_results(args, file_paths, category, output, upset_output, infos, cytob
             pb1_index = 12
 
         elif args['vcf_annotation_method'].upper() == 'ANNOVAR':
+<<<<<<< HEAD
+<<<<<<< HEAD
+            if union:
+                passed_index = 6
+                mutation_type = 7
+                gb_index = 8
+                cb_index = 9
+                pb_index = 10
+                passed1_index = 11
+                gb1_index = 12
+                cb1_index = 13
+                pb1_index = 14
+            elif change:
+                passed_index = 5
+                mutation_type = 6
+                gb_index = 7
+                cb_index = 8
+                pb_index = 9
+                passed1_index = 10
+                gb1_index = 11
+                cb1_index = 12
+                pb1_index = 13
+            elif common:
+                passed_index = 4
+                mutation_type = 5
+                gb_index = 6
+                cb_index = 7
+                pb_index = 8
+                passed1_index = 9
+                gb1_index = 10
+                cb1_index = 11
+                pb1_index = 12
+=======
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
             passed_index = 6
             mutation_type = 7
             gb_index = 8
@@ -490,10 +676,23 @@ def merge_results(args, file_paths, category, output, upset_output, infos, cytob
             gb1_index = 12
             cb1_index = 13
             pb1_index = 14
+<<<<<<< HEAD
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 
         variants_count = []
 
         for index, row in df_from_compare.iterrows():
+<<<<<<< HEAD
+<<<<<<< HEAD
+            if not index in dic_genes_in_pairs[id]:
+                dic_genes_in_pairs[id].append(index)
+
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
             if index not in df_all_genes_info.keys():
                 df_all_genes_info[index] = deepcopy(dic_gene_fields)  # index is the gene name
 
@@ -528,6 +727,22 @@ def merge_results(args, file_paths, category, output, upset_output, infos, cytob
     pbar_files.close()
 
     dic_intermediate_genes = {}  # gene dictionary to create tsv union file (mean computation for each list)
+<<<<<<< HEAD
+<<<<<<< HEAD
+    dic_patients_genes_lists = {}   # dictionary containing genes list for each sample - use to create the upset plot
+    genes_pos_for_chromosomes = {}  # dictionary containing genes position for each chromosome - use to create the chromosomes plot
+    genes_pos_for_chromosomes_t1 = {}  # s1 = sample 1
+    genes_pos_for_chromosomes_t2 = {}  # s2 = sample 2
+
+    pbar_files = tqdm(total=len(df_all_genes_info.items()), bar_format='{l_bar}{bar:30}{r_bar}', ncols=150, smoothing=1)
+    pbar_files.set_description(color + f' -> Preparing information for \033[3mgenes_union \033[0m' + color + 'dataframe')
+
+    dic_mutation_types = {}
+    dic_mutation_subtypes = {}
+
+=======
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     dic_patients_genes_lists = {}  # dictionary containing genes list for each sample - use to create the upset plot
     genes_pos_for_chromosomes = {} # dictionary containing genes position for each chromosome - use to create the chromosomes plot
     genes_pos_for_chromosomes_t1 = {} # s1 = sample 1
@@ -556,15 +771,43 @@ def merge_results(args, file_paths, category, output, upset_output, infos, cytob
 
     dic_mutation_types = {}
     dic_mutation_subtypes = {}
+<<<<<<< HEAD
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     counting_method = args['mutations_types_counting'].upper()
     if counting_method == 'UNIQUE':
         unique = True
     elif counting_method == 'TOTAL':
         total = True
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    patients_threshold = args['table_patients_threshold']
+    df_names = pd.read_excel('input/dataset.xlsx')
+    ids_column = args['pairs_ids_column_name']
+    is_id_column_filled = False
+    if ids_column.upper() != 'NONE' and ids_column != 'NO' and ids_column != '' and ids_column != 'FALSE':
+        is_id_column_filled = True
+        ids = df_names[ids_column].dropna().astype(int).unique().astype(str).tolist()
+        names1 = df_names[args['time1_column_name']].dropna().unique().tolist()
+        names2 = df_names[args['time2_column_name']].dropna().unique().tolist()
+        dic_names = {}
+        for i in range(len(ids)):
+            key = f"{names1[i]}___{names2[i]}"
+            dic_names[key] = str(ids[i])
+
+    for k, v in df_all_genes_info.items():
+=======
     for k, v in df_all_genes_info.items():
         if df_all_genes_info[k]['mutation types'] != []:
             print('a')
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+    for k, v in df_all_genes_info.items():
+        if df_all_genes_info[k]['mutation types'] != []:
+            print('a')
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
         if not v['chr'] in genes_pos_for_chromosomes_t1.keys():
             genes_pos_for_chromosomes_t1[v['chr']] = []
         if not v['chr'] in genes_pos_for_chromosomes_t2.keys():
@@ -579,21 +822,55 @@ def merge_results(args, file_paths, category, output, upset_output, infos, cytob
         if not k in dic_intermediate_genes.keys():
             dic_intermediate_genes[k] = {}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+        in_pairs = []
+        for id in dic_genes_in_pairs.keys():
+            if k in dic_genes_in_pairs[id]:
+                in_pairs.append(id)
+        if is_id_column_filled:
+            final_in_pairs = []
+            for pair in in_pairs:
+                final_in_pairs.append(dic_names[pair])
+        else:
+            final_in_pairs = in_pairs
+        dic_intermediate_genes[k]['Samples pairs'] = str(';'.join(final_in_pairs))
+
+        for sample in v['samples']:
+            if not sample in dic_patients_genes_lists.keys():  # i
+                dic_patients_genes_lists[sample] = []
+            dic_patients_genes_lists[sample].append(k)  # add only adds an element to the set if the element is not already present
+=======
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
         for sample in v['samples']:
             if not sample in dic_patients_genes_lists.keys():  # i
                 dic_patients_genes_lists[sample] = set()
             dic_patients_genes_lists[sample].add(k)  # add only adds an element to the set if the element is not already present
+<<<<<<< HEAD
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 
         dic_intermediate_genes[k]['Chromosome'] = v['chr']
         dic_intermediate_genes[k]['Gene start position'] = v['start']
         dic_intermediate_genes[k]['Gene end position'] = v['end']
         dic_intermediate_genes[k]['Nb samples'] = int(len(v['samples']))
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
         if args['pairs_ids_column_name'].upper() == 'NONE' or args['pairs_ids_column_name'] == 'NO' or args[
             'pairs_ids_column_name'] == '':
             for s in v['samples']:
                 s = s.split('sons/')[1]
                 ids_table.append(s.split('/')[0])
         dic_intermediate_genes[k]['Samples pairs'] = ';'.join(ids_table)
+<<<<<<< HEAD
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 
         # unique variants counting for each gene found in all samples from the whole dataset provided
         try:
@@ -622,15 +899,37 @@ def merge_results(args, file_paths, category, output, upset_output, infos, cytob
                 dic_unique_variants[k] = {}
                 dic_unique_variants[k]['gb2'] = []
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
         # dic_intermediate_genes[k]['Total variants'] = len(set(v['gb1'].keys()).union(set(v['gb2'].keys())))  # gb1 and gb2 are dict with the number of mutation for each gene
         # dic_intermediate_genes[k]['Mean gene weakness'] = np.mean(v['weakness'])
         dic_intermediate_genes[k]['Unique variants'] = len(set(dic_unique_variants[k]['gb1']).union(set(dic_unique_variants[k]['gb2'])))
         dic_intermediate_genes[k]['Total variants'] = len(dic_unique_variants[k]['gb1']) + len(dic_unique_variants[k]['gb2'])
         max_times_variants_number = max(len(set(dic_unique_variants[k]['gb1'])), len(set(dic_unique_variants[k]['gb2'])))
+<<<<<<< HEAD
+<<<<<<< HEAD
+        if not common and not change:
+            dic_intermediate_genes[k]['Unique variation (%)'] = round((len(set(dic_unique_variants[k]['gb2'])) - len(set(dic_unique_variants[k]['gb1']))) / max_times_variants_number * 100)
+            dic_intermediate_genes[k]['Total variation (%)'] = round((len(dic_unique_variants[k]['gb2']) - len(dic_unique_variants[k]['gb1'])) / max_times_variants_number * 100)
+        if not common:
+            dic_intermediate_genes[k]['Δ Unique variants'] = len(set(dic_unique_variants[k]['gb2'])) - len(set(dic_unique_variants[k]['gb1']))
+            dic_intermediate_genes[k]['Δ total variants'] = len(dic_unique_variants[k]['gb2']) - len(dic_unique_variants[k]['gb1'])
+=======
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
         dic_intermediate_genes[k]['Unique variation (%)'] = round((len(set(dic_unique_variants[k]['gb2'])) - len(set(dic_unique_variants[k]['gb1']))) / max_times_variants_number * 100)
         dic_intermediate_genes[k]['Total variation (%)'] = round((len(dic_unique_variants[k]['gb2']) - len(dic_unique_variants[k]['gb1'])) / max_times_variants_number * 100)
         dic_intermediate_genes[k]['|Unique variants delta|'] = abs(len(set(dic_unique_variants[k]['gb2'])) - len(set(dic_unique_variants[k]['gb1'])))
         dic_intermediate_genes[k]['|Total variants delta|'] = abs(len(dic_unique_variants[k]['gb2']) - len(dic_unique_variants[k]['gb1']))
+<<<<<<< HEAD
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
         dic_intermediate_genes[k]['Unique mutations (t1)'] = len(set(dic_unique_variants[k]['gb1']))
         dic_intermediate_genes[k]['Total mutations (t1)'] = len(dic_unique_variants[k]['gb1'])
         dic_intermediate_genes[k]['g.(t1)'] = '|'.join([str(variant) for variant in v['gb1']])
@@ -674,11 +973,33 @@ def merge_results(args, file_paths, category, output, upset_output, infos, cytob
     #         'Mutations (t1)', 'g.TPn+1 union', 'c.(t2)', 'p.(t2)', 'Mutations (t2)']] = np.round(
     #         df_final_genes[['Unique variants', 'Total variants', 'g.(t1)', 'c.(t1)', 'p.(t1)',
     #             'Mutations (t1)', 'g.(t2)', 'c.(t2)', 'p.(t2)', 'Mutations (t2)']], 2)
+<<<<<<< HEAD
+<<<<<<< HEAD
+    patients_threshold = args['table_patients_threshold']
+    if infos:
+        # Add additional cancer centric genes information
+        df_final_genes = df_final_genes.join(df_databases_info)
+
+        rows_to_remove = []
+        for index, row in df_final_genes.iterrows():
+            sample_pairs = row['Nb samples']
+            if int(sample_pairs) < int(patients_threshold):
+                rows_to_remove.append(index)
+
+        # Drop empty informational columns
+        df_final_genes = df_final_genes.drop(rows_to_remove)
+=======
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 
     if infos:
         # Add additional cancer centric genes information
         df_final_genes = df_final_genes.join(df_databases_info)
         # Drop empty informational columns
+<<<<<<< HEAD
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
         empty_cols = [col for col in df_final_genes.columns if df_final_genes[col].isnull().all()]
         df_final_genes.drop(empty_cols, axis=1, inplace=True)
 
@@ -714,27 +1035,61 @@ def merge_results(args, file_paths, category, output, upset_output, infos, cytob
             else:
                 print("The VCF is heavy, too many genes are concerned for Panther GO to be run.")
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    # print('Creating mutations cartography plot...')
+    # if cytoband_file.upper() != 'NONE' or cytoband_file == '':
+    #     ##### Create the Chromosome plot
+    #     create_chromosomes_plot(args, genes_pos_for_chromosomes_t1, genes_pos_for_chromosomes_t2,
+    #                             genes_pos_for_chromosomes, cytoband_file, chromosomes_output, step, logger)
+=======
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 
     print('Creating mutations cartography plot...')
     if cytoband_file.upper() != 'NONE' or cytoband_file == '':
         ##### Create the Chromosome plot
         create_chromosomes_plot(args, genes_pos_for_chromosomes_t1, genes_pos_for_chromosomes_t2,
                                 genes_pos_for_chromosomes, cytoband_file, chromosomes_output, step, logger)
+<<<<<<< HEAD
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 
     print('Creating upset plot...')
     if upset_output:
         if len(names) < 16:  # Actually upset plot can not be calculated for more than 15 samples
             #####create_upset Create the UpSetPlot
+<<<<<<< HEAD
+<<<<<<< HEAD
+            create_upsetplot(args, dic_patients_genes_lists, category, upset_output, names, logger)
+
+
+def create_upsetplot(args, data, category, upset_output, names, logger):
+=======
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
             create_upsetplot(args, dic_patients_genes_lists, category, upset_output, names, min_subset_size, max_subset_size, min_degree,
                              max_degree, weakness_threshold, logger)
 
 
 def create_upsetplot(args, data, category, upset_output, names, min_subset_size, max_subset_size, min_degree,
                      max_degree, weakness_threshold, logger):
+<<<<<<< HEAD
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     '''
     Create an Upsetplot showing the number of common genes to the different sample set
     '''
     #data = list of genes for each pair
+<<<<<<< HEAD
+<<<<<<< HEAD
+    plt.clf()
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     old_names = names
     new_names = set()
     for file_name in names:
@@ -755,9 +1110,21 @@ def create_upsetplot(args, data, category, upset_output, names, min_subset_size,
             j += 1
         i += 1
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    mutations_upset_threshold = args['mutations_upset_threshold']
+    if mutations_upset_threshold == 0:
+        mutations_upset_threshold = max([len(v) for v in data.values()])
+=======
 
     if max_subset_size == 0:
         max_subset_size = max([len(v) for v in data.values()])
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+
+    if max_subset_size == 0:
+        max_subset_size = max([len(v) for v in data.values()])
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 
     no_gene = old_names - set([k for k in data.keys()])
     if no_gene != set():
@@ -770,10 +1137,23 @@ def create_upsetplot(args, data, category, upset_output, names, min_subset_size,
 
     all_genes = set()
     for v in data.values():
+<<<<<<< HEAD
+<<<<<<< HEAD
+        if not all_genes:
+            all_genes = set(v)
+        else:
+            all_genes = all_genes.union(set(v))
+=======
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
         if all_genes == set():
             all_genes = v
         else:
             all_genes = all_genes.union(v)
+<<<<<<< HEAD
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 
     data1 = {}
     for key in list(data.keys()):
@@ -789,10 +1169,64 @@ def create_upsetplot(args, data, category, upset_output, names, min_subset_size,
     data2 = []
     cat = []
     to_suppr = set()
+<<<<<<< HEAD
+<<<<<<< HEAD
+    to_suppr2 = set()
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     #remove genes that are not found in all samples comparisons
     for c in category[::-1]:
         save_set = None
         for v in c:
+<<<<<<< HEAD
+<<<<<<< HEAD
+            if save_set is None:
+                save_set = set(data[v])
+            else:
+                save_set = save_set.intersection(set(data[v]))
+        data2.append(len(save_set))
+
+    # remove categories that we don't want according to parameters
+    category.reverse()
+    patients_upset_threshold = int(args['patients_upset_threshold'])
+    l_len_cat = []
+    for cat in category:
+        j = 0
+        for x in cat:
+            for o in x.split(','):
+                j+=1
+        l_len_cat.append(j)
+    k = 0
+    for i in l_len_cat:
+        if i < patients_upset_threshold:
+            del category[k]
+            del data2[k]
+            k = k -1
+        k += 1
+
+    mutations_upset_threshold = int(args['mutations_upset_threshold'])
+    j = 0
+    new_data = []
+    new_list = []
+    for i in data2:
+        if int(i) >= mutations_upset_threshold:
+            new_data.append(i)
+            new_list.append(category[j])
+        j += 1
+
+    #category.reverse()
+    df = from_memberships(new_list, data=new_data)
+    # df = df.to_frame()
+    # last_column_name = df.columns[-1]
+    # df[last_column_name] = df[last_column_name].values[::-1]
+    # df = df.squeeze()
+
+    #UPSET PLOT
+=======
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
             if save_set == None:
                 save_set = data[v]  # mutated genes names of the patient (pair), then confronted to the other patients
             else:
@@ -808,6 +1242,10 @@ def create_upsetplot(args, data, category, upset_output, names, min_subset_size,
     #UPSET PLOT
     threshold = args['upset_plot_threshold']
     df = df.loc[df >= float(threshold)]
+<<<<<<< HEAD
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     input_table = args['dataset']
     col1_name = args['time1_column_name']
     col2_name = args['time2_column_name']
@@ -823,6 +1261,20 @@ def create_upsetplot(args, data, category, upset_output, names, min_subset_size,
         col1_names = [name.split('.funco')[0] for name in col1_names]
         col2_names = [name.split('.funco')[0] for name in col2_names]
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore")
+        UpSet(df, show_counts=True, element_size=40).plot()
+
+    plt.ylabel('Number of mutated genes')
+    info = f"min patients in subset: {patients_upset_threshold} | min genes in subset: {mutations_upset_threshold}"
+    if len(data2) < 4:
+        plt.title('Number of mutated genes ', y=1.05)
+        plt.figtext(0.55, 0.05, info, ha="center", fontsize=7,
+=======
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     UpSet(df, show_counts=True, element_size=40).plot()
     plt.title('Number of mutated genes ', y=1.05)
     plt.ylabel('Number of mutated genes')
@@ -830,6 +1282,10 @@ def create_upsetplot(args, data, category, upset_output, names, min_subset_size,
 
     info = f'minsb: {min_subset_size}; maxsb: {max_subset_size}; mind: {min_degree}; maxd: {max_degree}; w: {weakness_threshold}'
     plt.figtext(0.6, 0.05, info, ha="center", fontsize=8,
+<<<<<<< HEAD
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
                 bbox={"facecolor": "lightgray", "alpha": 0.5, "pad": 3})  # Adjust fontsize parameter
 
     if 'SVG' in args['upset_plot_format(s)'].upper():
@@ -856,11 +1312,20 @@ def create_upsetplot(args, data, category, upset_output, names, min_subset_size,
 def main(args, output_path):
     output = args['M_MutatedGenes_name']
     upset_output = args['upset_plot_name']
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     min_subset_size_upset_plot = args['min_subset_size']
     max_subset_size_upset_plot = args['max_subset_size']
     min_degree = args['min_degree']
     max_degree = args['max_degree']
     weakness_threshold = args['weakness_threshold']
+<<<<<<< HEAD
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     enrichment = args['M_enrichment']
 
     # chromosomes plot variables
@@ -960,8 +1425,17 @@ def main(args, output_path):
     if args['verbose_prints'].upper() == 'TRUE':
         print('Start merging...')
     merge_results(args, file_paths, category, output, upset_output, infos, cytoband_file, chromosomes_output, int(step),
+<<<<<<< HEAD
+<<<<<<< HEAD
+                  nb_files, enrichment, logger)
+=======
                   int(weakness_threshold), int(min_subset_size_upset_plot), int(max_subset_size_upset_plot),
                   int(min_degree), int(max_degree), nb_files, enrichment, logger)
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+                  int(weakness_threshold), int(min_subset_size_upset_plot), int(max_subset_size_upset_plot),
+                  int(min_degree), int(max_degree), nb_files, enrichment, logger)
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 
     logger.info('* End merging *')
     logger.info(

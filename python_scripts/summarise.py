@@ -123,7 +123,15 @@ def create_ordered_dataframe(d):
     return df
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+def create_snp_plot(dict_para, d, dcount, name, vcf_name, logger, output_path):
+=======
 def graph_snp(dict_para, d, dcount, name, vcf_name, logger, output_path):
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+def graph_snp(dict_para, d, dcount, name, vcf_name, logger, output_path):
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     '''
         Creation of the profile graph 
         Input : a dictionnary containing the count for all kind of SNP (d), same dictionnary but with counts instead of percentage, the output file name and the logger
@@ -216,7 +224,15 @@ def graph_snp(dict_para, d, dcount, name, vcf_name, logger, output_path):
     df.to_csv(Path(new_path), sep='\t')
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+def create_indel_plot(dict_para, deletion, insertion, name, vcf_name, logger):
+=======
 def graph_indel(dict_para, deletion, insertion, name, vcf_name, logger):
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+def graph_indel(dict_para, deletion, insertion, name, vcf_name, logger):
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
     '''
     Creation of the indel size graph
     Input : two dictionnaries containing the count for insertion/deletion of different size, the output file name and the logger
@@ -1087,6 +1103,14 @@ def create_mutations_types_barplot(dict_para):
     if 'JPG' in dict_para['S_types_barplot_format(s)'].upper():
         plt.savefig(sample_path.split('stats')[0] + dict_para['S_types_barplot_name'] + '.jpg', dpi=400)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    plt.close()
+
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 def create_mutations_subtypes_barplot(dict_para):
     dic_subtypes = {'synonymous SNV': 0, 'nonsynonymous SNV': 0, 'frameshift substitution': 0,
                     'non frameshift substitution': 0, 'stopgain': 0, 'stoploss': 0,
@@ -1190,6 +1214,13 @@ def create_mutations_subtypes_barplot(dict_para):
     if 'JPG' in dict_para['S_subtypes_barplot_format(s)'].upper():
         plt.savefig(sample_path.split('stats')[0] + dict_para['S_subtypes_barplot_name'] + '.jpg', dpi=400)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    plt.close()
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 
 def summary(last, dict_para, dict_colors, output_path, vcf_file_filter: str, vcf_file_pass: str, genome_file: str,
             out_stats: str, out_genes: str, SNP_profile: str, out_indel: str, logger, enrichment: bool):
@@ -1250,13 +1281,29 @@ def summary(last, dict_para, dict_colors, output_path, vcf_file_filter: str, vcf
     if not "NONE" in dict_para['SNP_profile'].upper() and not "FALSE" in dict_para['SNP_profile'].upper():
         if "." in SNP_profile:
             SNP_profile = re.sub(r"\..*", "", SNP_profile)
+<<<<<<< HEAD
+<<<<<<< HEAD
+        create_snp_plot(dict_para, snp_count_pct, snp_count, SNP_profile, vcf_file_pass, logger, output_path)
+=======
         graph_snp(dict_para, snp_count_pct, snp_count, SNP_profile, vcf_file_pass, logger, output_path)
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+        graph_snp(dict_para, snp_count_pct, snp_count, SNP_profile, vcf_file_pass, logger, output_path)
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 
     if not "NONE" in dict_para['indel_profile'].upper() and not "FALSE" in dict_para['indel_profile'].upper():
         if str(counter_insertion_size) != 'Counter()':
             if "." in out_indel:
                 out_indel = re.sub(r"\..*", "", out_indel)
+<<<<<<< HEAD
+<<<<<<< HEAD
+            create_indel_plot(dict_para, counter_deletion_size, counter_insertion_size, out_indel, vcf_file_pass, logger)
+=======
             graph_indel(dict_para, counter_deletion_size, counter_insertion_size, out_indel, vcf_file_pass, logger)
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+            graph_indel(dict_para, counter_deletion_size, counter_insertion_size, out_indel, vcf_file_pass, logger)
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
         else:
             if dict_para['verbose_prints'].upper() == 'TRUE':
                 print('No insertion in the vcf file !')

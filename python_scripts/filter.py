@@ -640,8 +640,18 @@ def filter(dict_colors, dict_para, output1, output2, vcf_file: str, logger: str,
 
 def main(dict_colors, dict_para, vcf_file, args, output_path):
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	output1 = output_path + 'filtered.vcf'
+	output2 = output_path + 'passed.vcf'
+=======
 	output1 = output_path + args['output_filtered']
 	output2 = output_path + args['output_passed']
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
+=======
+	output1 = output_path + args['output_filtered']
+	output2 = output_path + args['output_passed']
+>>>>>>> 9c8a90e37f5f0a6717b01efd2a2d4ef069c38abb
 	filter_mbq = args['MBQ']
 	filter_dp = args['DP']
 	filter_mqsbz = args['MQSBZ']
