@@ -2,15 +2,15 @@
 
 ## Category 1
 
-### 🟡 Parameter 1
+### 🟢 Parameter 1
 
 - Signification: Explanation of parameter 1.
 - Options: 
-    - ✅**Default value**: Default value of parameter 1.
+    - ✅ Default value of parameter 1.
     - Option 2
     - Option 3
 
-### Parameter 2
+### 🔵 Parameter 2
 
 - Signification: Explanation of parameter 2.
 - Options: 
