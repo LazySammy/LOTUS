@@ -1,4 +1,4 @@
-$${\color{lightgreen}SLOOP \space : \space A \space Software \space for \space LOngitudinal \space Oncogenomics \space Projects}$$
+\fontsize{24pt}{\color{lightgreen}\textbf{SLOOP}} \hspace{20px} : \hspace{10px} \normalsize{\text{A Software for Longitudinal Oncogenomics Projects}}
 # My Project
 
 Welcome to my project! This README file demonstrates the different formatting options available in Markdown.
