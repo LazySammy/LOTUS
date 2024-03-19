@@ -1,18 +1,56 @@
-# Structure d'un joli README Markdown
+# My Project
 
-## Titre
+Welcome to my project! This README file demonstrates the different formatting options available in Markdown.
 
-Contenu du titre.
+## Headers
 
-## Sous-titre 1
+You can create headers using the `#` symbol. The number of `#` symbols determines the level of the header.
 
-Contenu du sous-titre 1.
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
 
-## Sous-titre 2
+## Emphasis
 
-Contenu du sous-titre 2.
+You can add emphasis to your text using asterisks or underscores.
 
-...
-## Sous-titre n
+*Italic text*
+_Italic text_
 
-Contenu du sous-titre n.
+**Bold text**
+__Bold text__
+
+## Lists
+
+You can create ordered and unordered lists.
+
+### Unordered List
+
+- Item 1
+- Item 2
+- Item 3
+
+### Ordered List
+
+1. First item
+2. Second item
+3. Third item
+
+## Links
+
+You can add links to your text.
+
+[GitHub](https://github.com)
+
+## Images
+
+You can also add images to your README.
+
+![Image](https://example.com/image.jpg)
+
+## Code Blocks
+
+You can include code blocks using triple backticks.
