@@ -3,7 +3,13 @@
 ## Category 1
 
 ### Parameter 1
-
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
 - Signification: Explanation of parameter 1.
 - Options: 
     - **Default value**: Default value of parameter 1.
