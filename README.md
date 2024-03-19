@@ -61,4 +61,5 @@ You can include code blocks using triple backticks
 ``` test ```
 
 ## Parameters
-[a relative link](PARAMETERS.md)
+    
+[Exhaustive description](/PARAMETERS.md)
