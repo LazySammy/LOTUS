@@ -1,4 +1,3 @@
-## $${\color{lightgreen}SLOOP \space : \space A \space Software \space for \space LOngitudinal \space Oncogenomics \space Projects}$$
 # My Project
 
 [![forthebadge](https://forthebadge.com/images/featured/featured-compatibility-betamax.svg)](https://forthebadge.com)
@@ -9,12 +8,12 @@ Welcome to my project! This README file demonstrates the different formatting op
 
 You can create headers using the `#` symbol. The number of `#` symbols determines the level of the header.
 
-# [Heading 1](#heading-1)
-## [Heading 2](#heading-2)
-### [Heading 3](#heading-3)
-#### [Heading 4](#heading-4)
-##### [Heading 5](#heading-5)
-###### [Heading 6](#heading-6)
+### Heading 1
+#### Heading 2
+##### Heading 3
+###### Heading 4
+####### Heading 5
+######## Heading 6
 
 ## Emphasis
 
@@ -58,9 +57,10 @@ You can also add images to your README.
 
 You can include code blocks using triple backticks
 
+## Scripts
 
-## Contributors
+Here are some useful scripts for this project:
 
-- @JohnDoe
-- @JaneSmith
-- @AlexJohnson
+- [Script 1](/Parameters.md)
+- [Script 2](/path/to/script2)
+- [Script 3](/path/to/script3)
