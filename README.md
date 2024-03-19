@@ -1,4 +1,4 @@
-$${\color{lightgreen}Light \space Green}$$
+$${\color{lightgreen}SLOOP \space : \space A Software for LOngitudinal Oncogenomics Projects}$$
 # My Project
 
 Welcome to my project! This README file demonstrates the different formatting options available in Markdown.
