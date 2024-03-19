@@ -57,10 +57,4 @@ You can also add images to your README.
 
 You can include code blocks using triple backticks
 
-## Scripts
-
-Here are some useful scripts for this project:
-
-- [Script 1](/Parameters.md)
-- [Script 2](/path/to/script2)
-- [Script 3](/path/to/script3)
+## Project Organization

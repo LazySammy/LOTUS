@@ -2,17 +2,11 @@
 
 ## Category 1
 
-### Parameter 1
-```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
-```
+### 🟡 Parameter 1
+
 - Signification: Explanation of parameter 1.
 - Options: 
-    - **Default value**: Default value of parameter 1.
+    - ✅**Default value**: Default value of parameter 1.
     - Option 2
     - Option 3
 
