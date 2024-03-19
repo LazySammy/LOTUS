@@ -39,7 +39,7 @@ You can create ordered and unordered lists.
 2. Second item
 3. Third item
 
-## Links
+## [Docs Contribution Guide](https://www.codecademy.com/pages/contribute-docs)
 
 You can add links to your text.
 
@@ -58,5 +58,3 @@ You can include code blocks using triple backticks.
 
 texte 
 ```echo "This is a code example in bash"```
-
-<span style="background-color: white">Votre phrase ici</span>
