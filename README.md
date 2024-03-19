@@ -1,4 +1,4 @@
-\Large{$${\color{lightgreen}Light \space Green}$$}
+$${\color{lightgreen}Light \space Green}$$
 # My Project
 
 Welcome to my project! This README file demonstrates the different formatting options available in Markdown.
