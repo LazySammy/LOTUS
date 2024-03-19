@@ -58,3 +58,5 @@ You can include code blocks using triple backticks.
 
 texte 
 ```echo "This is a code example in bash"```
+
+<span style="background-color: white">Votre phrase ici</span>
