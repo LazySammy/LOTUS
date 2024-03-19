@@ -41,3 +41,9 @@
 - Signification: Explanation of parameter 6.
 - Options: List of available options for parameter 6.
 - Default Value: Default value of parameter 6.
+
+## Contributors
+
+- @JohnDoe
+- @JaneSmith
+- @AlexJohnson
