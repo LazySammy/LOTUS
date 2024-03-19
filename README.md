@@ -2,6 +2,7 @@
 # My Project
 
 [![forthebadge](https://forthebadge.com/images/featured/featured-compatibility-betamax.svg)](https://forthebadge.com)
+
 Welcome to my project! This README file demonstrates the different formatting options available in Markdown.
 
 ## Headers
