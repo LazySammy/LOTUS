@@ -54,8 +54,11 @@ You can also add images to your README.
 ## Code Blocks
 
 You can include code blocks using triple backticks.
+'''
 print("Hello, world!")
+'''
 
 texte 
-
+'''
 echo "This is a code example in bash"
+'''
