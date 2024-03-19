@@ -58,3 +58,4 @@ print("Hello, world!")
 
 texte 
 
+echo "This is a code example in bash"
