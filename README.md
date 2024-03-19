@@ -59,6 +59,6 @@ You can include code blocks using triple backticks.
 texte 
 ```echo "This is a code example in bash"```
 
-<span style="color:red">This text is red.</span>
-<span style="color:blue">This text is blue.</span>
-<span style="color:green">This text is green.</span>
+- ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) `#f03c15`
+- ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) `#c5f015`
+- ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) `#1589F0`
