@@ -2,13 +2,12 @@ Hello SLOOP, bye LOTUS ! ;)
 
 ### $${\color{lightgreen}SLOOP: \space a \space Software \space for \space Longitudinal \space Oncogenomics \space Projects}$$
 
-[![forthebadge](https://forthebadge.com/images/featured/featured-compatibility-betamax.svg)](https://forthebadge.com)
-
 Welcome to my project! This README file demonstrates the different formatting options available in Markdown.
 
 ## Headers
-
 You can create headers using the `#` symbol. The number of `#` symbols determines the level of the header.
+[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
+> Note: `--capt-add=SYS-ADMIN` is required for PDF rendering.
 
 ### Heading 1
 #### Heading 2

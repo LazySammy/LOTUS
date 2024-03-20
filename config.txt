@@ -14,7 +14,7 @@ time1_column_name=comp1
 time2_column_name=comp2
 pair_names_column_name=patient id
 
-##Secondary
+## Execution
 version = 1.0
 log=LOTUS.log
 verbose_prints=False

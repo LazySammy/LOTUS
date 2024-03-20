@@ -1,0 +1,21 @@
+## LOTUS
+module(s) = Filter
+sequencing = WES -> à supprimer dans le code (full WES)
+vcf_annotation_method = ANNOVAR -> à supprimer dans le code (on prend tout)
+discard_weak_variants = yes
+output_folder_path = D:\Stage\LOTUS\resultats\test -> changer pour new
+keep_filtered_vcf_after_run = True -> faire en sorte que les autres n'aient pas besoin de filtered
+
+## Inputs
+dataset_path = input/dataset.xlsx
+vcf_folder_path = D:\Stage\LOTUS\data\output_KIM\pon_germ\sans blood\t1
+time1_column_name=comp1
+time2_column_name=comp2
+pair_names_column_name=patient id
+
+## Execution
+version = 1.0 -> à enlever
+log=LOTUS.log -> ajouter l'option no
+verbose_prints=False
+colored_execution = tRUE
+---------------------------
