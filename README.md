@@ -1,6 +1,6 @@
 Hello SLOOP, bye LOTUS ! ;)
 
-# $${\color{lightgreen}SLOOP:\space a \spaceSoftware \spacefor \spaceLongitudinal \spaceOncogenomics \spaceProjects}$$
+# $${\color{lightgreen}SLOOP: a Software for Longitudinal Oncogenomics Projects}$$
 
 [![forthebadge](https://forthebadge.com/images/featured/featured-compatibility-betamax.svg)](https://forthebadge.com)
 
