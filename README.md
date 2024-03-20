@@ -64,4 +64,4 @@ You can include code blocks using triple backticks
 
 ## Parameters
     
-[Exhaustive description](/PARAMETERS.md)
+[Exhaustive description](tutorials/PARAMETERS.md)
