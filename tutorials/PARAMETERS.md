@@ -7,9 +7,12 @@ Each parameter must be filled in the configuration file before running the pipel
 module(s) = Merge\
 min_DP = 40
 
+☑️ Default value
+🔵 Mandatory parameter
+
 ### Global arguments
 
-#### 🟢 Module(s)
+#### 🔵 Module(s)
 
 - Choose the module(s) you want to run :
     - **Filter** the variants among their sequencing quality and allelic frequency
@@ -17,7 +20,7 @@ min_DP = 40
     - **Compare** the filtered variants from time 1 and time 2 for each patient
     - **Merge** the comparisons results together, to get a cross analysis of all patients
 - Options: 
-  - ```✅ Filter, Summarise, Compare, Merge```
+  - ☑️ ```Filter, Summarise, Compare, Merge```
   - ```Filter```
   - ```Summarise```
   - ```Compare```
