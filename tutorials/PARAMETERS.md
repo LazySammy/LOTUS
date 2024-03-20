@@ -1,16 +1,27 @@
 # Parameters
 
 This is an exhaustive description of all possible parameters of [SLOOP](../).
+Each parameter must be filled in the configuration file before running the pipeline.
+<Name of parameter> = <required option>
+Module(s) = Merge
+min_DP = 40
+...
 
-## Category 1
+## Global arguments
 
-### 🟢 Parameter 1
+### 🟢 Module(s)
 
-- Signification: Explanation of parameter 1.
+- Choose the module(s) you want to run :
+    - **Filter** the variants among their sequencing quality and allelic frequency
+    - **Summarise** the filtered variants (statistics, mutation types, mutated genes, etc)
+    - **Compare** the filtered variants from time 1 and time 2 for each patient
+    - **Merge** the comparisons results together, to get a cross analysis of all patients
 - Options: 
-    - ✅ Default value of parameter 1.
-    - Option 2
-    - Option 3
+    - ✅ Filter, Summarise, Compare, Merge
+    - Filter
+    - Summarise
+    - Compare
+    - Merge
 
 ### 🔵 Parameter 2
 
