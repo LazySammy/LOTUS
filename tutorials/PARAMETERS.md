@@ -1,12 +1,11 @@
 # Parameters
 
 This is an exhaustive description of all possible parameters of [SLOOP](../).
-Each parameter must be filled in the configuration file before running the pipeline.
-<Name of parameter> = <required option>
-
-Module(s) = Merge
-min_DP = 40
-...
+Each parameter must be filled in the configuration file before running the pipeline.\
+```<Name of parameter> = <required option>```\
+Module(s) = Merge\
+min_DP = 40\
+...\
 
 ## Global arguments
 
