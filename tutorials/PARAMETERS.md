@@ -7,8 +7,9 @@ Each parameter must be filled in the configuration file before running the pipel
 module(s) = Merge\
 min_DP = 40
 
-☑️ Default value
+☑️ Default value\
 🔵 Mandatory parameter
+🟢 Optional parameter
 
 ### Global arguments
 
