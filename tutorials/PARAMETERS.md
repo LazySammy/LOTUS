@@ -1,6 +1,6 @@
 # Parameters
 
-This is an exhaustive description of all possible parameters of [SLOOP](README.md).
+This is an exhaustive description of all possible parameters of [SLOOP](../README.md).
 
 ## Category 1
 
