@@ -32,7 +32,6 @@ min_DP = 40
     - **Summarise** > the variants that don't pass the filter you chose are kept (weak variants)
 - Options: 
   - ```yes``` ☑️ 
-  - ```yes```
   - ```no```
 
 ##### 🔵 output_folder_path
@@ -43,7 +42,6 @@ min_DP = 40
     (if you choose to run Filter or Summarise again, it will overwrite the previous results if you don't change the folderpath)
 - Options: 
   - ```new``` ☑️ 
-  - ```new```
   - ```<you path>```
 
 ##### 🔵 keep_filtered_vcf_after_run
@@ -54,7 +52,6 @@ min_DP = 40
 - Options: 
   - ```no``` ☑️ 
   - ```yes```
-  - ```no```
     > Caution! Summarise and Compare modules need the filtered vcf files to be correctly run!
     (if you removed the filtered vcf files by error, and you run Summarise or Compare, it will re-run Filter module)
 
@@ -110,7 +107,6 @@ min_DP = 40
 - Options: 
   - ```no``` ☑️ 
   - ```yes```
-  - ```no```
 
 ##### 🟢 colored_execution
 - During LOTUS running, the information appearing in the console can be colored or not:
@@ -118,5 +114,4 @@ min_DP = 40
     - **no** > the information will not be colored in the console (recommanded for old consoles such as PyScripter, etc)
 - Options: 
   - ```yes``` ☑️ 
-  - ```yes```
   - ```no```
