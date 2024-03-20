@@ -63,5 +63,10 @@ You can include code blocks using triple backticks
 ``` test ```
 
 ## Parameters
-    
 [Exhaustive description](tutorials/PARAMETERS.md)
+
+## Table
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  |  \| 
