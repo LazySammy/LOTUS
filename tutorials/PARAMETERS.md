@@ -5,9 +5,7 @@ Each parameter must be filled in the configuration file before running the pipel
 <Name of parameter> = <required option>
 
 Module(s) = Merge
-
 min_DP = 40
-
 ...
 
 ## Global arguments
