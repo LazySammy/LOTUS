@@ -17,11 +17,11 @@ min_DP = 40
     - **Compare** the filtered variants from time 1 and time 2 for each patient
     - **Merge** the comparisons results together, to get a cross analysis of all patients
 - Options: 
-    - ✅ Filter, Summarise, Compare, Merge
-    \- Filter
-    \- Summarise
-    \- Compare
-    \- Merge
+  * ✅ Filter, Summarise, Compare, Merge
+  * Filter
+  * Summarise
+  * Compare
+  * Merge
 
 ### 🔵 Parameter 2
 
