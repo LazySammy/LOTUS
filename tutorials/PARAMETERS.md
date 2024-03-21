@@ -13,7 +13,7 @@ min_DP = 40
 
 ### Global arguments
 #### LOTUS
-##### 🔵 module(s)
+##### 🔵 ```module(s)```
 - Choose the module(s) you want to run:
     - **Filter** the variants among their sequencing quality and allelic frequency
     - **Summarise** the filtered variants (statistics, mutation types, mutated genes, etc)
