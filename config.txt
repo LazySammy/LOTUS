@@ -1,5 +1,5 @@
 ### Global arguments
-## LOTUS
+## LOTUS 
 module(s) = Filter
 sequencing = WES
 vcf_annotation_method = ANNOVAR
