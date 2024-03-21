@@ -201,7 +201,7 @@ Here are the parameters you can set to summarise the filtered variants (statisti
 - Options:
   - ```hg38.pk``` ☑️ 
   - ```<your_reference_genome>```
-> Please make sure the version of your reference genome fits the version of the reference genome you used to align your BAM before getting your VCF files.
+> Please make sure the version of your reference genome fits the version of the one you used to align your BAM before getting your VCF files.
 
 #### 🔵 ```S_enrichment```
 - You can choose to perform a Gene Ontology Enrichment Anlysis on the mutated genes found in the sample:
@@ -209,4 +209,9 @@ Here are the parameters you can set to summarise the filtered variants (statisti
   - **ToppGene** > the Gene Ontology Enrichment Analysis will be performed using ToppGene database
   - **both** > the Gene Ontology Enrichment Analysis will be performed using both Panther and ToppGene databases
   - **none** > no Gene Ontology Enrichment Analysis will be performed
+- Options:
+  - ```both``` ☑️ 
+  - ```Panther```
+  - ```ToppGene```
+  - ```none```
 > ```none``` is recommended for large datasets, Panther and ToppGene can only run if the list of genes contains less than 1000 names
