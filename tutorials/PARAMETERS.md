@@ -15,7 +15,7 @@ Here are some key arguments about the program in general, and also about input a
 
 ### LOTUS
 #### 🔵 ```module(s)```
-- Choose the module(s) you want to run:
+Choose the module(s) you want to run:
     - **Filter** the variants among their sequencing quality and allelic frequency
     - **Summarise** the filtered variants (statistics, mutation types, mutated genes, etc)
     - **Compare** the filtered variants from time 1 and time 2 for each patient
