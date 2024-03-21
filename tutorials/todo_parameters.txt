@@ -31,9 +31,9 @@ unpaired = False -> supprimer
 
 ---------------------------
 ### Summarise
-## Parameters
-genome=reference_genome.pk
-enrichment=False
+## Parameters 
+genome=reference_genome.pk -> changer pour reference_genome, vérifier les formats acceptés
+enrichment=False -> changer en S_enrichment -> changer les paramètres
 
 ## Outputs
 indel_profile_deletion=None

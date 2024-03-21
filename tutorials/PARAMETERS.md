@@ -177,26 +177,36 @@ If you don't want a filter to be applied, just set the parameter to 0 if min thr
 #### 🔵 ```max_VAF_pop```
 - The minimum allelic frequency in the population (number of times the mutation has been observed in the population). 
 If the variant has a frequency in population > min_VAF_pop, it will be kept.
-VAF_sample_max_threshold = 0.3
-#POPAF = 0.00001
+- Options:
+  - ```0.002``` ☑️ 
+  - ```<your_value>```
 > provided by ANNOVAR (using gnomAD database for example)
 
 #### 🔵 ```max_VAF_sample```
 - The maximum allelic frequency in the sample (number of times the mutation has been observed in sample). 
 If the variant has a frequency < max_VAF_sample, it will be kept.
 - Options:
-  - ```0.002``` ☑️ 
+  - ```0.3``` ☑️ 
   - ```<your_value>```
   > provided by bcftools (```bcftools +fill-tags $input -Ov -o $output -- -t FORMAT/VAF```)
 
 ---------------------------
 
-## SUMMARISE
+## SUMMARISE (S)
 Here are the parameters you can set to summarise the filtered variants (statistics, plots, tables).
 
 ### Parameters
+#### 🔵 ```reference_genome```
+- The reference genome is required to get the gene names from the gene ids of reference genome. You must specifiy the file path and format (pk and fasta are available).
+- Options:
+  - ```hg38.pk``` ☑️ 
+  - ```<your_reference_genome>```
+> Please make sure the version of your reference genome fits the version of the reference genome you used to align your BAM before getting your VCF files.
 
-
-
-genome = reference_genome.pk
-enrichment=False
+#### 🔵 ```S_enrichment```
+- You can choose to perform a Gene Ontology Enrichment Anlysis on the mutated genes found in the sample:
+  - **Panther** > the Gene Ontology Enrichment Analysis will be performed using Panther database
+  - **ToppGene** > the Gene Ontology Enrichment Analysis will be performed using ToppGene database
+  - **both** > the Gene Ontology Enrichment Analysis will be performed using both Panther and ToppGene databases
+  - **none** > no Gene Ontology Enrichment Analysis will be performed
+> ```none``` is recommended for large datasets, Panther and ToppGene can only run if the list of genes contains less than 1000 names
