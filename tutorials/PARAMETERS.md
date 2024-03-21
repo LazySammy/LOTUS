@@ -1,9 +1,9 @@
 # Parameters
 
 This is an exhaustive description of all possible parameters of [SLOOP](../).\
-Each parameter must be filled in the configuration file before running the pipeline.\
+Each parameter must be filled in the configuration file before running the pipeline.
 
-```<Name of parameter> = <required option>```\
+```<Name of parameter> = <required option>```
 > module(s) = Filter, Summarise
 
 ☑️ Default value\
@@ -201,7 +201,7 @@ Here are the parameters you can set to summarise the filtered variants (statisti
 - Options:
   - ```hg38.pk``` ☑️ 
   - ```<your_reference_genome>```
-> Please make sure the version of your reference genome fits the version of the one you used to align your BAM before getting your VCF files.
+> Make sure the version of your reference genome fits the version of the one you used to align your BAM before getting your VCF files.
 
 #### 🔵 ```S_enrichment```
 - You can choose to perform a Gene Ontology Enrichment Anlysis on the mutated genes found in the sample:
