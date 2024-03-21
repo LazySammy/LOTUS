@@ -4,8 +4,7 @@ This is an exhaustive description of all possible parameters of [SLOOP](../).\
 Each parameter must be filled in the configuration file before running the pipeline.\
 
 ```<Name of parameter> = <required option>```\
-module(s) = Filter, Summarise\
-min_DP = 40
+> module(s) = Filter, Summarise
 
 ☑️ Default value\
 🔵 Key parameter\
@@ -89,7 +88,7 @@ Here are some key arguments about the program in general, and also about input a
 - Options: 
   - ```patients``` ☑️ 
   - ```<your_column_name_for_pairs_names>```
-  - ```None```
+  - ```none```
 
 ### Execution
 #### 🟢 ```log```
@@ -115,12 +114,10 @@ Here are some key arguments about the program in general, and also about input a
     - **no** > the information will not be colored in the console (recommanded for old consoles such as PyScripter, etc)
 - Options: 
   - ```yes``` ☑️ 
-  - ```no```
-  
+  - ```no```  
 
 ---------------------------
 
----------------------------
 ## FILTER
 Here are the parameters you can set to filter the variants with LOTUS first module.
 If you don't want a filter to be applied, just set the parameter to 0 if min threshold, and 1000 if max threshold.
@@ -191,6 +188,8 @@ If the variant has a frequency < max_VAF_sample, it will be kept.
   - ```0.002``` ☑️ 
   - ```<your_value>```
   > provided by bcftools (```bcftools +fill-tags $input -Ov -o $output -- -t FORMAT/VAF```)
+
+---------------------------
 
 ## SUMMARISE
 Here are the parameters you can set to summarise the filtered variants (statistics, plots, tables).
