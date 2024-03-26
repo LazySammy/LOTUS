@@ -1,8 +1,9 @@
-Hello SLOOP, bye LOTUS ! ;)
+
+https://img.shields.io/badge/contributors-3-blue
 
 ### $${\color{lightgreen}LOncoG: \space a \space software \space for \space Longitudinal \space Oncogenomics \space analysis}$$
 
-Welcome to my project! This README file demonstrates the different formatting options available in Markdown.
+Hello LOncoG, bye LOTUS ! ;)
 
 ## Headers
 You can create headers using the `#` symbol. The number of `#` symbols determines the level of the header.
