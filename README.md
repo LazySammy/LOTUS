@@ -1,7 +1,7 @@
 
 <p align="center">
-    <a href="https://img.shields.io/badge/contributors-3-blue" alt="Contributors">
-        <img src="https://img.shields.io/github/contributors/badges/shields" /></a>
+    <a href="#contributors" alt="Contributors">
+        <img src="https://img.shields.io/badge/contributors-3-blue" /></a>
     <a href="#backers" alt="Backers on Open Collective">
         <img src="https://img.shields.io/opencollective/backers/shields" /></a>
     <a href="#sponsors" alt="Sponsors on Open Collective">
