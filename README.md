@@ -1,6 +1,6 @@
 Hello SLOOP, bye LOTUS ! ;)
 
-### $${\color{lightgreen}SLOOP: \space a \space Software \space for \space Longitudinal \space Oncogenomics \space Projects}$$
+### $${\color{lightgreen}LOncoG: \space a \space software \space for \space Longitudinal \space Oncogenomics \space analysis}$$
 
 Welcome to my project! This README file demonstrates the different formatting options available in Markdown.
 
