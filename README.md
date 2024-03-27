@@ -5,7 +5,7 @@
     <a href="#backers" alt="Backers">
         <img src="https://img.shields.io/badge/backers-2-lightblue" /></a>
     <a href="#commits" alt="Commits">
-        <img src="https://img.shields.io/badge/commits-100-lightblue" /></a>
+        <img src="https://img.shields.io/badge/commits-87-lightblue" /></a>
     <a href="#coverage" alt="Coverage">
         <img src="https://img.shields.io/badge/coverage-85%25-lightgreen" /></a>
     <a href="#codacy" alt="Codacy">
