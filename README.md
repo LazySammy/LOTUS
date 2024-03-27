@@ -10,12 +10,14 @@
         <img src="https://img.shields.io/badge/coverage-85%25-lightgreen" /></a>
     <a href="#codacy" alt="Codacy">
         <img src="https://img.shields.io/badge/codacy-B-lightgreen" /></a>
+    <a href="#languages" alt="Languages">
+        <img src="https://img.shields.io/badge/language-Python 3-brightgreen" /></a>
     <a href="#version" alt="Version">
-        <img src="https://img.shields.io/badge/version-2.5-green" /></a>
+        <img src="https://img.shields.io/badge/version-2.5-brightgreen" /></a>
     <a href="#packages" alt="Packages">
-        <img src="https://img.shields.io/badge/packages-conda, venv-green" /></a>
+        <img src="https://img.shields.io/badge/packages-conda, venv-brightgreen" /></a>
     <a href="#validation" alt="Validation">
-        <img src="https://img.shields.io/badge/validation-TNBC, glioblastoma-darkyellow" /></a>
+        <img src="https://img.shields.io/badge/validation-TNBC, glioblastoma-brightyellow" /></a>
     <a href="#institute" alt="Institute">
         <img src="https://img.shields.io/badge/institute-ICO%20(France)%20-orange" /></a>
 </p>
