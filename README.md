@@ -17,7 +17,7 @@
     <a href="#packages" alt="Packages">
         <img src="https://img.shields.io/badge/packages-conda, venv-brightgreen" /></a>
     <a href="#validation" alt="Validation">
-        <img src="https://img.shields.io/badge/validation-TNBC, glioblastoma-brightyellow" /></a>
+        <img src="https://img.shields.io/badge/validation-TNBC, glioblastoma-lightyellow" /></a>
     <a href="#institute" alt="Institute">
         <img src="https://img.shields.io/badge/institute-ICO%20(France)%20-orange" /></a>
 </p>
