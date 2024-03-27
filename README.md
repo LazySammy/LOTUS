@@ -26,7 +26,7 @@
         <img src="https://img.shields.io/badge/institute-ICO%20(France)%20-orange" /></a>
 </p>
 
-### $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space Oncogenomics \space analysis}$$
+## $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space Oncogenomics \space analysis}$$
 
 Hello LOncoG, bye LOTUS ! ;)
 
