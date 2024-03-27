@@ -16,7 +16,7 @@
         <img src="https://img.shields.io/badge/version-2.5-brightgreen" /></a>
     <a href="#packages" alt="Packages">
         <img src="https://img.shields.io/badge/packages-conda, venv-brightgreen" /></a>
-    <br>
+    <br><br>
     <a href="#parameters" alt="Parameters">
         <img src="https://img.shields.io/badge/parameters-100-lightyellow" /></a>
     <a href="#example" alt="Example">
