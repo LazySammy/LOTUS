@@ -1,9 +1,9 @@
 
 <p align="center">
     <a href="#contributors" alt="Contributors">
-        <img src="https://img.shields.io/badge/contributors-3-green" /></a>
+        <img src="https://img.shields.io/badge/contributors-3-lightblue" /></a>
     <a href="#backers" alt="Backers">
-        <img src="https://img.shields.io/badge/backers-2-green" /></
+        <img src="https://img.shields.io/badge/backers-2-lightblue" /></
 </p>
 
 ### $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space Oncogenomics \space analysis}$$
