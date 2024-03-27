@@ -1,12 +1,12 @@
 
 <p align="center">
     <a href="#contributors" alt="Contributors">
-        <img src="https://img.shields.io/badge/contributors-3-blue" /></a>
+        <img src="https://img.shields.io/badge/contributors-3-green" /></a>
     <a href="#backers" alt="Backers">
-        <img src="https://img.shields.io/badge/backers-2-blue" /></
+        <img src="https://img.shields.io/badge/backers-2-green" /></
 </p>
 
-### $${\color{lightgreen}LOncoG: \space a \space software \space for \space Longitudinal \space Oncogenomics \space analysis}$$
+### $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space Oncogenomics \space analysis}$$
 
 Hello LOncoG, bye LOTUS ! ;)
 
