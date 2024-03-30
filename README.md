@@ -24,6 +24,8 @@
         <img src="https://img.shields.io/badge/validation-TNBC, glioblastoma-yellow" /></a>
     <a href="#institute" alt="Institute">
         <img src="https://img.shields.io/badge/institute-ICO%20(France)%20-orange" /></a>
+    <a href="#country" alt="Country">
+        <img src="https://img.shields.io/badge/made in-🇫🇷-red" /></a>
 </p>
 
 ## $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space Oncogenomics \space analysis}$$
