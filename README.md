@@ -29,8 +29,7 @@
 </p>
 
 ## $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space Oncogenomics \space analysis}$$
-
-Hello LOncoG, bye LOTUS ! ;)
+This software is coded in Python, and is designed to perform somatic variant selection, comparing the exomes of a cohort of cancer patients before and after tratment.
 
 ## Headers
 You can create headers using the `#` symbol. The number of `#` symbols determines the level of the header.
