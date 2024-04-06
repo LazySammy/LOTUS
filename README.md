@@ -29,7 +29,7 @@
 </p>
 
 ## $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space OncoGenomics \space analysis}$$
-This software is coded in Python, and is designed to perform somatic variant selection, comparing the exomes of a cohort of cancer patients before and after treatment. It also includes a filter module to help you remove remaining germline or non driver mutations.
+This software is designed to perform somatic variant selection, comparing the exomes of a cohort of cancer patients before and after treatment. It also includes a filter module to help you remove remaining germline or non driver mutations.
 
 ## Headers
 You can create headers using the `#` symbol. The number of `#` symbols determines the level of the header.
