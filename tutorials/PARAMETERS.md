@@ -56,6 +56,17 @@ Here are some key arguments about the program in general, and also about input a
     > Caution! Summarise and Compare modules need the filtered vcf files to be correctly run!
     (if you removed the filtered vcf files by error, and you run Summarise or Compare, it will re-run Filter module)
 
+#### 🔵 ```variants_selection_approach```
+- Choose the method you want to use to select the variants to keep:
+    - **change** > the variants that appeared or disappeared between times are selected
+    - **common** > the variants that are common between times are selected
+    - **all** > all the variants are selected (found in time 1, time 2, or both)
+- Options: 
+  - ```change``` ☑️ 
+  - ```common```
+  - ```all```
+    > ```change``` is advised, so you can study variants that may have a relation with the disease evolution or treatment response.
+
 ### Inputs
 #### 🔵 ```vcf_folder_path```
 - We need to know the path of the folder containing all of your annotated vcf, as LOTUS can find them.
