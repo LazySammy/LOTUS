@@ -1,4 +1,6 @@
-![Image](https://i.postimg.cc/fWdGZhD0/work-in-progress.png)
+<p align="center">
+  <img src="https://i.postimg.cc/fWdGZhD0/work-in-progress.png" alt="Image" style="width:50%; height:auto;">
+</p>
 
 <p align="center">
     <a href="#contributors" alt="Contributors">
