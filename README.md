@@ -1,3 +1,4 @@
+![Image](https://i.postimg.cc/fWdGZhD0/work-in-progress.png)
 
 <p align="center">
     <a href="#contributors" alt="Contributors">
@@ -31,6 +32,12 @@
 <span style="color:blue">some *blue* text</span>.
 ## $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space OncoGenomics \space analysis}$$
 This software plots, compare and merge information from all exomes of a cohort of cancer patients before and after treatment. It also includes a customizable filter module to help you removing remaining germline and/or non driver mutations.
+
+## Warnings
+- This software is still in development and should not be used for clinical purposes yet. 
+- The software is not yet optimized for large cohorts of patients.
+- Protein impacts can be predicted using the SIFT and Polyphen2 algorithms. For the moment, you should use ANNOVAR dbsnfp41 database to get the predictions.
+- Variant allelic frequency in population only works with ANNOVAR gnomad40 database for the moment.
 
 ## Project Organization
 The project is organized as follows:

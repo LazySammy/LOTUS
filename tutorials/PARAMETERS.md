@@ -153,6 +153,27 @@ If you don't want a filter to be applied, just set the parameter to 0 if min thr
   - ```no```
   - ```<your_mutations>```
 
+#### 🔵 ```filter_on_SIFT_score```
+- The SIFT score is a measure of the impact of a mutation on the protein function. The lower it is, the better. It goes from 0 to 1.
+- You can choose to filter the variants on this basis:
+    - **yes** > only mutations with a SIFT score < max_SIFT_score will be conserved
+    - **no** > all mutations will be conserved
+- Options:
+  - ```yes``` ☑️ 
+  - ```no```
+  > ```yes``` is recommended, as it can help to remove false positive mutations and focus on the most impactful ones (maybe driver mutations)
+
+#### 🔵 ```filter_on_PolyPhen2_score```
+- The PolyPhen2 score is a more recent measure of the impact of a mutation on protein function. The higher it is, the better. It goes from 0 to 1.
+- You can choose to filter the variants on this basis:
+    - **yes** > only mutations with a PolyPhen2 score > min_PolyPhen_score will be conserved
+    - **no** > all mutations will be conserved
+- Options:
+    - ```yes``` ☑️
+    - ```no```
+    > ```yes``` is recommended, as it can help to remove false positive mutations and focus on the most impactful ones (maybe driver mutations)
+
+
 #### 🟢 ```min_AD```
 - The minimum allelic depth required to keep the variant. If the variant has an allelic depth > min_AD, it will be kept.
 - Options:
@@ -191,7 +212,7 @@ If the variant has a frequency in population > min_VAF_pop, it will be kept.
 - Options:
   - ```0.002``` ☑️ 
   - ```<your_value>```
-> provided by ANNOVAR (using gnomAD database for example)
+> provided by ANNOVAR (using gnomad40_exome database for example)
 
 #### 🔵 ```max_VAF_sample```
 - The maximum allelic frequency in the sample (number of times the mutation has been observed in sample). 
@@ -199,7 +220,15 @@ If the variant has a frequency < max_VAF_sample, it will be kept.
 - Options:
   - ```0.3``` ☑️ 
   - ```<your_value>```
-  > provided by bcftools (```bcftools +fill-tags $input -Ov -o $output -- -t FORMAT/VAF```)
+> provided by bcftools (```bcftools +fill-tags $input -Ov -o $output -- -t FORMAT/VAF```) or Mutect2 caller
+
+#### 🔵 ```max_SIFT_score``
+- The maximum SIFT score allowed to keep the variant. If the variant has a SIFT score < max_SIFT_score, it will be kept.
+- If you chose not to filter on SIFT_score (```filter_on_SIFT_score = no```), it will just add SIFT threshold as a red line in protein impacts plots.
+- Options:
+  - ```0.05``` ☑️ 
+  - ```<your_value>``
+> provided by ANNOVAR (using dbnsfp41a for example)
 
 ---------------------------
 
