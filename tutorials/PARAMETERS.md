@@ -230,6 +230,7 @@ If the variant has a frequency < max_VAF_sample, it will be kept.
   - ```<your_value>``
 > provided by ANNOVAR (using dbnsfp41a for example)
 
+
 ---------------------------
 
 ## SUMMARISE (S)
