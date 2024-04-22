@@ -1,6 +1,6 @@
 # Parameters
 
-This is an exhaustive description of all possible parameters of [SLOOP](../).\
+This is an exhaustive description of all possible parameters of [LOncoG](../).\
 Each parameter must be filled in the configuration file before running the pipeline.
 
 ```<Name of parameter> = <required option>```
@@ -53,8 +53,8 @@ Here are some key arguments about the program in general, and also about input a
 - Options: 
   - ```no``` ☑️ 
   - ```yes```
-    > Caution! Summarise and Compare modules need the filtered vcf files to be correctly run!
-    (if you removed the filtered vcf files by error, and you run Summarise or Compare, it will re-run Filter module)
+  > Caution! Summarise and Compare modules need the filtered vcf files to be correctly run!
+  (if you removed the filtered vcf files by error, and you run Summarise or Compare, it will re-run Filter module)
 
 #### 🔵 ```variants_selection_approach```
 - Choose the method you want to use to select the variants to keep:
@@ -65,7 +65,7 @@ Here are some key arguments about the program in general, and also about input a
   - ```change``` ☑️ 
   - ```common```
   - ```all```
-    > ```change``` is advised, so you can study variants that may have a relation with the disease evolution or treatment response.
+  > ```change``` is advised, so you can study variants that may have a relation with the disease evolution or treatment response.
 
 ### Inputs
 #### 🔵 ```vcf_folder_path```
