@@ -271,7 +271,7 @@ If the variant has a frequency < max_VAF_sample, it will be kept.
 [advised threshold](https://ionreporter.thermofisher.com/ionreporter/help/GUID-2097F236-C8A2-4E67-862D-0FB5875979AC.html)
 
 
-#### 🔵 ```SIFT_preds_to_keep ``
+#### 🔵 ```SIFT_preds_to_keep```
 - You can choose to keep only the mutations predicted as deleterious by SIFT (D) or tolerated (T) or both.
 - Options:
   - ```D``` ☑️ 
@@ -279,7 +279,7 @@ If the variant has a frequency < max_VAF_sample, it will be kept.
   - ```all```
 > provided by ANNOVAR (using dbnsfp41a for example), advised to keep only the most impactful mutations (potentially driver mutations)
 
-#### 🔵 ```min_PolyPhen2_score`
+#### 🔵 ```min_PolyPhen2_score```
 - The minimum PolyPhen2 score allowed to keep the variant. If the variant has a PolyPhen2 score > min_PolyPhen2_score, it will be kept.
 - Options:
   - ```0.5``` ☑️ 
@@ -287,7 +287,7 @@ If the variant has a frequency < max_VAF_sample, it will be kept.
 > provided by ANNOVAR (using dbnsfp41a for example), advised to keep only the most impactful mutations (potentially driver mutations)
 [advised threshold](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4480630/)
 
-####  🔵 ```PolyPhen2_preds_to_keep``
+####  🔵 ```PolyPhen2_preds_to_keep```
 - You can choose to keep only the mutations predicted as probably damaging (D) or possibly damaging (P) or benign or all.
 - `Options:
   - ```D``` ☑️ 
