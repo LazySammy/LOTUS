@@ -616,14 +616,14 @@ For example, if you choose 5, the categories with less than 5 patients will be c
   - ```pdf```
   - ```all```
 
-##### 🟢 ```M_genes_table_format(s)```
+#### 🟢 ```M_genes_table_format(s)```
 - The genes table is a table with the mutated genes found in your cohort, with their characteristics, and the number (and name) of patients where they are mutated.
 - Options:
   - ```xlsx``` ☑️
   - ```csv```
   - ```tsv```
 
-#### 🟢 ```M_variants_table_format(s)``
+#### 🟢 ```M_variants_table_format(s)```
 - The variants table is a table with the mutated variants found in your cohort, with their characteristics, and the number (and name) of patients where they are mutated.
 - Options:
   - ```xlsx``` ☑️
@@ -637,7 +637,7 @@ For example, if you choose 5, the categories with less than 5 patients will be c
   - ```csv```
   - ```tsv```
 
-#### 🟢 ```M_ToppGene_format(s)``
+#### 🟢 ```M_ToppGene_format(s)```
 - The ToppGene table is a table with the ToppGene Gene Ontology Enrichment Analysis results of your cohort (consedering all mutated genes after filtration).
 - Options:
   - ```xlsx``` ☑️
