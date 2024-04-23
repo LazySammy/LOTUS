@@ -49,6 +49,7 @@ min_STRANDQ = 0
 max_VAF_sample = 10 # inverser
 max_VAF_pop = 10
 max_POPAF = 20
+# A SUPPRIMER !!!!
 
 max_SIFT = 0.3
 # SIFT_score in VCF
