@@ -2,6 +2,7 @@
 
 This is an exhaustive description of all possible parameters of [LOncoG](../).\
 Each parameter must be filled in the configuration file before running the pipeline.
+
 ```<Name of parameter> = <required option>```
 > module(s) = Filter, Summarise
 
