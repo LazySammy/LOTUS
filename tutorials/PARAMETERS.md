@@ -173,8 +173,25 @@ If you don't want a filter to be applied, just set the parameter to 0 if min thr
     - ```no```
     > ```yes``` is recommended, as it can help to remove false positive mutations and focus on the most impactful ones (maybe driver mutations)
 
+#### 🟢 ```keep_variant_if_no_VAF_pop ```
+- You can choose to keep the variants where the allelic frequency in the population is not available (not provided by annotators).
+- Options:
+  - ```yes``` ☑️ 
+  - ```no```
 
-#### 🟢 ```min_AD```
+#### 🟢 ```keep_variant_if_no_SIFT_info```
+- You can choose to keep the variants where the SIFT score is not available (not provided by annotators).
+- Options:
+  - ```yes``` ☑️ 
+  - ```no```
+
+#### 🟢 ```keep_variant_if_no_Polyphen2_info ```
+- You can choose to keep the variants where the PolyPhen2 score is not available (not provided by annotators).
+- Options:
+  - ```yes``` ☑️ 
+  - ```no```
+
+#### 🟢 ```min_alt_AD```
 - The minimum allelic depth required to keep the variant. If the variant has an allelic depth > min_AD, it will be kept.
 - Options:
   - ```20``` ☑️ 
@@ -185,8 +202,15 @@ If you don't want a filter to be applied, just set the parameter to 0 if min thr
 - Options:
   - ```80``` ☑️ 
   - ```<your_value>```
+  
+#### 🟢 ```min_alt_AD ```
+- The minimum allelic depth required to keep the variant. If the variant has an allelic depth > min_alt_AD, it will be kept.
+- Options : 
+- ```20``` ☑️
+- ```<your_value>```
 
-#### 🟢 ```min_MBQ```
+
+#### 🟢 ```min_alt_MBQ```
 - The minimum base quality required to keep the variant. If the variant has a median base quality > min_MBQ, it will be kept.
 - Options:
   - ```20``` ☑️ 
@@ -199,12 +223,27 @@ If you don't want a filter to be applied, just set the parameter to 0 if min thr
   - ```<your_value>```
   > provided by ANNOVAR
 
+#### 🔵 ```min_STRANDQ ```
+- Phred-scaled minimum strand quality required to keep the variant. If the variant has a strand quality > min_STRANDQ, it will be kept.
+- Options:
+  - ```20``` ☑️ 
+  - ```<your_value>```
+  > provided by FilterMutectCalls from GATK, helps filtering out more germline-like variants
+
 #### 🔵 ```max_SB```
 - The strand bias is a measure of the bias in the allelic depth between the forward and reverse strands (between -1 and 1). If the variant has a strand bias < max_SB, it will be kept.
 - Options:
   - ```0.5``` ☑️ 
   - ```<your_value>```
   > provided by ANNOVAR, Funcotator, SnpEff
+
+#### 🔵 ```max_SOR ```
+- Sometimes, a single SB value is not provided by annotators. In these cases, callers like Mutect2 are able to produce an SB table with 4 values.
+From these values, we can compute a SOR value (Strand Odds Ratio). If the variant has a SOR < max_SOR, it will be kept.
+- Options:
+  - ```10``` ☑️ 
+  - ```<your_value>```
+  > calculation method available here : [GATK website](https://gatk.broadinstitute.org/hc/en-us/articles/360036361772-StrandOddsRatio)
 
 #### 🔵 ```max_VAF_pop```
 - The minimum allelic frequency in the population (number of times the mutation has been observed in the population). 
@@ -222,14 +261,40 @@ If the variant has a frequency < max_VAF_sample, it will be kept.
   - ```<your_value>```
 > provided by bcftools (```bcftools +fill-tags $input -Ov -o $output -- -t FORMAT/VAF```) or Mutect2 caller
 
-#### 🔵 ```max_SIFT_score``
+#### 🔵 ```max_SIFT_score```
 - The maximum SIFT score allowed to keep the variant. If the variant has a SIFT score < max_SIFT_score, it will be kept.
 - If you chose not to filter on SIFT_score (```filter_on_SIFT_score = no```), it will just add SIFT threshold as a red line in protein impacts plots.
 - Options:
   - ```0.05``` ☑️ 
   - ```<your_value>``
-> provided by ANNOVAR (using dbnsfp41a for example)
+> provided by ANNOVAR (using dbnsfp41a for example), advised to keep only the most impactful mutations (potentially driver mutations)
+[advised threshold](https://ionreporter.thermofisher.com/ionreporter/help/GUID-2097F236-C8A2-4E67-862D-0FB5875979AC.html)
 
+
+#### 🔵 ```SIFT_preds_to_keep ``
+- You can choose to keep only the mutations predicted as deleterious by SIFT (D) or tolerated (T) or both.
+- Options:
+  - ```D``` ☑️ 
+  - ```T```
+  - ```all```
+> provided by ANNOVAR (using dbnsfp41a for example), advised to keep only the most impactful mutations (potentially driver mutations)
+
+#### 🔵 ```min_PolyPhen2_score`
+- The minimum PolyPhen2 score allowed to keep the variant. If the variant has a PolyPhen2 score > min_PolyPhen2_score, it will be kept.
+- Options:
+  - ```0.5``` ☑️ 
+  - ```<your_value>```
+> provided by ANNOVAR (using dbnsfp41a for example), advised to keep only the most impactful mutations (potentially driver mutations)
+[advised threshold](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4480630/)
+
+####  🔵 ```PolyPhen2_preds_to_keep``
+- You can choose to keep only the mutations predicted as probably damaging (D) or possibly damaging (P) or benign or all.
+- `Options:
+  - ```D``` ☑️ 
+  - ```P```
+  - ```B```
+  - ```all```
+> provided by ANNOVAR (using dbnsfp41a for example), advised to keep only the most impactful mutations (potentially driver mutations)
 
 ---------------------------
 
@@ -251,8 +316,10 @@ Here are the parameters you can set to summarise the filtered variants (statisti
   - **both** > the Gene Ontology Enrichment Analysis will be performed using both Panther and ToppGene databases
   - **none** > no Gene Ontology Enrichment Analysis will be performed
 - Options:
-  - ```both``` ☑️ 
-  - ```Panther```
+  - ```Panther``` ☑️ 
   - ```ToppGene```
+  - ```both```
   - ```none```
 > ```none``` is recommended for large datasets, Panther and ToppGene can only run if the list of genes contains less than 1000 names
+>
+> ### Parameters
