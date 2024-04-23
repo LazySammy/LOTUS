@@ -1,20 +1,22 @@
 ### Global arguments
-## LOTUS 
-module(s) = Filter
-sequencing = WES
-vcf_annotation_method = ANNOVAR
-discard_weak_variants = yes
-output_folder_path = D:\Stage\LOTUS\resultats\test
-keep_filtered_vcf_after_run = True
+## LOTUS
+module(s) = Compare
+output_folder_path = D:\Stage\LOTUS\resultats\test2
+keep_original_annotated_vcf = True
+variants_selection_approach = change
+remove_non_driver_mutations = yes
+remove_unknown_mutations = yes
+#union, change, common (C and M modules)
+# (all variants found in both times, variants that appeared or disappeared between times, variants found in both times)
 
 ## Inputs
 dataset_path = input/dataset.xlsx
-vcf_folder_path = D:\Stage\LOTUS\data\output_KIM\pon_germ\sans blood\t1
+vcf_folder_path = D:\Stage\LOTUS\data\new annovar
 time1_column_name=comp1
 time2_column_name=comp2
 pair_names_column_name=patient id
 
-## Execution
+## Secondary
 version = 1.0
 log=LOTUS.log
 verbose_prints=False
@@ -25,20 +27,39 @@ colored_execution = tRUE
 ### Filter
 working-method=Direct
 filter_on_mutation_location = yes
+filter_on_SIFT_score = no
+filter_on_Polyphen2_score = no
+keep_variant_if_no_VAF_pop = yes
+keep_variant_if_no_SIFT_info = yes
+keep_variant_if_no_Polyphen2_info = yes
 # only exonic and splicing will be conserved if WES ANNOVAR
 # 'MISSENSE', 'NONSENSE', 'NONSTOP', 'RNA', 'LINCRNA', 'START_CODON_SNP', 'DE_NOVO_START_IN_FRAME',
-# 'DE_NOVO_START_OUT_FRAME', 'IN_FRAME_DEL', 'IN_FRAME_INS', 'FRAME_SHIFT_INS', 'FRAME_SHIFT_DEL', 'START_CODON_INS', 'START_CODON_DEL',
+# 'DE_NOVO_START_OUT_FRAME', 'IN_FRAME_DEL', 'IN_FRAME_INS', 'FRAME_SHIFT_INS', 'FRAME_SHIFT_DEL', 'START_CODON_INS', 'START_CODON_DEL'
 # 'DE_NOVO_START_IN_FRAME', 'DE_NOVO_START_OUT_FRAME' will be conserved if WES FUNCOTATOR
-min_DP = 100
-AD = 20
-QUALITY = 50
-MQSBZ = 0.5
-MBQ = 20
+min_QUAL = 0
+min_DP = 0
+min_alt_AD = 0
+min_alt_MBQ = 0
+max_SB = 200
+max_SOR = 200
+# strand bias odds_ratio calculated from SB table (from https:...)
+min_STRANDQ = 0
+# Phred-scaled quality of strand bias artifact
 
-VAF_sample_max_threshold = 0.3
-#POPAF = 0.00001
+max_VAF_sample = 10 # inverser
+max_VAF_pop = 10
+max_POPAF = 20
 
-unpaired = False
+max_SIFT = 0.3
+# SIFT_score in VCF
+SIFT_preds_to_keep = all
+# SIFT_pred in VCF | D: Deleterious (sift<=0.05); T: tolerated (sift>0.05)
+min_Polyphen = 0.5
+# Polyphen2_HDIV_score in VCF
+Polyphen_preds_to_keep = all
+# polyphen2_hvar_pred in VCF | D: Probably damaging (>=0.957), P: possibly damaging (0.453<=x<=0.956), B: benign (pp2_hdiv<=0.452)
+# SnpEff -> putative_impact: a simple estimation of putative impact / deleteriousness : {HIGH, MODERATE, LOW, MODIFIER}
+
 ---------------------------
 
 ---------------------------
@@ -46,30 +67,23 @@ unpaired = False
 ## Parameters
 genome=reference_genome.pk
 enrichment=False
+#costs a lot of time
 
-## Outputs
-indel_profile_deletion=None
-indel_profile_insertion=None
-indel_profile=png
-mutations_types_table_name=mutation_types
+## Output
+indel_profile_format(s)=png
+indel_tables_format=xlsx
 mutations_types_table_format=xlsx
-mutations_subtypes_table_name=mutation_subtypes
 mutations_subtypes_table_format=xlsx
-profile=SNP_profile
-indel=indel_profile
-S_genes=MutatedGenes
 S_MutatedGenes=xlsx
-S_Panther_name = Panther
 S_Panther_format(s)= xlsx
-S_subtypes_barplot_name = mutations_subtypes
+S_sift_protein_impacts_boxplot_format(s) = png
+S_polyphen_protein_impacts_boxplot_format(s) = png
 S_subtypes_barplot_format(s) = png
-S_types_barplot_name = mutations_types
 S_types_barplot_format(s) = png
-SNP_profile=xlsx, png
-Stats_file_name = stats
-Stats_file_format = txt
-S_ToppGene_name = ToppGene
+SNP_profile_formats(s)=png
+SNP_table_format=xlsx
 S_ToppGene_format(s) = xlsx
+S_variants_table_format = xlsx
 ---------------------------
 
 ---------------------------
@@ -77,32 +91,20 @@ S_ToppGene_format(s) = xlsx
 ## Parameters
 gff3 = Homo_sapiens.GRCh38.108.chr.gff3
 C_enrichment = False
-C_variants_selection_approach = change
-#union, change, common
-C_analysis_approach = variants, genes
-#genes, variants, both
 
-# (all variants found in both times, variants that appeared or disappeared between times, variants found in both times)
-
-#Outputs
-C_SNP_profile = png
-C_SNP_profile_name = SNP_profile
-C_SNP_profile_table = xlsx
-C_SNP_profile_table_name = SNP_profile
-C_indel_profile = png
-C_indel_profile_name = indel_profile
-C_MutatedGenes_name = genes
-C_MutatedGenes=xlsx
-C_variants_table_name = variants
+## Output
+C_subtypes_plot = camembert
+C_types_plot = histogram, camembert
+C_SNP_profile_format(s) = png
+C_SNP_profile_table_format(s) = xlsx
+C_indel_profile_format(s) = png
+C_MutatedGenes_format(s) = xlsx
 C_variants_table_format(s) = xlsx
-C_Panther_name = Panther
-C_Panther_format(s) = xlsx
-C_ToppGene_name = ToppGene
-C_ToppGene_format(s) = xlsx
-C_subtypes_barplot_name = mutations_subtypes_comparison
-C_subtypes_barplot_format(s) = png
-C_types_barplot_name = mutations_types_comparison
-C_types_barplot_format(s) = png
+C_Panther_table_format(s) = xlsx
+C_protein_impacts_format(s) = png
+C_ToppGene_table_format(s) = xlsx
+C_subtypes_plot_format(s) = png
+C_types_plot_format(s) = png
 ---------------------------
 
 ---------------------------
@@ -116,24 +118,23 @@ table_patients_threshold = 1
 # min number of patients where mutated gene/variant (approach) is found, to be added in Merge dataframe
 mutations_types_counting = unique
 chromosome-step=500000
-M_enrichment=True
+M_enrichment=False
 
 #Outputs
-chromosomes_plot_name = chromosomes
 chromosomes_plot_format(s) = png
-M_types_barplot_name = mutations_types_comparison
-M_types_barplot_format(s) = png
-M_subtypes_barplot_name = mutations_subtypes_comparison
-M_subtypes_barplot_format(s) = png
-M_MutatedGenes_name = genes
+M_types_plot_format(s) = png
+M_subtypes_plot_format(s) = png
 M_MutatedGenes_format(s) = xlsx
-M_Panther_name = Panther
 M_Panther_format(s) = xlsx
-M_ToppGene_name = ToppGene
 M_ToppGene_format(s) = xlsx
-upset_plot_name = upset
+M_variants_table_format(s) = xlsx
 upset_plot_format(s) = png
-mutations_upset_threshold = 1
-# min number of genes/variants (approach), required for a category to be plotted
-patients_upset_threshold = 5
-# min number of patients where mutated gene/variant (approach) are found, required for a category to be plotted
+M_VAF_plot_format(s) = png
+upset_min_genes = 1
+# min number of genes in common required for a category to be plotted
+upset_genes_min_patients = 1
+# min number of patients where a gene is mutated required for a category to be plotted
+upset_min_variants = 1
+# min number of variants in common required for a category to be plotted
+upset_variants_min_patients = 1
+# min number of patients where a variant is mutated required for a category to be plotted
