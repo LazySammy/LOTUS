@@ -1,6 +1,8 @@
 # Parameters
 
 This is an exhaustive description of all possible parameters of [LOncoG](../).\
+These parameters need to be filled in the configuration file (```config.txt```) before running LOncoG.\
+You can find an example of a configuration file in the [tutorials folder](../).\
 Each parameter must be filled in the configuration file before running the pipeline.\
 ```<Name of parameter> = <required option>```
 > module(s) = Filter, Summarise
