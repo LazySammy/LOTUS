@@ -74,7 +74,7 @@ Here are some key arguments about the program in general, and also about input a
   - ```all```
   > ```change``` is advised, so you can study variants that may have a relation with the disease evolution or treatment response.
 
-### Inputs
+### Input
 #### 🔵 ```vcf_folder_path```
 - We need to know the path of the folder containing all of your annotated vcf, as LOncoG can find them.
 - Options: 
@@ -83,6 +83,7 @@ Here are some key arguments about the program in general, and also about input a
 
 #### 🔵 ```dataset_path```
 - We need to know which files are paired within your dataset, so you need to fill a table with the filenames of each pair.
+- An example of such a file can be found [here](../tutorials/dataset.xlsx)
 - Options: 
   - ```input/dataset.xlsx``` ☑️ 
   - ```<your_path>```
