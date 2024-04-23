@@ -1,15 +1,13 @@
 # Parameters
 
 This is an exhaustive description of all possible parameters of [LOncoG](../).\
-Each parameter must be filled in the configuration file before running the pipeline.
-
+Each parameter must be filled in the configuration file before running the pipeline.\
 ```<Name of parameter> = <required option>```
 > module(s) = Filter, Summarise
 
-When a parameter have several options (not a yes/no parameter), you can choose several of them by separating them with a comma.
+When a parameter have several options (not a yes/no parameter), you can choose several of them by separating them with a comma.\
+```C_SNP_profile_format(s) = png, jpg, svg``` will output the plot in png, jpg and svg formats.
 
--> ```C_SNP_profile_format(s) = png, jpg, svg``` will output the plot in png, jpg and svg formats.
-  
 When a parameter is a yes/no parameter, you can choose only one of the two options.
 Concerning tables, xlsx is always recommended, as it allows to have pre-formatted more lisible tables.
 
@@ -274,8 +272,8 @@ If the variant has a frequency < max_VAF_sample, it will be kept.
 - Options:
   - ```0.05``` ☑️ 
   - ```<your_value>``
-> provided by ANNOVAR (using dbnsfp41a for example), advised to keep only the most impactful mutations (potentially driver mutations)
-[advised threshold](https://ionreporter.thermofisher.com/ionreporter/help/GUID-2097F236-C8A2-4E67-862D-0FB5875979AC.html)
+> provided by ANNOVAR (using dbnsfp41a for example), advised to keep only the most impactful mutations (potential driver mutations).
+The advised threshold can be found [here](https://ionreporter.thermofisher.com/ionreporter/help/GUID-2097F236-C8A2-4E67-862D-0FB5875979AC.html).
 
 
 #### 🔵 ```SIFT_preds_to_keep```
@@ -291,8 +289,9 @@ If the variant has a frequency < max_VAF_sample, it will be kept.
 - Options:
   - ```0.5``` ☑️ 
   - ```<your_value>```
-> provided by ANNOVAR (using dbnsfp41a for example), advised to keep only the most impactful mutations (potentially driver mutations)
-[advised threshold](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4480630/)
+> provided by ANNOVAR (using dbnsfp41a for example), advised to keep only the most impactful mutations (potential driver mutations).
+The advised threshold can be found [here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4480630/).
+
 
 ####  🔵 ```PolyPhen2_preds_to_keep```
 - You can choose to keep only the mutations predicted as probably damaging (D) or possibly damaging (P) or benign or all.
@@ -327,7 +326,7 @@ Here are the parameters you can set to summarise the filtered variants (statisti
   - ```ToppGene```
   - ```both```
   - ```none```
-> ```none``` is recommended for large datasets, Panther and ToppGene can only run if the list of genes contains less than 1000 names
+  > ```none``` is recommended for large datasets, Panther and ToppGene can only run if the list of genes contains less than 1000 names
 
 ### Parameters
 #### 🟢 ```indel_profile_format(s)```
@@ -432,11 +431,11 @@ Here are the parameters you can set to summarise the filtered variants (statisti
 Here are the parameters you can set to compare the filtered variants between two times (statistics, plots, tables).
 
 ### Parameters
-#### 🔵 ```human_chromosomes_reference```
+#### 🔵 ```human_chromosomes_reference_file```
 - We need to know the human chromosomes gene names from litterature, to get the gene names from the gene ids of your reference genome.
 - Options:
   - ```Homo_sapiens.GRCh38.108.chr.gff3```
-  - ```<your_reference>```
+  - ```<your_reference_file>```
 > Make sure the version of your reference genome fits the version of the one you used to align your BAM before getting your VCF files.
 
 #### 🔵 ```C_enrichment```
@@ -495,14 +494,14 @@ Here are the parameters you can set to compare the filtered variants between two
   - ```tsv```
 
 #### 🟢  ```C_Panther_table_format(s)```
-- If the API worked, LOncoG will create a table with the Panther Gene Ontology Enrichment Analysis results. You can choose the format here.
+- If the API worked, LOncoG creates a table with the Panther Gene Ontology Enrichment Analysis results. You can choose the format here.
 - Options:
   - ```xlsx``` ☑️
   - ```csv```
   - ```tsv```
 
 #### 🟢  ```C_ToppGene_table_format(s)```
-- If the API worked, LOncoG will create a table with the ToppGene Gene Ontology Enrichment Analysis results. You can choose the format here.
+- If the API worked, LOncoG creates a table with the ToppGene Gene Ontology Enrichment Analysis results. You can choose the format here.
 - Options:
   - ```xlsx``` ☑️
   - ```csv```
@@ -531,13 +530,13 @@ Here are the parameters you can set to compare the filtered variants between two
   - ```piechart```
 > Mutation subtypes such as "missense", "nonsense", "frameshift", are provided by ANNOVAR (RefGene database), Funcotator, SnpEff.
 
-#### 🔵  ```C_types_plot``
+#### 🔵  ```C_types_plot```
 - LOncoG will plot the mutations types comparison between time 1 and time 2. You can choose the type of plot here.
 - Options:
   - ```barplot``` ☑️
   - ```piechart```
 
-#### 🟢  ```C_subtypes_plot_format(s)``
+#### 🟢  ```C_subtypes_plot_format(s)```
 - LOncoG will plot the mutations subtypes comparison between time 1 and time 2. You can choose the format here.
 - Options:
   - ```png``` ☑️
@@ -546,7 +545,7 @@ Here are the parameters you can set to compare the filtered variants between two
   - ```pdf```
   - ```all```
 
-#### 🟢  ```C_types_plot_format(s)`
+#### 🟢  ```C_types_plot_format(s)```
 - LOncoG will plot the mutations types comparison between time 1 and time 2. You can choose the format here.
 - Options:
   - ```png``` ☑️
