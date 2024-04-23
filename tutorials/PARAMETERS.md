@@ -7,7 +7,9 @@ Each parameter must be filled in the configuration file before running the pipel
 > module(s) = Filter, Summarise
 
 When a parameter have several options (not a yes/no parameter), you can choose several of them by separating them with a comma.
--> example: ```C_SNP_profile_format(s) = png, jpg, svg``` will output the plot in png, jpg and svg formats.
+
+-> ```C_SNP_profile_format(s) = png, jpg, svg``` will output the plot in png, jpg and svg formats.
+  
 When a parameter is a yes/no parameter, you can choose only one of the two options.
 Concerning tables, xlsx is always recommended, as it allows to have pre-formatted more lisible tables.
 
