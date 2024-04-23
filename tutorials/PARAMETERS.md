@@ -2,9 +2,12 @@
 
 This is an exhaustive description of all possible parameters of [LOncoG](../).\
 Each parameter must be filled in the configuration file before running the pipeline.
-
 ```<Name of parameter> = <required option>```
 > module(s) = Filter, Summarise
+When a parameter have several options (not a yes/no parameter), you can choose several of them by separating them with a comma.
+-> example: ```C_SNP_profile_format(s) = png, jpg, svg``` will output the plot in png, jpg and svg formats.
+When a parameter is a yes/no parameter, you can choose only one of the two options.
+Concerning tables, xlsx is always recommended, as it allows to have pre-formatted more lisible tables.
 
 ☑️ Default value\
 🔵 Key parameter\
@@ -13,7 +16,7 @@ Each parameter must be filled in the configuration file before running the pipel
 ## Global arguments
 Here are some key arguments about the program in general, and also about input and output folders.
 
-### LOTUS
+### LOncoG
 #### 🔵 ```module(s)```
 - Choose the module(s) you want to run:
     - **Filter** the variants among their sequencing quality and allelic frequency
@@ -69,7 +72,7 @@ Here are some key arguments about the program in general, and also about input a
 
 ### Inputs
 #### 🔵 ```vcf_folder_path```
-- We need to know the path of the folder containing all of your annotated vcf, as LOTUS can find them.
+- We need to know the path of the folder containing all of your annotated vcf, as LOncoG can find them.
 - Options: 
   - ```input/vcf/``` ☑️ 
   - ```<your_path>```
@@ -93,7 +96,7 @@ Here are some key arguments about the program in general, and also about input a
   - ```<your_column_name_for_time2>```
 
 #### 🟢 ```pair_names_column_name```
-- In your table, you can add an optional column of pair names, that LOTUS will display in analysis results (plots, etc):
+- In your table, you can add an optional column of pair names, that LOncoG will display in analysis results (plots, etc):
   - **<your_column_name_for_pairs_names>** > you can put your patients ids there, the outputs will be clearer (short names)
   - **none** > if you don't have a column with pair names, we will use ```file_time1_name___file_time2_name``` as pair id (very long names)
 - Options: 
@@ -103,16 +106,16 @@ Here are some key arguments about the program in general, and also about input a
 
 ### Execution
 #### 🟢 ```log```
-- For people running LOTUS on linux, you can specify a log file to save the execution logs:
+- For people running LOncoG on linux, you can specify a log file to save the execution logs:
   - **<your_log_file_name>** > the log file will be created in the output folder with this name (include .log)
   - **<none>** > no log file will be created
 - Options: 
-  - ```LOTUS.log``` ☑️ 
+  - ```LOncoG.log``` ☑️ 
   - ```<your_log_file_name>```
   - ```none```
 
 #### 🟢 ```verbose_prints```
-- During LOTUS running, you can choose to display synthetic or detailed information in the console:
+- During LOncoG running, you can choose to display synthetic or detailed information in the console:
     - **yes** > detailed information will be displayed in the console
     - **no** > synthetic information will be displayed in the console
 - Options: 
@@ -120,7 +123,7 @@ Here are some key arguments about the program in general, and also about input a
   - ```yes```
 
 #### 🟢 ```colored_execution```
-- During LOTUS running, the information appearing in the console can be colored or not:
+- During LOncoG running, the information appearing in the console can be colored or not:
     - **yes** > the information will be colored in the console (recommanded for recent consoles such as VSCode, PyCharm, etc)
     - **no** > the information will not be colored in the console (recommanded for old consoles such as PyScripter, etc)
 - Options: 
@@ -130,11 +133,11 @@ Here are some key arguments about the program in general, and also about input a
 ---------------------------
 
 ## FILTER
-Here are the parameters you can set to filter the variants with LOTUS first module.
+Here are the parameters you can set to filter the variants with LOncoG first module.
 If you don't want a filter to be applied, just set the parameter to 0 if min threshold, and 1000 if max threshold.
 
 #### 🟢 ```colored_execution```
-- During LOTUS running, you can choose the execution method (efficiency, memory).
+- During LOncoG running, you can choose the execution method (efficiency, memory).
     - **Direct** > the execution will be faster but will use more memory
     - **In memory** > the execution will be slower but will use less memory
 - Options:
@@ -147,7 +150,7 @@ If you don't want a filter to be applied, just set the parameter to 0 if min thr
     - **no** > all mutations types will be conserved, recommended for WGS data (Whole Genome Sequencing)
     - **<your_mutations>** > you can specify the mutations you want to keep (ex: MISSENSE, NONSENSE, etc)
     > Example: 'exonic', 'splicing', 'ncRNA', 'ncRNA_intronic', 'ncRNA_exonic', 'UTR5', 'UTR3', 'intronic', 'upstream', 'downstream', 'intergenic'
-    are all possible values for ANNOVAR, you can tell LOTUS the ones you want to keep, separated by a comma
+    are all possible values for ANNOVAR, you can tell LOncoG the ones you want to keep, separated by a comma
 - Options:
   - ```yes``` ☑️ 
   - ```no```
@@ -321,5 +324,329 @@ Here are the parameters you can set to summarise the filtered variants (statisti
   - ```both```
   - ```none```
 > ```none``` is recommended for large datasets, Panther and ToppGene can only run if the list of genes contains less than 1000 names
->
-> ### Parameters
+
+### Parameters
+#### 🟢 ```indel_profile_format(s)```
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+
+#### 🟢 ```indel_tables_format(s)```
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
+#### 🟢 ```mutations_types_table_format(s)```
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+  
+#### 🟢 ```mutations_subtypes_table_format(s)```
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
+#### 🟢 ```S_MutatedGenes_table_format(s)```
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```both```
+
+#### 🟢 ```S_Panther_table_format(s)```
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
+#### 🟢 ```S_ToppGene_table_format(s)```
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
+#### 🟢 ```S_sift_protein_impacts_boxplot_format(s)```
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+
+#### 🟢 ```S_polyphen_protein_impacts_boxplot_format```
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+
+#### 🟢 ```S_subtypes_barplot_format```
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+
+#### 🟢 ```S_types_barplot_format(s)```
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+  
+#### 🟢 ```SNP_profile_formats(s)```
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+
+#### 🟢 ```SNP_table_format(s)```
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
+#### 🟢 ```S_variants_table_format(s)```
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
+---------------------------
+
+## COMPARE (C)
+Here are the parameters you can set to compare the filtered variants between two times (statistics, plots, tables).
+
+### Parameters
+#### 🔵 ```human_chromosomes_reference```
+- We need to know the human chromosomes gene names from litterature, to get the gene names from the gene ids of your reference genome.
+- Options:
+  - ```Homo_sapiens.GRCh38.108.chr.gff3```
+  - ```<your_reference>```
+> Make sure the version of your reference genome fits the version of the one you used to align your BAM before getting your VCF files.
+
+#### 🔵 ```C_enrichment```
+- You can choose to perform a Gene Ontology Enrichment Anlysis on the mutated genes found in the sample:
+  - **Panther** > the Gene Ontology Enrichment Analysis will be performed using Panther database
+  - **ToppGene** > the Gene Ontology Enrichment Analysis will be performed using ToppGene database
+  - **both** > the Gene Ontology Enrichment Analysis will be performed using both Panther and ToppGene databases
+  - **none** > no Gene Ontology Enrichment Analysis will be performed
+- Options:
+  - ```Panther``` ☑️
+  - ```ToppGene```
+  - ```both```
+  - ```none```
+  > ```none``` is recommended for large datasets, Panther and ToppGene can only run if the list of genes contains less than 1000 names
+
+### Output
+#### 🔵 ```C_subtypes_plot```
+- LOncoG will plot the mutations subtypes comparison between time 1 and time 2. You can choose the type of plot here.
+- Options:
+  - ```barplot``` ☑️
+  - ```piechart```
+> Mutation subtypes such as "missense", "nonsense", "frameshift", are provided by ANNOVAR (RefGene database), Funcotator, SnpEff.
+
+#### 🔵 ```C_types_plot```
+- LOncoG will plot the mutations types comparison between time 1 and time 2. You can choose the type of plot here.
+- Options:
+  - ```barplot``` ☑️
+  - ```piechart```
+> Mutation types such as "SNP", "INDEL", "SV", "CNV", are provided by annotators, but LOncoG can guess it if not specifically provided.
+
+#### 🟢  ```C_SNP_profile_table_format(s)```
+- LOncoG will create a table with SNP types (CTA, CTC, etc) found in time 1 and time 2 variants. You can choose the format here.
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
+#### 🟢  ```C_indel_profile_table_format(s)```
+- LOncoG will create a table with indel types (insertions deletions) frequencies found in time 1 and time 2 variants. You can choose the format here.
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+#### 🟢  ```C_genes_table_format(s)```
+- LOncoG will create a table with the mutated genes found in time 1 and time 2 files, with their characteristics. You can choose the format here.
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
+#### 🟢  ```C_variants_table_format(s)```
+- LOncoG will create a table with the variants found in time 1 and time 2 files, with their characteristics. You can choose the format here.
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
+#### 🟢  ```C_Panther_table_format(s)```
+- If the API worked, LOncoG will create a table with the Panther Gene Ontology Enrichment Analysis results. You can choose the format here.
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
+#### 🟢  ```C_ToppGene_table_format(s)```
+- If the API worked, LOncoG will create a table with the ToppGene Gene Ontology Enrichment Analysis results. You can choose the format here.
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
+#### 🔵  ```C_protein_impacts_plot```
+- LOncoG will plot an overview of protein impacts (SIFT, Polyphen2) in both times. You can choose the shape here.
+- Options:
+  - ```boxplot``` ☑️
+  - ```piechart```
+> SIFT and Polyphen2 are provided by ANNOVAR (dbnsfp41a database), Funcotator, SnpEff. Boxplot give you a better overview of the scores, and comparison statistics.
+
+#### 🟢  ```C_protein_impacts_plot_format(s)```
+- LOncoG will plot an overview of protein impacts (SIFT, Polyphen2) in both times. You can choose the format here.
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+
+#### 🔵  ```C_subtypes_plot```
+- LOncoG will plot the mutations subtypes comparison between time 1 and time 2. You can choose the type of plot here.
+- Options:
+  - ```barplot``` ☑️
+  - ```piechart```
+> Mutation subtypes such as "missense", "nonsense", "frameshift", are provided by ANNOVAR (RefGene database), Funcotator, SnpEff.
+
+#### 🔵  ```C_types_plot``
+- LOncoG will plot the mutations types comparison between time 1 and time 2. You can choose the type of plot here.
+- Options:
+  - ```barplot``` ☑️
+  - ```piechart```
+
+#### 🟢  ```C_subtypes_plot_format(s)``
+- LOncoG will plot the mutations subtypes comparison between time 1 and time 2. You can choose the format here.
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+
+#### 🟢  ```C_types_plot_format(s)`
+- LOncoG will plot the mutations types comparison between time 1 and time 2. You can choose the format here.
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+
+---------------------------
+
+## MERGE (M)
+Here are the parameters you can set to merge the comparisons results of all patients (statistics, plots, tables, mutation on chromosomes map).
+
+### Input
+#### 🔵 ```cytoband_file```
+- LOncoG needs to know the human chromosomes cytoband file to plot the mutations on chromosomes map.
+- Options:
+  - ```hg38_cytoband.tsv``` ☑️
+  - ```<your_cytoband_file>```
+
+### Parameters
+#### 🔵 ```min_patients_threshold_for_dataframes```
+- Minimum number of patients where mutated gene/variant is found, to be added in Merge genes/variants dataframes.
+For example, if you choose 5, the gene/variant must be found in 5 patients (files) of your cohort to be added to the dataframes.
+- Options:
+  - ```5``` ☑️
+  - ```<your_value>```
+> This parameter is useful to find the most recurrent mutations in your cohort, and to avoid false positive mutations.
+
+#### 🔵 ```min_patients_threshold_for_variants_upset_plot```
+- Minimum number of patients where mutated variant is found, to be added in the UpSet plot.
+For example, if you choose 5, the categories with less than 5 patients will be cut out of the UpSet plot.
+- Options:
+  - ```5``` ☑️
+  - ```<your_value>```
+
+#### 🔵 ```min_patients_threshold_for_genes_upset_plot```
+- Minimum number of patients where mutated gene is found, to be added in the UpSet plot.
+- Options:
+  - ```5``` ☑️
+  - ```<your_value>```
+
+### Output
+#### 🟢 ```chromosomes_plot_format(s)```
+- The chromosome plot is a map of mutated chromosomes, with precise localisation of each mutation, giving a readble overview of the variants distribution in genome.
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+
+#### 🟢 ```M_types_plot_format(s)```
+- The types plot is a plot of the mutations types distribution in your cohort, with the number of mutations for each type, for each time, mergin all files information.
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+
+#### 🟢 ```M_subtypes_plot_format(s)```
+- The subtypes plot is a plot of the mutations subtypes distribution in your cohort, with the number of mutations for each subtype, for each time, mergin all files information.
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+
+##### 🟢 ```M_genes_table_format(s)```
+- The genes table is a table with the mutated genes found in your cohort, with their characteristics, and the number (and name) of patients where they are mutated.
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
+#### 🟢 ```M_variants_table_format(s)``
+- The variants table is a table with the mutated variants found in your cohort, with their characteristics, and the number (and name) of patients where they are mutated.
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
+#### 🟢 ```M_Panther_format(s)```
+- The Panther table is a table with the Panther Gene Ontology Enrichment Analysis results of your cohort (consedering all mutated genes after filtration).
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
+#### 🟢 ```M_ToppGene_format(s)``
+- The ToppGene table is a table with the ToppGene Gene Ontology Enrichment Analysis results of your cohort (consedering all mutated genes after filtration).
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
+#### 🟢 ```upset_plot_format(s)```
+- The UpSet plot is a plot of the mutations distribution in your cohort, with the number of mutations for each category, for each time, mergin all files information.
+- 2 upset plots are created, one for genes, and one for variants. It highlights the patients that may have a similar mutation profile evolution between times.
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
