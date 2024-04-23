@@ -83,7 +83,7 @@ Here are some key arguments about the program in general, and also about input a
 
 #### 🔵 ```dataset_path```
 - We need to know which files are paired within your dataset, so you need to fill a table with the filenames of each pair.
-- An example of such a file can be found [here](../tutorials/dataset_example.csv)
+(an example of such a file can be found [here](../tutorials/dataset.csv))
 - Options: 
   - ```input/dataset.xlsx``` ☑️ 
   - ```<your_path>```
