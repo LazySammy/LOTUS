@@ -35,6 +35,12 @@
 ### $${\color{lightblue}version \space 2.0}$$
 This software plots, compare and merge information from all exomes of a cohort of cancer patients before and after treatment. It also includes a customizable filter to help you removing remaining germline and/or non driver mutations. The Filter, Summarise, Compare and Merge modules can be run separately or all together. If your study is not longitudinal, you can just run the first two modules to get a graphical and statistical sumup of the most impactant variants from your WES data. The software is designed to be user-friendly and to be used by bioinformaticians, biologists and even clinicians research teams.
 
+## Versions
+The first version is available on [GitHub](https://github.com/gsiekaniec/LOTUS). \
+The new version is a pre-release and is this one. \
+The final version will be out around July 2024. \
+It will input more annotations formats, more API requests. It will perform clustering on patients similarities and will run with a multiprocessing option.
+
 ## Warnings
 - LOncoG is still in development and should not be used for clinical purposes yet. 
 - The software is not yet optimized for large cohorts of patients.
