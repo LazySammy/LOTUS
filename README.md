@@ -44,36 +44,39 @@ This software plots, compare and merge information from all exomes of a cohort o
 The project is organized as follows:
 ```Project/
 ├── python_scripts/
-│   ├── reusable_functions/         -> Functions used in the main scripts to parse vcf, retrive information from df, etc.
-│   ├── api_requests/               -> Functions to request information from external databases (Gene Ontology, etc). COSMIC, OncoKB, ClinVar coming soon.
-│   └── modules/                    -> Main scripts to run the software (Filter, Summarise, Compare, Merge).
+│   ├── reusable_functions/         -> Functions used in the main scripts to parse vcf, etc.
+│   ├── api_requests/               -> Functions to request information from external databases.
+│   └── modules/                    -> Main modules scripts to run the software.
 ├── input/
-│   ├── resources/                  -> Resources used in the software (databases, reference genome, etc).
+│   ├── resources/                  -> Resources used in the software (reference genome, etc).
 │   └── vcf/                        -> VCF default input folder.
+├── environment/
+│   ├── conda/                      -> Conda environment files (yml, txt).
+│   └── venv/                       -> Virtual environment file (txt).
 ├── tutorials/
 │   ├── pictures/                   -> Pictures used in the tutorials.
 │   └── examples/                   -> README for parameters, input examples.
-├── output/                         -> Default output folder is create here.
+├── toy_dataset/
+│   ├── toy_vcf/                    -> VCF toy dataset.
+│   └── toy_output/                 -> Output of the toy dataset.
+├── output/
+│   └── hour_month_year/            -> Auto-generated folder with the date and time of the run
+|       ├── samples/                -> Filtered vcf and Summarise plots, one subfolder per sample/exome.
+|       ├── comparisons/            -> Plots from Comparison module, one subfolder per patient (pair).
+|       └── merge/                  -> Plots from Merge module, no subfolder.    
+|        
 ├── README.md                       -> This file, the main README.
 └── logs/                           -> Logs are created here.
 ```
+Being at ease with the project organization is important to get a good understanding of the software functioning.
+*Please make sure to read the [PARAMETERS.md](tutorials/PARAMETERS.md) file to understand how to choose the parameters for the software.*
 
-### Heading 1
-#### Heading 2
-##### Heading 3
-###### Heading 4
-####### Heading 5
-######## Heading 6
+## Installation
+### Prerequisites
+You need Python 3.9 and Conda (Miniconda or Anaconda) installed on your machine. You can also use pip instead of Conda.
 
-## Emphasis
-
-You can add emphasis to your text using asterisks or underscores.
-
-*Italic text*
-_Italic text_
-
-**Bold text**
-__Bold text__
+### Conda (recommended)
+```conda env create -f env/environment_conda.yml
 
 ## Lists
 
