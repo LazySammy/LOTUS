@@ -77,27 +77,27 @@ Python 3.9 and Conda need to be installed on your machine. You can also use pip 
 
 ### Conda (recommended)
 Clone the repository and navigate to the project directory.
-Create a Conda environment using the [loncog_conda.yml](environment/conda/loncog_conda.yml) file with the following command: \
+Create a Conda environment using the [loncog_conda.yml](environment/conda/loncog_conda.yml) file with the following command: 
 ```bash
 conda env create -f environment/conda/loncog_conda.yml --name loncog
 ```
-Then, activate the environment with: \
+Then, activate the environment with: 
 ```bash
 conda activate loncog
 ```
 
-You are also free to use the [loncog_conda.txt](environment/conda/loncog_conda.txt) file if you prefer to install the packages manually with: \
+You are also free to use the [loncog_conda.txt](environment/conda/loncog_conda.txt) file if you prefer to install the packages manually with: 
 ```bash
 conda env create --file environment/conda/loncog_conda.txt --name loncog
 ```
-Then, activate the environment with: \
+Then, activate the environment with: 
 ```bash
 conda activate loncog
 ```
 
 ### Virtual environment
 Clone the repository and navigate to the project directory.
-Create a virtual environment using the [loncog_venv.txt](environment/venv/loncog_venv.txt) file with the following commands: \
+Create a virtual environment using the [loncog_venv.txt](environment/venv/loncog_venv.txt) file with the following commands: 
 ```bash
 python3 -m venv venv 
 source venv/bin/activate  
@@ -105,10 +105,10 @@ pip install -r environment/venv/loncog_venv.txt
 ```
 ## Compatible annotators
 LOncoG is based on vcf annotations from input files, here is a list of compatible annotators for v2.0 (more to come):
-First Header  | Second Header | Second Header
-------------- | ------------- | Second Header
-Content Cell  | Content Cell | Second Header
-Content Cell  |  \| | Second Header
+| Colonne 1 | Colonne 2 | Colonne 3 |
+| --------- | --------- | --------- |
+| Donnée 1  | Donnée 2  | Donnée 3  |
+| Donnée 4  | Donnée 5  | Donnée 6  |
 
 ## Usage
 This section describes the quick steps you need to follow to run the software.\
