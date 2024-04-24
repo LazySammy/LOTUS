@@ -80,24 +80,41 @@ Clone the repository and navigate to the project directory.
 Create a Conda environment using the [loncog_conda.yml](environment/conda/loncog_conda.yml) file with the following command:\
 ```bash
 conda env create -f environment/conda/loncog_conda.yml --name loncog
+```
+Then, activate the environment with:\
+```bash
 conda activate loncog
 ```
 
 You are also free to use the [loncog_conda.txt](environment/conda/loncog_conda.txt) file if you prefer to install the packages manually with:\
-```conda env create --file environment/conda/loncog_conda.txt --name loncog```  
+```bash
+conda env create --file environment/conda/loncog_conda.txt --name loncog
+```
+Then, activate the environment with:\
+```bash
+conda activate loncog
+```
 
 ### Virtual environment
 Clone the repository and navigate to the project directory.
 Create a virtual environment using the [loncog_venv.txt](environment/venv/loncog_venv.txt) file with the following commands:\
-```python3 -m venv venv```  
-```source venv/bin/activate```  
-```pip install -r environment/venv/loncog_venv.txt```
-
-## Parameters
-[Exhaustive description](tutorials/PARAMETERS.md)
-
-## Table
+```bash
+python3 -m venv venv 
+source venv/bin/activate  
+pip install -r environment/venv/loncog_venv.txt
+```
+## Compatible annotators
+LOncoG is based on vcf annotations in input files, here is a list of compatible annotators for version 2.0 (more to come):
 First Header  | Second Header
 ------------- | -------------
 Content Cell  | Content Cell
 Content Cell  |  \| 
+
+## Usage
+This section describes the quick steps you need to follow to run the software.\
+
+### Parameters
+Choose the parameters for the software in the [config.txt](config.txt) file.\
+An exhaustive description with examples and advices is available in [PARAMETERS.md](tutorials/PARAMETERS.md) file.\
+
+### Run the software
