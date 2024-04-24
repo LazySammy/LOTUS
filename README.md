@@ -40,7 +40,7 @@ This software plots, compare and merge information from all exomes of a cohort o
 ☑️ ```1.0```: the first version (06/2023) is available on [GitHub](https://github.com/gsiekaniec/LOTUS). \
 ✅ ```2.0```: the new version (04/2024) is a pre-release and is the current version. \
 ☑️ ```3.0```: the final version (07/2024) will be the version associated with the futur potential paper. \
-3.0 version will input more annotations formats, perform more API requests and a wider choice of plot shapes. 
+3.0 version will use HGVS and rsids, input more annotations formats, perform more API requests and a wider choice of plot shapes. 
 LOncoG will perform clustering on patients similarities and will run with a multiprocessing option.
 
 ## Warnings
