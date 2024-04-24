@@ -31,7 +31,7 @@
         <img src="https://img.shields.io/badge/made in-🇫🇷France-black" /></a>
 </p>
 
-## $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space OncoGenomics \space analysis}$$
+### $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space OncoGenomics \space analysis}$$
 ### $${\color{lightblue}version \space 2.0}$$
 This software plots, compare and merge information from all exomes of a cohort of cancer patients before and after treatment. It also includes a customizable filter to help you removing remaining germline and/or non driver mutations. The Filter, Summarise, Compare and Merge modules can be run separately or all together. If your study is not longitudinal, you can just run the first two modules to get a graphical and statistical sumup of the most impactant variants from your WES data. The software is designed to be user-friendly and to be used by bioinformaticians, biologists and even clinicians research teams.
 
@@ -77,16 +77,18 @@ Python 3.9 and Conda need to be installed on your machine. You can also use pip 
 
 ### Conda (recommended)
 Clone the repository and navigate to the project directory.
-Create a Conda environment using the [loncog_conda.yml](environment/conda/loncog_conda.yml) file with the following command:
-```conda env create -f environment/conda/loncog_conda.yml --name loncog```  
-```conda activate loncog```
+Create a Conda environment using the [loncog_conda.yml](environment/conda/loncog_conda.yml) file with the following command:\
+```bash
+conda env create -f environment/conda/loncog_conda.yml --name loncog
+conda activate loncog
+```
 
-You are also free to use the [loncog_conda.txt](environment/conda/loncog_conda.txt) file if you prefer to install the packages manually with:
+You are also free to use the [loncog_conda.txt](environment/conda/loncog_conda.txt) file if you prefer to install the packages manually with:\
 ```conda env create --file environment/conda/loncog_conda.txt --name loncog```  
 
 ### Virtual environment
 Clone the repository and navigate to the project directory.
-Create a virtual environment using the [loncog_venv.txt](environment/venv/loncog_venv.txt) file with the following commands:
+Create a virtual environment using the [loncog_venv.txt](environment/venv/loncog_venv.txt) file with the following commands:\
 ```python3 -m venv venv```  
 ```source venv/bin/activate```  
 ```pip install -r environment/venv/loncog_venv.txt```
