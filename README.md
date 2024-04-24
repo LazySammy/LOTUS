@@ -32,7 +32,7 @@
 </p>
 
 ## $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space OncoGenomics \space analysis}$$
-<p> version 2.0 </p>
+### $${\color{lightblue}version \space 2.0}$$
 This software plots, compare and merge information from all exomes of a cohort of cancer patients before and after treatment. It also includes a customizable filter to help you removing remaining germline and/or non driver mutations. The Filter, Summarise, Compare and Merge modules can be run separately or all together. If your study is not longitudinal, you can just run the first two modules to get a graphical and statistical sumup of the most impactant variants from your WES data. The software is designed to be user-friendly and to be used by bioinformaticians, biologists and even clinicians research teams.
 
 ## Warnings
@@ -73,42 +73,23 @@ Being at ease with the project organization is important to get a good understan
 
 ## Installation
 ### Prerequisites
-You need Python 3.9 and Conda (Miniconda or Anaconda) installed on your machine. You can also use pip instead of Conda.
+Python 3.9 and Conda need to be installed on your machine. You can also use pip instead of Conda.
 
 ### Conda (recommended)
-```conda env create -f env/environment_conda.yml
+Clone the repository and navigate to the project directory.
+Create a Conda environment using the [loncog_conda.yml](environment/conda/loncog_conda.yml) file with the following command:
+```conda env create -f environment/conda/loncog_conda.yml --name loncog```  
+```conda activate loncog```
 
-## Lists
+You are also free to use the [loncog_conda.txt](environment/conda/loncog_conda.txt) file if you prefer to install the packages manually with:
+```conda env create --file environment/conda/loncog_conda.txt --name loncog```  
 
-You can create ordered and unordered lists.
-
-### Unordered List
-
-- Item 1
-- Item 2
-- Item 3
-
-### Ordered List
-
-1. First item
-2. Second item
-3. Third item
-
-## [Docs Contribution Guide](https://www.codecademy.com/pages/contribute-docs)
-
-You can add links to your text.
-
-[GitHub](https://github.com)
-
-## Images
-
-You can also add images to your README.
-
-![Image](https://example.com/image.jpg)
-
-## Code Blocks
-
-You can include code blocks using triple backticks
+### Virtual environment
+Clone the repository and navigate to the project directory.
+Create a virtual environment using the [loncog_venv.txt](environment/venv/loncog_venv.txt) file with the following commands:
+```python3 -m venv venv```  
+```source venv/bin/activate```  
+```pip install -r environment/venv/loncog_venv.txt```
 
 ## Parameters
 [Exhaustive description](tutorials/PARAMETERS.md)
