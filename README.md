@@ -31,8 +31,7 @@
         <img src="https://img.shields.io/badge/made in-🇫🇷France-black" /></a>
 </p>
 
-## $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space OncoGenomics \space analysis}$$
-## $${\color{lightblue}version \space 2.0}$$
+## $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space OncoGenomics \space analysis \n version \space 2.0}$$
 This software plots, compare and merge information from all exomes of a cohort of cancer patients before and after treatment. It also includes a customizable filter to help you removing remaining germline and/or non driver mutations. The Filter, Summarise, Compare and Merge modules can be run separately or all together. If your study is not longitudinal, you can just run the first two modules to get a graphical and statistical sumup of the most impactant variants from your WES data. The software is designed to be user-friendly and to be used by bioinformaticians, biologists and even clinicians research teams.
 
 ## Warnings
@@ -45,18 +44,18 @@ This software plots, compare and merge information from all exomes of a cohort o
 The project is organized as follows:
 ```Project/
 ├── python_scripts/
-│   ├── reusable_functions/
-│   ├── api_requests/
-│   └── modules/
+│   ├── reusable_functions/         -> Functions used in the main scripts to parse vcf, retrive information from df, etc.
+│   ├── api_requests/               -> Functions to request information from external databases (Gene Ontology, etc). COSMIC, OncoKB, ClinVar coming soon.
+│   └── modules/                    -> Main scripts to run the software (Filter, Summarise, Compare, Merge).
 ├── input/
-│   ├── resources/
-│   └── vcf/
+│   ├── resources/                  -> Resources used in the software (databases, reference genome, etc).
+│   └── vcf/                        -> VCF default input folder.
 ├── tutorials/
-│   ├── pictures/
-│   └── examples/
-├── output/
-├── README.md
-└── logs/
+│   ├── pictures/                   -> Pictures used in the tutorials.
+│   └── examples/                   -> README for parameters, input examples.
+├── output/                         -> Default output folder is create here.
+├── README.md                       -> This file, the main README.
+└── logs/                           -> Logs are created here.
 ```
 
 ### Heading 1
