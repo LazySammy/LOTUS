@@ -1,34 +1,34 @@
 <p align="center">
-  <img src="https: //i.postimg.cc/C1S6DQwH/work-in-progress.png" alt="Image" style="width:15%; height:auto;">
+  <img src="https://i.postimg.cc/C1S6DQwH/work-in-progress.png" alt="Image" style="width:15%; height:auto;">
 </p>
 
 <p align="center"> 
     <a href="#contributors" alt="Contributors">
-        <img src="https: //img.shields.io/badge/contributors-3-lightblue" /></a>
+        <img src="https://img.shields.io/badge/contributors-3-lightblue" /></a>
     <a href="#backers" alt="Backers">
-        <img src="https: //img.shields.io/badge/backers-2-lightblue" /></a>
+        <img src="https://img.shields.io/badge/backers-2-lightblue" /></a>
     <a href="#commits" alt="Commits">
-        <img src="https: //img.shields.io/badge/commits-87-lightblue" /></a>
+        <img src="https://img.shields.io/badge/commits-87-lightblue" /></a>
     <a href="#coverage" alt="Coverage">
-        <img src="https: //img.shields.io/badge/coverage-85%25-lightgreen" /></a>
+        <img src="https://img.shields.io/badge/coverage-85%25-lightgreen" /></a>
     <a href="#codacy" alt="Codacy">
-        <img src="https: //img.shields.io/badge/codacy-B-lightgreen" /></a>
+        <img src="https://img.shields.io/badge/codacy-B-lightgreen" /></a>
     <a href="#languages" alt="Languages">
-        <img src="https: //img.shields.io/badge/language-Python 3-brightgreen" /></a>
+        <img src="https://img.shields.io/badge/language-Python 3-brightgreen" /></a>
     <a href="#version" alt="Version">
-        <img src="https: //img.shields.io/badge/version-2.0-brightgreen" /></a>
+        <img src="https://img.shields.io/badge/version-2.0-brightgreen" /></a>
     <a href="#packages" alt="Packages">
-        <img src="https: //img.shields.io/badge/packages-conda, venv-brightgreen" /></a>
+        <img src="https://img.shields.io/badge/packages-conda, venv-brightgreen" /></a>
     <a href="#parameters" alt="Parameters">
-        <img src="https: //img.shields.io/badge/parameters-100-lightyellow" /></a>
+        <img src="https://img.shields.io/badge/parameters-100-lightyellow" /></a>
     <a href="#example" alt="Example">
-        <img src="https: //img.shields.io/badge/test dataset-available-lightyellow" /></a>
+        <img src="https://img.shields.io/badge/test dataset-available-lightyellow" /></a>
     <a href="#validation" alt="Validation">
-        <img src="https: //img.shields.io/badge/validation-TNBC, glioblastoma-yellow" /></a>
+        <img src="https://img.shields.io/badge/validation-TNBC, glioblastoma-yellow" /></a>
     <a href="#institute" alt="Institute">
-        <img src="https: //img.shields.io/badge/institute-Institut de Cancérologie de l'Ouest%20-orange" /></a>
+        <img src="https://img.shields.io/badge/institute-Institut de Cancérologie de l'Ouest%20-orange" /></a>
     <a href="#country" alt="Country">
-        <img src="https: //img.shields.io/badge/made in-🇫🇷France-black" /></a>
+        <img src="https://img.shields.io/badge/made in-🇫🇷France-black" /></a>
 </p>
 
 ### $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space OncoGenomics \space analysis}$$
@@ -77,27 +77,27 @@ Python 3.9 and Conda need to be installed on your machine. You can also use pip 
 
 ### Conda (recommended)
 Clone the repository and navigate to the project directory.
-Create a Conda environment using the [loncog_conda.yml](environment/conda/loncog_conda.yml) file with the following command:\
+Create a Conda environment using the [loncog_conda.yml](environment/conda/loncog_conda.yml) file with the following command: \
 ```bash
 conda env create -f environment/conda/loncog_conda.yml --name loncog
 ```
-Then, activate the environment with:\
+Then, activate the environment with: \
 ```bash
 conda activate loncog
 ```
 
-You are also free to use the [loncog_conda.txt](environment/conda/loncog_conda.txt) file if you prefer to install the packages manually with:\
+You are also free to use the [loncog_conda.txt](environment/conda/loncog_conda.txt) file if you prefer to install the packages manually with: \
 ```bash
 conda env create --file environment/conda/loncog_conda.txt --name loncog
 ```
-Then, activate the environment with:\
+Then, activate the environment with: \
 ```bash
 conda activate loncog
 ```
 
 ### Virtual environment
 Clone the repository and navigate to the project directory.
-Create a virtual environment using the [loncog_venv.txt](environment/venv/loncog_venv.txt) file with the following commands:\
+Create a virtual environment using the [loncog_venv.txt](environment/venv/loncog_venv.txt) file with the following commands: \
 ```bash
 python3 -m venv venv 
 source venv/bin/activate  
