@@ -37,7 +37,7 @@ This software plots, compare and merge information from all exomes of a cohort o
 <p align="center">
   <img src="https://i.ibb.co/J5fjk5V/Workflow-LOTUS-en.png" alt="workflow" style="width:15%; height:auto;">
 </p>
-
+![LOncoG simple workflow](tutorials/pictures/LOncoG_workflow.png)
 ## Versions
 ☑️ ```1.0```: the first version (06/2023) is available on [GitHub](https://github.com/gsiekaniec/LOTUS). \
 ✅ ```2.0```: the new version (04/2024) is a pre-release and is the current version. \
