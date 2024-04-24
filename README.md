@@ -31,7 +31,7 @@
         <img src="https://img.shields.io/badge/made in-🇫🇷France-black" /></a>
 </p>
 
-### $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space OncoGenomics \space analysis}$$
+### $${\color{lightblue}LOncoG \space 2.0: \space a \space software \space for \space Longitudinal \space OncoGenomics \space analysis}$$
 ### $${\color{lightblue}version \space 2.0}$$
 This software plots, compare and merge information from all exomes of a cohort of cancer patients before and after treatment. It also includes a customizable filter to help you removing remaining germline and/or non driver mutations. The Filter, Summarise, Compare and Merge modules can be run separately or all together. If your study is not longitudinal, you can just run the first two modules to get a graphical and statistical sumup of the most impactant variants from your WES data. The software is designed to be user-friendly and to be used by bioinformaticians, biologists and even clinicians research teams.
 
@@ -104,11 +104,11 @@ source venv/bin/activate
 pip install -r environment/venv/loncog_venv.txt
 ```
 ## Compatible annotators
-LOncoG is based on vcf annotations in input files, here is a list of compatible annotators for version 2.0 (more to come):
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  |  \| 
+LOncoG is based on vcf annotations from input files, here is a list of compatible annotators for v2.0 (more to come):
+First Header  | Second Header | Second Header
+------------- | ------------- | Second Header
+Content Cell  | Content Cell | Second Header
+Content Cell  |  \| | Second Header
 
 ## Usage
 This section describes the quick steps you need to follow to run the software.\
