@@ -122,6 +122,7 @@ LOncoG is based on vcf annotations from input files, here is a list of compatibl
 This section describes the quick steps you need to follow to run the software.
 
 ### Parameters
+The power of LOncoG is that you can run the modules separately or all together. 
 Choose the parameters for the software in the [config.txt](config.txt) file. \
 An exhaustive description with examples and advices is available in [PARAMETERS.md](tutorials/Parameters.md) file.
 
@@ -132,5 +133,16 @@ Here is how this dataframe should look like, for 6 different patients (exome seq
 ![dataframe](tutorials/pictures/dataset_example.png)
 ```time1_column_name``` = "Time 1" | ```time2_column_name``` = "Time 2" | ```pair_names_column_name``` = "Pair"
 
+### Input files
+The software is designed to work with VCF files. You can use the toy dataset provided in the [toy_dataset](toy_dataset/toy_vcf/) folder to test the software.
+The VCF format must be respected, so LOncoG can parse files easily:
+![VCF_format](tutorials/pictures/vcf_format.png)
+
+
 ### Running the software
-To run the script, activate the environment if not already active, and run loncog.py as follows:
+To run the script, activate the environment if not already active, and run loncog.py from a Linux system as follows:
+```bash
+python python_scripts/loncog.py
+```
+You can even run LOncoG under a Windows environment, 
+from your IDE (please make sure to activate the environment before running the script).
