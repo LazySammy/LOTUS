@@ -75,7 +75,7 @@ The project is organized as follows:
 └── logs/                           -> Logs are created here.
 ```
 Being at ease with the project organization is important to get a good understanding of the software functioning.
-*Please make sure to read the [PARAMETERS.md](tutorials/PARAMETERS.md) file to understand how to choose the parameters for the software.*
+*Please make sure to read the [Parameters.md](tutorials/Parameters.md) file to understand how to choose the parameters for the software.*
 
 ## Installation
 ### Prerequisites
@@ -115,7 +115,7 @@ LOncoG is based on vcf annotations from input files, here is a list of compatibl
 | Annotator | Version | Information used |
 | :-------: | :-----: | :--------------: |
 | [ANNOVAR](https://annovar.openbioinformatics.org/en/latest/)  |   2020-06   |    refGene, gnomad40_exome, clinvar_20140702, cosmic70, avsnp150, dbnsfp30a   |
-| [GATK Funcotator](https://gatk.broadinstitute.org/hc/en-us/articles/360037224432-Funcotator)  |    4.1.2.0    |    funcotation field is fully parsed by LOncoG     |
+| [GATK Funcotator](https://gatk.broadinstitute.org/hc/en-us/articles/360037224432-Funcotator)  |    4.1.2.0    |    "funcotation" field is fully parsed by LOncoG     |
 | [SnpEff](http://pcingola.github.io/SnpEff/snpeff/introduction/)  |    5.2 (2023-10)    |    Putative_impact from ANN field is used (more to come)     |
 
 ## Usage
@@ -155,7 +155,15 @@ If you chose a specific output folder (```output_folder_path```), the results wi
 ### Filter
 The Filter module will use your filtering criterias to remove unwanted variants from your VCF files.
 It will create a new VCF file for each sample/exome, with the remaining variants. \
+
 If you choose ```keep_filtered_vcf_after_run = True```, a copy of the original VCF files will be saved in the output folder, including a 'failed_filters' field
 to indicate why the variant was removed. \
+
 Finally, the module will create a 'Filtered_stats.txt' file with statistics about the filtering process. The output folder should look like this: \
 ![filter_output](tutorials/pictures/filter_output_example.png)
+Example passed VCF file can be found [here](tutorials/examples/KTN102_passed.vcf). \
+Example filtered VCF file can be found [here](tutorials/examples/KTN102_filtered.vcf). \
+Example Filter stats file can be found [here](tutorials/examples/Filtered_stats.txt).
+
+### Summarise
+The Summarise module will create plots and tables to summarize the variants from your VCF passed files (created by ```Filter``` module).
