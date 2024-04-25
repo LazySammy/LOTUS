@@ -180,7 +180,7 @@ The ```Summarise``` module will create plots and tables to summarize the variant
 4) ```protein SIFT impacts plot```: a boxplot for distribution of SIFT scores and associated predictions 
 5) ```protein Polyphen impacts plot```: a boxplot for distribution of Polyphen2 scores and associated predictions
 
-<p float="left">
+<p float="center">
   <img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="49%" />
   <img src="toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png" width="49%" /> 
 </p>
