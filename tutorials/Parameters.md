@@ -42,8 +42,8 @@ Here are some key arguments about the program in general, and also about input a
 - Choose the path where you want to save the results of the analysis:
     - **new** > creates a new folder in "output" folder with date as a name (format : YYYY-MM-DD)
     - **<your path>** > creates a new folder located at the path specified
-    > Note: if you already ran Filter and Summarise in a folder, you can use its path to complete it with Compare and Merge analysis
-    (if you choose to run Filter or Summarise again, it will overwrite the previous results if you don't change the folderpath)
+If you want the output to be saved in a specific folder, or if **you have already run a module before**, you can specify the path of the folder where the results are saved. **For example, if you have already run Filter and Summarise in a folder, you can use its path to complete it with Compare and Merge analysis.**
+If you choose to run Filter or Summarise again, it will overwrite the previous results if you don't change the output_folder_path.
 - Options: 
   - ```new``` ☑️ 
   - ```<you path>```
@@ -80,7 +80,7 @@ Here are some key arguments about the program in general, and also about input a
 
 #### 🔵 ```dataset_path```
 - We need to know which files are paired within your dataset, so you need to fill a table with the filenames of each pair.
-(an example of such a file can be found [here](../tutorials/dataset_example.csv))
+(an example of such a file can be found [here](tutorials/figures/dataset_example.png)).
 - Options: 
   - ```input/dataset.xlsx``` ☑️ 
   - ```<your_path>```

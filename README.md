@@ -123,6 +123,7 @@ This section describes the quick steps you need to follow to run the software.
 
 ### Parameters
 The power of LOncoG is that you can run the modules separately or all together. 
+** If you have already ran a module before**, you can specify the path of the folder where the results are saved. **For example, if you have already run Filter and Summarise in a folder, you can use its path to complete it with Compare and Merge analysis. If you don't specify, LOncoG will not be able to read results from Filter and Summarise, that are necessary for Compare and Merge modules.**
 Choose the parameters for the software in the [config.txt](config.txt) file. \
 An exhaustive description with examples and advices is available in [PARAMETERS.md](tutorials/Parameters.md) file.
 
@@ -138,11 +139,23 @@ The software is designed to work with VCF files. You can use the toy dataset pro
 The VCF format must be respected, so LOncoG can parse files easily:
 ![VCF_format](tutorials/pictures/vcf_format.png)
 
-
 ### Running the software
 To run the script, activate the environment if not already active, and run loncog.py from a Linux system as follows:
 ```bash
-python python_scripts/loncog.py
+python3 loncog.py
 ```
 You can even run LOncoG under a Windows environment, 
-from your IDE (please make sure to activate the environment before running the script).
+from your IDE (please make sure to activate the environment before running the script). \
+LOncoG will then run the modules you chose, read the parameters from the [config.txt](config.txt) file, read the 
+input dataframe (at ```dataset_path``` location), and parse the VCF found at the ```vcf_folder``` location. \
+The output will be saved in the [output](output/) folder by default, in a subfolder named with the date and time of the run. \
+If you chose a specific output folder (```output_folder_path```), the results will be saved here.
+
+## Output
+### Filter
+The Filter module will use your filtering criterias to remove unwanted variants from your VCF files.
+It will create a new VCF file for each sample/exome, with the remaining variants. \
+If you choose ```keep_filtered_vcf_after_run = True```, a copy of the original VCF files will be saved in the output folder, including a 'failed_filters' field
+to indicate why the variant was removed. \
+Finally, the module will create a 'Filtered_stats.txt' file with statistics about the filtering process. The output folder should look like this:
+![filter_output](tutorials/pictures/filter_output_example.png)
