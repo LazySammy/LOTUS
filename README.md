@@ -8,7 +8,7 @@
     <a href="#backers" alt="Backers">
         <img src="https://img.shields.io/badge/backers-2-lightblue" /></a>
     <a href="#commits" alt="Commits">
-        <img src="https://img.shields.io/badge/commits-87-lightblue" /></a>
+        <img src="https://img.shields.io/badge/commits-173-lightblue" /></a>
     <a href="#coverage" alt="Coverage">
         <img src="https://img.shields.io/badge/coverage-85%25-lightgreen" /></a>
     <a href="#codacy" alt="Codacy">
@@ -20,9 +20,9 @@
     <a href="#packages" alt="Packages">
         <img src="https://img.shields.io/badge/packages-conda, venv-brightgreen" /></a>
     <a href="#parameters" alt="Parameters">
-        <img src="https://img.shields.io/badge/parameters-100-lightyellow" /></a>
+        <img src="https://img.shields.io/badge/parameters-83-lightyellow" /></a>
     <a href="#example" alt="Example">
-        <img src="https://img.shields.io/badge/test dataset-available-lightyellow" /></a>
+        <img src="https://img.shields.io/badge/test dataset-soon available-lightyellow" /></a>
     <a href="#validation" alt="Validation">
         <img src="https://img.shields.io/badge/validation-TNBC, glioblastoma-yellow" /></a>
     <a href="#institute" alt="Institute">
