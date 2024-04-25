@@ -147,8 +147,9 @@ If you don't want a filter to be applied, just set the parameter to 0 if min thr
     - **yes** > only mutations from exons and splicing (2 bp adjacent to the splicing site) will be conserved, recommended for WES data (Whole Exome Sequencing)
     - **no** > all mutations types will be conserved, recommended for WGS data (Whole Genome Sequencing)
     - **<your_mutations>** > you can specify the mutations you want to keep (ex: MISSENSE, NONSENSE, etc)
-    > Example: 'exonic', 'splicing', 'ncRNA', 'ncRNA_intronic', 'ncRNA_exonic', 'UTR5', 'UTR3', 'intronic', 'upstream', 'downstream', 'intergenic'
-    are all possible values for ANNOVAR, you can tell LOncoG the ones you want to keep, separated by a comma
+    > ANNOVAR: 'exonic', 'splicing', 'ncRNA', 'ncRNA_intronic', 'ncRNA_exonic', 'UTR5', 'UTR3', 'intronic', 'upstream', 'downstream', 'intergenic'
+    are all possible values for ANNOVAR, you can tell LOncoG the ones you want to keep, separated by a comma (or fill ```yes``` to only keep exonic and splicing).
+    > Funcotator: COULD_NOT_DETERMINE, INTRON, FIVE_PRIME_UTR, THREE_PRIME_UTR, IGR, FIVE_PRIME_FLANK, THREE_PRIME_FLANK, MISSENSE, NONSENSE, NONSTOP, SILENT, SPLICE_SITE, IN_FRAME_DEL, IN_FRAME_INS, FRAME_SHIFT_INS, FRAME_SHIFT_DEL, START_CODON_SNP, START_CODON_INS, START_CODON_DEL, DE_NOVO_START_IN_FRAME, DE_NOVO_START_OUT_FRAME, RNA, LINCRNA are all possible values for Funcotator. You can tell LOncoG the ones you want to keep, separated by a comma (or fill ```yes``` to only keep missense, nonsense, nonstop, silent, splice_site, in_frame_del, in_frame_ins, frame_shift_ins, frame_shift_del, start_codon_snp, start_codon_ins, start_codon_del).
 - Options:
   - ```yes``` ☑️ 
   - ```no```
@@ -156,9 +157,17 @@ If you don't want a filter to be applied, just set the parameter to 0 if min thr
 
 #### 🔵 ```remove_non_driver_mutations```
 - If you want to remove the non-driver mutations from the filtered variants, fill ```yes```.
-Non driver mutations are 'non frameshift', 'synonymous' mutation subtypes from ANNOVAR.
-'stopgain', 'stoploss', 'frameshift' SNPs and indels are considered as driver mutations.
-For example: ```ExonicFunc.refGene=nonframeshift_deletion``` will be filtered out if 'yes' is selected.
+Annovar driver mutations: 'frameshift_insertion', 'frameshift_deletion', 'frameshift_block_substitution', 'stopgain', 'stoploss'.
+Funcotator driver mutations: 'MISSENSE', 'NONSENSE', 'NONSTOP', 'START_CODON_SNP', 'DE_NOVO_START_IN_FRAME', 'DE_NOVO_START_OUT_FRAME', 'IN_FRAME_DEL', 'IN_FRAME_INS', 'FRAME_SHIFT_INS', 'FRAME_SHIFT_DEL', 'START_CODON_INS', 'START_CODON_DEL','DE_NOVO_START_IN_FRAME', 'DE_NOVO_START_OUT_FRAME', 'START_CODON_SNP', 'START_CODON_INS', 'START_CODON_DEL'.
+For example (ANNOVAR): a variant with ```ExonicFunc.refGene=nonframeshift_deletion``` will be filtered out if 'yes' is selected.
+- Options: 
+  - ```yes``` ☑️
+  - ```no```
+
+#### 🔵 ```remove_unknown_mutations```
+- If you want to remove the unknown mutations from the filtered variants, fill ```yes```.
+Unknown mutations are 'unknown' mutation subtypes from ANNOVAR.
+For example: ```ExonicFunc.refGene=unknown``` will be filtered out if 'yes' is selected.
 - Options: 
   - ```yes``` ☑️ 
   - ```no```
@@ -207,23 +216,16 @@ For example: ```ExonicFunc.refGene=nonframeshift_deletion``` will be filtered ou
   - ```20``` ☑️ 
   - ```<your_value>```
 
-#### 🔵 ```min_DP```
-- The minimum depth of sequencing required to keep the variant. If the variant has a depth > min_DP, it will be kept.
-- Options:
-  - ```80``` ☑️ 
-  - ```<your_value>```
-  
-#### 🟢 ```min_alt_AD ```
-- The minimum allelic depth required to keep the variant. If the variant has an allelic depth > min_alt_AD, it will be kept.
-- Options : 
-- ```20``` ☑️
-- ```<your_value>```
-
-
 #### 🟢 ```min_alt_MBQ```
 - The minimum base quality required to keep the variant. If the variant has a median base quality > min_MBQ, it will be kept.
 - Options:
   - ```20``` ☑️ 
+  - ```<your_value>```
+
+#### 🔵 ```min_DP```
+- The minimum depth of sequencing required to keep the variant. If the variant has a depth > min_DP, it will be kept.
+- Options:
+  - ```80``` ☑️ 
   - ```<your_value>```
 
 #### 🟢 ```min_QUAL```
@@ -280,12 +282,12 @@ If the variant has a frequency < max_VAF_sample, it will be kept.
 > provided by ANNOVAR (using dbnsfp41a for example), advised to keep only the most impactful mutations (potential driver mutations).
 The advised threshold can be found [here](https://ionreporter.thermofisher.com/ionreporter/help/GUID-2097F236-C8A2-4E67-862D-0FB5875979AC.html).
 
-
 #### 🔵 ```SIFT_preds_to_keep```
-- You can choose to keep only the mutations predicted as deleterious by SIFT (D) or tolerated (T) or both.
+- You can choose to keep only the mutations predicted as deleterious or tolerated by [SIFT algorithm](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC168916/) (mutation impact on protein).
+D: Deleterious (SIFT score <= 0.05); T: tolerated (SIFT score > 0.05).
 - Options:
-  - ```D``` ☑️ 
-  - ```T```
+  - ```deleterious``` ☑️ 
+  - ```tolerated```
   - ```all```
 > provided by ANNOVAR (using dbnsfp41a for example), advised to keep only the most impactful mutations (potentially driver mutations)
 
@@ -299,11 +301,13 @@ The advised threshold can be found [here](https://www.ncbi.nlm.nih.gov/pmc/artic
 
 
 ####  🔵 ```PolyPhen2_preds_to_keep```
-- You can choose to keep only the mutations predicted as probably damaging (D) or possibly damaging (P) or benign or all.
-- `Options:
-  - ```D``` ☑️ 
-  - ```P```
-  - ```B```
+- You can choose to only keep mutations predicted by Polyphen2 algorithm as probably damaging (D) or possibly damaging (P) or benign.
+D: Probably damaging (>=0.957), P: possibly damaging (0.453<=x<=0.956), B: benign (pp2_hdiv<=0.452).
+You can also choose to keep all of them.
+- Options:
+  - ```probably damaging``` ☑️ 
+  - ```possibly damaging```
+  - ```benign```
   - ```all```
 > provided by ANNOVAR (using dbnsfp41a for example), advised to keep only the most impactful mutations (potentially driver mutations)
 
@@ -331,7 +335,7 @@ Here are the parameters you can set to summarise the filtered variants (statisti
   - ```ToppGene```
   - ```both```
   - ```none```
-  > ```none``` is recommended for large datasets, Panther and ToppGene can only run if the list of genes contains less than 1000 names
+    > ```none``` is recommended for large datasets, Panther and ToppGene can only run if the list of genes contains less than 1000 names
 
 ### Parameters
 #### 🟢 ```indel_profile_format(s)```

@@ -117,7 +117,7 @@ LOncoG is based on vcf annotations from input files, here is a list of compatibl
 | :-------: | :-----: | :--------------: |
 | [ANNOVAR](https://annovar.openbioinformatics.org/en/latest/)  |   2020-06   |    refGene, gnomad40_exome, clinvar_20140702, cosmic70, avsnp150, dbnsfp30a   |
 | [GATK Funcotator](https://gatk.broadinstitute.org/hc/en-us/articles/360037224432-Funcotator)  |    4.1.2.0    |    funcotation field is fully parsed by LOncoG     |
-| [SnpEff](http://pcingola.github.io/SnpEff/snpeff/introduction/)  |    4.5 (2020)  |    Putative_impact from ANN field is used (more to come)     |
+| [SnpEff](http://pcingola.github.io/SnpEff/snpeff/introduction/)  |    5.2(2023-10)    |    Putative_impact from ANN field is used (more to come)     |
 
 ## Usage
 This section describes the quick steps you need to follow to run the software.
