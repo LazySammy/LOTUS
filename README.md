@@ -180,5 +180,16 @@ x outputs can be produced (depending on the success of each file to be created, 
 ![summarise_snp](toy_dataset/toy_output/samples/SNP_profile.png)
 3) ```indel_profile.png```: a plot with the distribution of the Indels types found in the passed exome
 ![summarise_indel](toy_dataset/toy_output/samples/indel_profile.png)
-4) ```protein_SIFT_impacts.png```: a boxplot with the distribution of SIFT scores and associated predictions 
+4) ```protein_SIFT_impacts.png```: a boxplot for distribution of SIFT scores and associated predictions 
 ![summarise_sift](toy_dataset/toy_output/samples/protein_SIFT_impacts.png)
+5) ```protein_Polyphen_impacts.png```: a boxplot for distribution of Polyphen2 scores and associated predictions
+![summarise_polyphen](toy_dataset/toy_output/samples/protein_Polyphen_impacts.png)
+protein_SIFT_impacts             |  protein_Polyphen_impacts
+:-------------------------:|:-------------------------:
+![](https://...Dark.png)  |  ![](https://...Ocean.png)
+6) ```ToppGene.xlsx```: a table with the results from ToppGene analysis (if you chose to run it)
+7) ```Panther.xlsx```: a table with the results from Panther analysis (if you chose to run it)
+8) ```mutated_genes.xslx```: a table with the mutated genes (and their characteristics) found in the passed exome
+9) ```variants.xlsx```: a table with the variants (and their characteristics) found in the passed exome
+> Note: if you choose xlsx format, the more interesting variants will be sorted on top of the table. \
+> Good indicators (low allelic frequency for example) are colored in green, and bad indicators go from yellow to red higlighting in dataframe.
