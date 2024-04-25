@@ -183,12 +183,12 @@ The ```Summarise``` module will create plots and tables to summarize the variant
 <table>
   <tr>
     <td>
-      <img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="49%" />
+      <img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="45%" />
     </td>
   </tr>
   <tr>
     <td>
-      <img src="toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png" width="49%" />
+      <img src="toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png" width="45%" />
     </td>
   </tr>
 </table>
