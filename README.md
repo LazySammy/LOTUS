@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.postimg.cc/C1S6DQwH/work-in-progress.png" alt="Image" style="width:15%; height:auto;">
+  <img src="https://i.postimg.cc/C1S6DQwH/work-in-progress.png" alt="Image" style="width:15%; height:auto;"> 
 </p>
 
 <p align="center"> 
@@ -125,4 +125,5 @@ This section describes the quick steps you need to follow to run the software.
 Choose the parameters for the software in the [config.txt](config.txt) file. \
 An exhaustive description with examples and advices is available in [PARAMETERS.md](tutorials/Parameters.md) file.
 
-### Run the software
+### Running the software
+To run the script, activate the environment if not already active, and execute loncog.py as follows:
