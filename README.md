@@ -22,7 +22,7 @@
     <a href="#parameters" alt="Parameters">
         <img src="https://img.shields.io/badge/parameters-83-lightyellow" /></a>
     <a href="#example" alt="Example">
-        <img src="https://img.shields.io/badge/test dataset-soon available-lightyellow" /></a>
+        <img src="https://img.shields.io/badge/test dataset-coming soon-lightyellow" /></a>
     <a href="#validation" alt="Validation">
         <img src="https://img.shields.io/badge/validation-TNBC, glioblastoma-yellow" /></a>
     <a href="#institute" alt="Institute">
@@ -60,8 +60,6 @@ The project is organized as follows:
 │   ├── resources/                  -> Resources used in the software (reference genome, etc).
 │   └── vcf/                        -> VCF default input folder.
 ├── environment/
-│   ├── conda/                      -> Conda environment files (yml, txt).
-│   └── venv/                       -> Virtual environment file (txt).
 ├── tutorials/
 │   ├── pictures/                   -> Pictures used in the tutorials.
 │   └── examples/                   -> README for parameters, input examples.
@@ -103,13 +101,14 @@ Then, activate the environment with:
 conda activate loncog
 ```
 
-### Virtual environment
+### Virtual environment (venv)
 Clone the repository and navigate to the project directory.
 Create a virtual environment using the [loncog_venv.txt](environment/venv/loncog_venv.txt) file with the following commands: 
 ```bash
-python3 -m venv venv 
-source venv/bin/activate  
-pip install -r environment/venv/loncog_venv.txt
+python3 -m venv loncog 
+source loncog/bin/activate # if Unix/macOs
+loncog\Scripts\activate.bat # if Windows
+pip install -r environment/venv/loncog_venv.yml
 ```
 ## Compatible annotators
 LOncoG is based on vcf annotations from input files, here is a list of compatible annotators for v2.0 (more to come):
