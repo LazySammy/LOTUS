@@ -152,18 +152,33 @@ The output will be saved in the [output](output/) folder by default, in a subfol
 If you chose a specific output folder (```output_folder_path```), the results will be saved here.
 
 ## Output
+A folder called ```samples``` will be created in the output folder, containing the results of the Filter and Summarise modules. \
+There will be one subfolder per sample/exome, taking asa a name the name of the corresponding VCF file.
+
 ### Filter
-The Filter module will use your filtering criterias to remove unwanted variants from your VCF files.
-It will create a new VCF file for each sample/exome, with the remaining variants. \
+The ```Filter``` module will use your filtering criterias to remove unwanted variants from your VCF files.
+It will create a new VCF file for each sample/exome, with the remaining variants ("passed" means "variants that passed LOncoG filter"). \
 
 If you choose ```keep_filtered_vcf_after_run = True```, a copy of the original VCF files will be saved in the output folder, including a 'failed_filters' field
 to indicate why the variant was removed. \
 
-Finally, the module will create a 'Filtered_stats.txt' file with statistics about the filtering process. The output folder should look like this: \
+Finally, the module will create a 'Filtered_stats.txt' file with statistics about the filtering process. \
+The output folder should look like this: 
+
 ![filter_output](tutorials/pictures/filter_output_example.png)
-Example passed VCF file can be found [here](tutorials/examples/KTN102_passed.vcf). \
-Example filtered VCF file can be found [here](tutorials/examples/KTN102_filtered.vcf). \
-Example Filter stats file can be found [here](tutorials/examples/Filtered_stats.txt).
+
+Example passed VCF file can be found [here](toy_dataset/toy_output/samples/KTN102_passed.vcf). \
+Example filtered VCF file can be found [here](toy_dataset/toy_output/samples/KTN102_filtered.vcf). \
+Example Filter stats file can be found [here](toy_dataset/toy_output/samples/filter_stats.txt).
 
 ### Summarise
-The Summarise module will create plots and tables to summarize the variants from your VCF passed files (created by ```Filter``` module).
+The ```Summarise``` module will create plots and tables to summarize the variants from your VCF "passed" files (created by ```Filter``` module).
+x outputs can be produced (depending on the success of each file to be created, depending on your data).
+1) ```passed_stats.txt```: a table with statistics about the variants characteristics from your VCF file
+![summarise_stats](toy_dataset/toy_output/samples/passed_stats.txt)
+2) ```SNP_profile.png```: a plot with the distribution of the SNPs types found in the passed exome
+![summarise_snp](toy_dataset/toy_output/samples/SNP_profile.png)
+3) ```indel_profile.png```: a plot with the distribution of the Indels types found in the passed exome
+![summarise_indel](toy_dataset/toy_output/samples/indel_profile.png)
+4) ```protein_SIFT_impacts.png```: a boxplot with the distribution of SIFT scores and associated predictions 
+![summarise_sift](toy_dataset/toy_output/samples/protein_SIFT_impacts.png)
