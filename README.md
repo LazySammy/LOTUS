@@ -85,7 +85,7 @@ Python 3.9 and Conda need to be installed on your machine. You can also use pip 
 Clone the repository and navigate to the project directory.
 Create a Conda environment using the [loncog_conda.yml](environment/loncog_environment.yml) file with the following command: 
 ```bash
-conda env create -f environment/conda/loncog_conda.yml --name loncog
+conda env create -f environment/loncog_environment.yml --name loncog
 ```
 Then, activate the environment with: 
 ```bash
@@ -94,7 +94,7 @@ conda activate loncog
 
 You are also free to use the [loncog_conda.txt](environment/loncog_environment.txt) file if you prefer to install the packages manually with: 
 ```bash
-conda env create --file environment/conda/loncog_conda.txt --name loncog
+conda env create --file environment/loncog_environment.txt --name loncog
 ```
 Then, activate the environment with: 
 ```bash
@@ -103,20 +103,20 @@ conda activate loncog
 
 ### Virtual environment (venv)
 Clone the repository and navigate to the project directory.
-Create a virtual environment using the [loncog_venv.yml](environment/loncog_environment.yml) file with the following commands: 
+Create a virtual environment using the [loncog_environment.yml](environment/loncog_environment.yml) file with the following commands: 
 ```bash
 python3 -m venv loncog 
 source loncog/bin/activate # if Unix/macOs
 loncog\Scripts\activate.bat # if Windows
-pip install -r environment/venv/loncog_venv.yml
+pip install -r environment/loncog_environment.yml
 ```
 ## Compatible annotators
 LOncoG is based on vcf annotations from input files, here is a list of compatible annotators for v2.0 (more to come):
 | Annotator | Version | Information used |
-| :-----------------: | :-----: | :--------------: |
-|   [ANNOVAR](https://annovar.openbioinformatics.org/en/latest/)    |   2020-06   |    refGene, gnomad40_exome, clinvar_20140702, cosmic70, avsnp150, dbnsfp30a   |
-|   [GATK Funcotator](https://gatk.broadinstitute.org/hc/en-us/articles/360037224432-Funcotator)    |    4.1.2.0    |    funcotation field is fully parsed by LOncoG     |
-|   [SnpEff](http://pcingola.github.io/SnpEff/snpeff/introduction/)  |    5.2(2023-10)       |    Putative_impact from ANN field is used (more to come)     |
+| :-------: | :-----: | :--------------: |
+| [ANNOVAR](https://annovar.openbioinformatics.org/en/latest/)  |   2020-06   |    refGene, gnomad40_exome, clinvar_20140702, cosmic70, avsnp150, dbnsfp30a   |
+| [GATK Funcotator](https://gatk.broadinstitute.org/hc/en-us/articles/360037224432-Funcotator)  |    4.1.2.0    |    funcotation field is fully parsed by LOncoG     |
+| [SnpEff](http://pcingola.github.io/SnpEff/snpeff/introduction/)  |    5.2 (2023-10)    |    Putative_impact from ANN field is used (more to come)     |
 
 ## Usage
 This section describes the quick steps you need to follow to run the software.
