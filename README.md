@@ -126,8 +126,8 @@ Choose the parameters for the software in the [config.txt](config.txt) file. \
 An exhaustive description with examples and advices is available in [PARAMETERS.md](tutorials/Parameters.md) file.
 
 ### Dataset table
-If you plan to run Compare and Merge modules, you need to create a dataset, indicating the names of your files from time 1 and time 2, as well as the name of your time-paired files (example: exome 1 from time 1 and exome 1 from time 2 from same patient x). This allows plots to use pair names instead of concatenating the names of the two vcf files for each patient. \
-Here is how this dataset dataframe should look like, for 6 different patients with exome sequenced before and after treatment:
+If you plan to run Compare and Merge modules, you need to create a dataset, indicating the names of your files from time 1 and time 2, as well as the name of your time-paired files (example: exome 1 from time 1 and exome 1 from time 2 from same patient x). This allows plots to use pair names instead of concatenating the names of the two vcf files for each patient (would sometimes form really long pair names). \
+Here is how this dataframe should look like, for 6 different patients with exome sequenced before and after treatment:
 ![dataframe](tutorials/pictures/dataset_example.png)
 
 ### Running the software
