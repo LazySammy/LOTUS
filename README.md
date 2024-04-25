@@ -179,9 +179,12 @@ The ```Summarise``` module will create plots and tables to summarize the variant
 3) ```indel profile plot```: a barplot with the distribution of the Indels types found in the passed exome
 4) ```protein SIFT impacts plot```: a boxplot for distribution of SIFT scores and associated predictions 
 5) ```protein Polyphen impacts plot```: a boxplot for distribution of Polyphen2 scores and associated predictions
-protein_SIFT_impacts             |  protein_Polyphen_impacts \
-:-------------------------:|:-------------------------: \
-![test](toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png)  |  ![test1](toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png)
+
+<p float="left">
+  <img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="100" />
+  <img src="toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png" width="100" /> 
+</p>
+
 1) ```ToppGene table```: a table with the results from ToppGene analysis (if you chose to run it)
 2) ```Panther table```: a table with the results from Panther analysis (if you chose to run it)
 3) ```mutated genes table```: a table with the mutated genes (and their characteristics) found in the passed exome
