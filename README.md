@@ -115,15 +115,15 @@ pip install -r environment/venv/loncog_venv.txt
 LOncoG is based on vcf annotations from input files, here is a list of compatible annotators for v2.0 (more to come):
 | Annotator | Version | Information used |
 | :-------: | :-----: | :--------------: |
-| [ANNOVAR]()  | 2020-06 |    Databases: refGene, gnomad40_exome, clinvar_20140702, cosmic70, avsnp150, dbnsfp30a   |
-| [GATK Funcotator]()  | v4.1.2.0 |    Funcotation field is fully parsed by LOncoG     |
-| [SnpEff]()  | 4.5 (2020) |    Only Putative_impact from ANN field is used for the moment     |
+| [ANNOVAR](https://annovar.openbioinformatics.org/en/latest/)  |   2020-06   |    refGene, gnomad40_exome, clinvar_20140702, cosmic70, avsnp150, dbnsfp30a   |
+| [GATK Funcotator](https://gatk.broadinstitute.org/hc/en-us/articles/360037224432-Funcotator)  |   v4.1.2.0    |    Funcotation field is fully parsed by LOncoG     |
+| [SnpEff](http://pcingola.github.io/SnpEff/snpeff/introduction/)  |    4.5 (2020)  |    Only Putative_impact from ANN field is used for the moment     |
 
 ## Usage
-This section describes the quick steps you need to follow to run the software.\
+This section describes the quick steps you need to follow to run the software.
 
 ### Parameters
-Choose the parameters for the software in the [config.txt](config.txt) file.\
-An exhaustive description with examples and advices is available in [PARAMETERS.md](tutorials/PARAMETERS.md) file.\
+Choose the parameters for the software in the [config.txt](config.txt) file. \
+An exhaustive description with examples and advices is available in [PARAMETERS.md](tutorials/Parameters.md) file.
 
 ### Run the software
