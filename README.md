@@ -130,6 +130,7 @@ If you plan to run Compare and Merge modules, you need to create a dataset, indi
 
 Here is how this dataframe should look like, for 6 different patients (exome sequenced before and after treatment):
 ![dataframe](tutorials/pictures/dataset_example.png)
+```time1_column_name``` = "Time 1" | ```time2_column_name``` = "Time 2" | ```pair_names_column_name``` = "Pair"
 
 ### Running the software
 To run the script, activate the environment if not already active, and run loncog.py as follows:
