@@ -1,5 +1,4 @@
 # Parameters
-
 This is an exhaustive description of all possible parameters of [LOncoG](../).\
 These parameters need to be filled in the configuration file (```config.txt```) before running LOncoG.\
 You can find an example of a configuration file [here](../tutorials/config_example.txt).\
@@ -34,13 +33,6 @@ Here are some key arguments about the program in general, and also about input a
   - ```Compare```
   - ```Merge```
 
-#### 🔵 ```discard_weak_variants```
-- Choose if you want to keep the variants that don't pass the filter you chose:
-    - **Yes** > the variants that don't pass the filter you chose are removed (strong variants)
-    - **Summarise** > the variants that don't pass the filter you chose are kept (weak variants)
-- Options: 
-  - ```yes``` ☑️ 
-  - ```no```
 
 #### 🔵 ```output_folder_path```
 - Choose the path where you want to save the results of the analysis:
@@ -51,6 +43,14 @@ Here are some key arguments about the program in general, and also about input a
 - Options: 
   - ```new``` ☑️ 
   - ```<you path>```
+
+#### 🔵 ```discard_weak_variants```
+- Choose if you want to keep the variants that don't pass the filter you chose:
+    - **Yes** > the variants that don't pass the filter you chose are removed (strong variants)
+    - **Summarise** > the variants that don't pass the filter you chose are kept (weak variants)
+- Options: 
+  - ```yes``` ☑️ 
+  - ```no```
 
 #### 🔵 ```keep_filtered_vcf_after_run```
 - After FILTER execution, filtered vcf files are created (indicate which variants did pass the filter), but
