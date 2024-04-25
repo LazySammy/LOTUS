@@ -245,7 +245,7 @@ There is no subfolder in ```merge``` subfolder,
 6) ```mutated genes table```: a table with the mutated genes (and their characteristics), regarding the whole dataset.
 > Which genes were mutated in several patients? Which ones? What are their characteristics?
 7) ```variants table```: a table with the filtered variants (and their characteristics), regarding the whole dataset.
-> Which variants were found in several patients? Which ones? What are their characteristics? 
+> Which variants were found in several patients? Which ones? What are their characteristics? \
 > If some patients have the same clonal evolution of drug resistance, they may share newly appeared variants, highlighted by Merge module.
 8) ```mutation types plot```: a barplot/piechart comparing the numbers of each type of mutation (SNP, deletion, etc) between t1 and t2, merging all variants.
 9) ```mutation subtypes plot```: a barplot/piechart comparing the numbers of each subtype of mutation (frameshift insertion, missense, etc) between t1 and t2,merging all variants.
