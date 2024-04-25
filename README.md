@@ -173,23 +173,30 @@ Example Filter stats file can be found [here](toy_dataset/toy_output/samples/fil
 
 ### Summarise
 The ```Summarise``` module will create plots and tables to summarize the variants from your VCF "passed" files (created by ```Filter``` module).
-x outputs can be produced (depending on the success of each file to be created, depending on your data).
-1) ```passed_stats.txt```: a table with statistics about the variants characteristics from your VCF file
-![summarise_stats](toy_dataset/toy_output/samples/passed_stats.txt)
-2) ```SNP_profile.png```: a plot with the distribution of the SNPs types found in the passed exome
-![summarise_snp](toy_dataset/toy_output/samples/SNP_profile.png)
-3) ```indel_profile.png```: a plot with the distribution of the Indels types found in the passed exome
-![summarise_indel](toy_dataset/toy_output/samples/indel_profile.png)
-4) ```protein_SIFT_impacts.png```: a boxplot for distribution of SIFT scores and associated predictions 
-![summarise_sift](toy_dataset/toy_output/samples/protein_SIFT_impacts.png)
-5) ```protein_Polyphen_impacts.png```: a boxplot for distribution of Polyphen2 scores and associated predictions
-![summarise_polyphen](toy_dataset/toy_output/samples/protein_Polyphen_impacts.png)
+9 outputs can be produced (depending on the success of each file to be created, depending on your data).
+1) ```passed stats file```: a txt file with statistics about the variants characteristics, for one filtered exome
+2) ```SNP profile plot```: a barplot with the distribution of the SNPs types found in the passed exome
+3) ```indel profile plot```: a barplot with the distribution of the Indels types found in the passed exome
+4) ```protein SIFT impacts plot```: a boxplot for distribution of SIFT scores and associated predictions 
+5) ```protein Polyphen impacts plot```: a boxplot for distribution of Polyphen2 scores and associated predictions
 protein_SIFT_impacts             |  protein_Polyphen_impacts \
 :-------------------------:|:-------------------------: \
-![test](toy_dataset/toy_output/samples/protein_Polyphen_impacts.png)  |  ![test1](toy_dataset/toy_output/samples/protein_SIFT_impacts.png)
-6) ```ToppGene.xlsx```: a table with the results from ToppGene analysis (if you chose to run it)
-7) ```Panther.xlsx```: a table with the results from Panther analysis (if you chose to run it)
-8) ```mutated_genes.xslx```: a table with the mutated genes (and their characteristics) found in the passed exome
-9) ```variants.xlsx```: a table with the variants (and their characteristics) found in the passed exome
+![test](toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png)  |  ![test1](toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png)
+1) ```ToppGene table```: a table with the results from ToppGene analysis (if you chose to run it)
+2) ```Panther table```: a table with the results from Panther analysis (if you chose to run it)
+3) ```mutated genes table```: a table with the mutated genes (and their characteristics) found in the passed exome
+4) ```variants table```: a table with the variants (and their characteristics) found in the passed exome
 > Note: if you choose xlsx format, the more interesting variants will be sorted on top of the table. \
 > Good indicators (low allelic frequency for example) are colored in green, and bad indicators go from yellow to red higlighting in dataframe.
+
+### Compare
+The ```Compare``` module will create plots to compare the variants for each patient, time 1 *vs* time 2. \
+It will use the dataset you provided to understand the files that go together as a pair. \
+Compare will create statistics and plots for each pair of exome, depending on your ```variants_selection_approach``` choice.
+> For example: if you selected ```change```, the variants that appeared or disappeared between time 1 and time 2 will be higlighted.
+
+x outputs can be produced:
+MUSIC ASSASSINS CREED TWO STEPS FROM HELL
+1) ```compare stats file```: a text file with statistics about the variants in common/differing between times.
+2) ```SNP profile plot```: a mirror barplot comparing the distribution of SNPs between both times, for each patient.
+3) ```indel profile plot```: a mirror barplot comparing the distribution of insertions and deletions   between both times, for each patient.
