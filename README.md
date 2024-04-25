@@ -144,10 +144,11 @@ To run the script, activate the environment if not already active, and run lonco
 ```bash
 python3 loncog.py
 ```
-You can even run LOncoG under a Windows environment, 
-from your IDE (please make sure to activate the environment before running the script). \
+You can even run LOncoG under a Windows environment, from your IDE (please make sure to activate the environment before running the script). 
+Some old IDEs such as PyScripter are not adapted to loading bars and colored printing, so you can choose ```colored_execution = no```.\
 LOncoG will then run the modules you chose, read the parameters from the [config.txt](config.txt) file, read the 
 input dataframe (at ```dataset_path``` location), and parse the VCF found at the ```vcf_folder``` location. \
+As you can remember the parameters and input dataset you used for each run, they are saved in the root of the output folder. \
 The output will be saved in the [output](output/) folder by default, in a subfolder named with the date and time of the run. \
 If you chose a specific output folder (```output_folder_path```), the results will be saved here.
 
@@ -171,43 +172,84 @@ Example passed VCF file can be found [here](toy_dataset/toy_output/samples/KTN10
 Example filtered VCF file can be found [here](toy_dataset/toy_output/samples/KTN102_filtered.vcf). \
 Example Filter stats file can be found [here](toy_dataset/toy_output/samples/filter_stats.txt).
 
+<p float="center">
+  <img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="49%" />
+  <img src="toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png" width="49%" /> 
+</p>
+
+
 ### Summarise
-The ```Summarise``` module will create plots and tables to summarize the variants from your VCF "passed" files (created by ```Filter``` module).
-9 outputs can be produced (depending on the success of each file to be created, depending on your data).
+The ```Summarise``` module will create plots and tables to summarize the variants from your VCF "passed" files (created by ```Filter``` module). \
+The outputs from Summarise will be added to the Filter outputs in the ```samples``` of the output folder (one subfolder per exome).
+
+13 outputs can be produced (depending on the success of each file to be created, depending on your data).
 1) ```passed stats file```: a txt file with statistics about the variants characteristics, for one filtered exome
-2) ```SNP profile plot```: a barplot with the distribution of the SNPs types found in the passed exome
-3) ```indel profile plot```: a barplot with the distribution of the Indels types found in the passed exome
-4) ```protein SIFT impacts plot```: a boxplot for distribution of SIFT scores and associated predictions 
-5) ```protein Polyphen impacts plot```: a boxplot for distribution of Polyphen2 scores and associated predictions
-
-<table>
-  <tr>
-    <td>
-      <img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="45%" />
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <img src="toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png" width="45%" />
-    </td>
-  </tr>
-</table>
-
-1) ```ToppGene table```: a table with the results from ToppGene analysis (if you chose to run it)
-2) ```Panther table```: a table with the results from Panther analysis (if you chose to run it)
-3) ```mutated genes table```: a table with the mutated genes (and their characteristics) found in the passed exome
-4) ```variants table```: a table with the variants (and their characteristics) found in the passed exome
+2) ```mutated genes table```: a table with the mutated genes (and their characteristics) found in the passed exome
+3) ```variants table```: a table with the variants (and their characteristics) found in the passed exome
 > Note: if you choose xlsx format, the more interesting variants will be sorted on top of the table. \
 > Good indicators (low allelic frequency for example) are colored in green, and bad indicators go from yellow to red higlighting in dataframe.
+1) ```SNP profile table```: a table with exact frequencies of the SNPs found in the passed exome
+2) ```SNP profile plot```: a barplot with the distribution of the SNPs found in the passed exome
+3) ```indel profile table```: a table with exact frequencies of the Indels found in the passed exome
+4) ```mutation types plot```: a barplot/piechart with the numbers of each type of mutation (SNP, deletion, etc) found in the passed exome
+5) ```mutation subtypes plot```: a barplot/piechart with the numbers of each subtype of mutation (frameshift insertion, missense, etc) found in the passed exome
+6) ```indel profile plot```: a barplot with the distribution of the Indels types found in the passed exome
+7)  ```protein SIFT impacts plot```: a boxplot for distribution of SIFT scores and associated predictions 
+8)  ```protein Polyphen impacts plot```: a boxplot for distribution of Polyphen2 scores and associated predictions
+9)  ```ToppGene table```: a table with the results from ToppGene analysis (if you chose to run it)
+10) ```Panther table```: a table with the results from Panther analysis (if you chose to run it)
+
+After parsing all of your VCF files, Summarise module creates 2 last output, in output folder root:
+- ```mutation types table```: numbers of each type of mutation, for all samples of your cohort (SNP, Indel, etc)
+- ```mutation_subtypes table```: numbers of each subtype of mutation, for all samples of your cohort (frameshift insertion, missense, etc)
+> Note: subtypes table only works if you annotated your VCF files with ANNOVAR refGene database.
 
 ### Compare
 The ```Compare``` module will create plots to compare the variants for each patient, time 1 *vs* time 2. \
 It will use the dataset you provided to understand the files that go together as a pair. \
 Compare will create statistics and plots for each pair of exome, depending on your ```variants_selection_approach``` choice.
 > For example: if you selected ```change```, the variants that appeared or disappeared between time 1 and time 2 will be higlighted.
+In the ```comparisons``` subfolder, one subfolder per patient will be created, with the name of the pair of exomes.
 
-x outputs can be produced:
+14 outputs can be produced:
 MUSIC ASSASSINS CREED TWO STEPS FROM HELL
 1) ```compare stats file```: a text file with statistics about the variants in common/differing between times.
+2) ```common/changed variants VCF file```: a VCF file with only the variants in common/differing between times and their key characteristics.
+3) ```mutated genes table```: a table with the mutated genes (and their characteristics) in common/differing between times.
+4) ```variants table```: a table with the variants (and their characteristics) in common/differing between times.
+> Note: if you choose xlsx format, the more interesting variants will be sorted on top of the table. \
+> Good indicators (low allelic frequency for example) are colored in green, and bad indicators go from yellow to red higlighting in dataframe.
+1) ```SNP profile table```: a table with exact frequencies of the SNPs in common/differing between times.
 2) ```SNP profile plot```: a mirror barplot comparing the distribution of SNPs between both times, for each patient.
-3) ```indel profile plot```: a mirror barplot comparing the distribution of insertions and deletions   between both times, for each patient.
+3) ```indel profile table```: a table with exact frequencies of the Indels in common/differing between times.
+4) ```indel profile plot```: a mirror barplot comparing the distribution of insertions and deletions between both times, for each patient.
+5) ```mutation types plot```: a barplot/piechart comparing the numbers of each type of mutation (SNP, deletion, etc) between t1 and t2.
+6)  ```mutation subtypes plot```: a barplot/piechart comparing the numbers of each subtype of mutation (frameshift insertion, missense, etc) between t1 and t2.
+7)  ```protein SIFT impacts plot```: a comparison double boxplot for distribution of SIFT scores and associated predictions in t1 and t2 (with t-test).
+8)  ```protein Polyphen impacts plot```: a boxplot for distribution of Polyphen2 scores and associated predictions in t1 and t2 (with t-test).
+9)  ```ToppGene table```: a table with the results from ToppGene analysis (if you chose to run it), for common/differing variants.
+10) ```Panther table```: a table with the results from Panther analysis (if you chose to run it), for common/differing variants.
+
+### Merge
+The ```Merge``` module will create plots to merge the information from all variants of your cohort. \
+It is the most informative//powerful module, as variants and mutated genes encountered in several patients can be stronger candidates. \
+Merge will use the dataset you provided to understand the files that go together as a pair. \
+To compare mutated genes and variant characteristics, Merge uses all of Compare ```mutated genes table``` and ```variants table```. \
+There is no subfolder in ```merge``` subfolder, 
+
+11 outputs can be produced:
+1) ```merged stats file```: a text file with statistics (inside whole cohort) about the variants in several patients, and characteristics of the mutated genes.
+2) ```merge variants VCF file```: a VCF file with all variants found in whole dataset, with their key characteristics.
+3) ```chromosomes map plot```: a plot representing the frequency of mutated genes, as well as their localisation on the human genome.
+4) ```mutated genes upset plot``` : an upset plot representing the mutated genes found in several patients.
+5) ```variants upset plot```: an upset plot representing the variants found in several patients.
+6) ```mutated genes table```: a table with the mutated genes (and their characteristics), regarding the whole dataset.
+> Which genes were mutated in several patients? Which ones? What are their characteristics?
+7) ```variants table```: a table with the filtered variants (and their characteristics), regarding the whole dataset.
+> Which variants were found in several patients? Which ones? What are their characteristics? 
+> If some patients have the same clonal evolution of drug resistance, they may share newly appeared variants, highlighted by Merge module.
+8) ```mutation types plot```: a barplot/piechart comparing the numbers of each type of mutation (SNP, deletion, etc) between t1 and t2, merging all variants.
+9) ```mutation subtypes plot```: a barplot/piechart comparing the numbers of each subtype of mutation (frameshift insertion, missense, etc) between t1 and t2,merging all variants.
+10) ```VAF pop plot```: a double boxplot comparing the distribution of variant allelic frequencies in *population*, merging all variants, t1 *vs* t2 (t-test).
+> Maybe more rare variants remain/appear after treatment, in cases of drug resistance for example.
+11) ```VAF sample plot```: a double boxplot comparing the distribution of the variant allelic frequencies in *dataset*, merging all variants, t1 *vs* t2 (t-test).
