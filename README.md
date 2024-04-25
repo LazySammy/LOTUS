@@ -40,7 +40,7 @@ This software plots, compare and merge information from all exomes of a cohort o
 ☑️ ```1.0```: the first version (06/2023) is available on [GitHub](https://github.com/gsiekaniec/LOTUS). \
 ✅ ```2.0```: the new version (04/2024) is a pre-release and is the current version. \
 ☑️ ```3.0```: the final version (07/2024) will be the version associated with the futur potential paper. \
-3.0 version will use HGVS and rsids, input more annotations formats, perform more API requests and a wider choice of plot shapes. 
+3.0 version will use HGVS and rsids, input more annotations formats (including VEP from Ensembl), perform more API requests and a wider choice of plot shapes. 
 LOncoG will perform clustering on patients similarities and will run with a multiprocessing option.
 
 ## Warnings
@@ -115,8 +115,9 @@ pip install -r environment/venv/loncog_venv.txt
 LOncoG is based on vcf annotations from input files, here is a list of compatible annotators for v2.0 (more to come):
 | Annotator | Version | Information used |
 | :-------: | :-----: | :--------------: |
-| Donnée 1  | Donnée 2 |    Donnée 3     |
-| Donnée 4  | Donnée 5 |    Donnée 6     |
+| [ANNOVAR]()  | 2020-06 |    Databases: refGene, gnomad40_exome, clinvar_20140702, cosmic70, avsnp150, dbnsfp30a   |
+| [GATK Funcotator]()  | v4.1.2.0 |    Funcotation field is fully parsed by LOncoG     |
+| [SnpEff]()  | 4.5 (2020) |    Only Putative_impact from ANN field is used for the moment     |
 
 ## Usage
 This section describes the quick steps you need to follow to run the software.\
