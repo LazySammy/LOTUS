@@ -165,7 +165,7 @@ to indicate why the variant was removed. \
 
 Finally, the module will create a 'Filtered_stats.txt' file with statistics about the filtering process. \
 The output folder should look like this: 
-<p><img src="tutorials/pictures/filter_output_example.png" width="15%"/></p>
+<p><img src="tutorials/pictures/filter_output_example.png" width="25%"/></p>
 
 Example passed VCF file can be found [here](toy_dataset/toy_output/samples/KTN102_passed.vcf). \
 Example filtered VCF file can be found [here](toy_dataset/toy_output/samples/KTN102_filtered.vcf). \
