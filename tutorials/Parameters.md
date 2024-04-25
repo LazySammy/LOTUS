@@ -44,14 +44,6 @@ Here are some key arguments about the program in general, and also about input a
   - ```new``` ☑️ 
   - ```<you path>```
 
-#### 🔵 ```discard_weak_variants```
-- Choose if you want to keep the variants that don't pass the filter you chose:
-    - **Yes** > the variants that don't pass the filter you chose are removed (strong variants)
-    - **Summarise** > the variants that don't pass the filter you chose are kept (weak variants)
-- Options: 
-  - ```yes``` ☑️ 
-  - ```no```
-
 #### 🔵 ```keep_filtered_vcf_after_run```
 - After FILTER execution, filtered vcf files are created (indicate which variants did pass the filter), but
   you can save a lot of space by removing them when no more required:
@@ -74,14 +66,6 @@ Here are some key arguments about the program in general, and also about input a
   - ```all```
   > ```change``` is advised, so you can study variants that may have a relation with the disease evolution or treatment response.
 
-#### 🔵 ```remove_non_driver_mutations```
-- If you want to remove the non-driver mutations from the filtered variants, fill ```yes```.
-Non driver mutations are 'non frameshift', 'synonymous' mutation subtypes from ANNOVAR.
-'stopgain', 'stoploss', 'frameshift' SNPs and indels are considered as driver mutations.
-For example: ```ExonicFunc.refGene=nonframeshift_deletion``` will be filtered out if 'yes' is selected.
-- Options: 
-  - ```yes``` ☑️ 
-  - ```no```
 
 ### Input
 #### 🔵 ```vcf_folder_path```
@@ -169,6 +153,15 @@ If you don't want a filter to be applied, just set the parameter to 0 if min thr
   - ```yes``` ☑️ 
   - ```no```
   - ```<your_mutations>```
+
+#### 🔵 ```remove_non_driver_mutations```
+- If you want to remove the non-driver mutations from the filtered variants, fill ```yes```.
+Non driver mutations are 'non frameshift', 'synonymous' mutation subtypes from ANNOVAR.
+'stopgain', 'stoploss', 'frameshift' SNPs and indels are considered as driver mutations.
+For example: ```ExonicFunc.refGene=nonframeshift_deletion``` will be filtered out if 'yes' is selected.
+- Options: 
+  - ```yes``` ☑️ 
+  - ```no```
 
 #### 🔵 ```filter_on_SIFT_score```
 - The SIFT score is a measure of the impact of a mutation on the protein function. The lower it is, the better. It goes from 0 to 1.
