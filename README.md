@@ -113,10 +113,10 @@ pip install -r environment/venv/loncog_venv.txt
 ```
 ## Compatible annotators
 LOncoG is based on vcf annotations from input files, here is a list of compatible annotators for v2.0 (more to come):
-| Annotator | Version | Information used
-| --------- | --------- | --------- |
-| Donnée 1  | Donnée 2  | Donnée 3  |
-| Donnée 4  | Donnée 5  | Donnée 6  |
+| Annotator | Version | Information used |
+| :-------: | :-----: | :--------------: |
+| Donnée 1  | Donnée 2 |    Donnée 3     |
+| Donnée 4  | Donnée 5 |    Donnée 6     |
 
 ## Usage
 This section describes the quick steps you need to follow to run the software.\
