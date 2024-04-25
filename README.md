@@ -181,8 +181,8 @@ The ```Summarise``` module will create plots and tables to summarize the variant
 5) ```protein Polyphen impacts plot```: a boxplot for distribution of Polyphen2 scores and associated predictions
 
 <p float="left">
-  <img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="20%" />
-  <img src="toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png" width="20%" /> 
+  <img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="100%" />
+  <img src="toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png" width="100%" /> 
 </p>
 
 1) ```ToppGene table```: a table with the results from ToppGene analysis (if you chose to run it)
