@@ -12,6 +12,10 @@ When a parameter have several options (not a yes/no parameter), you can choose s
 When a parameter is a yes/no parameter, you can choose only one of the two options.
 Concerning tables, xlsx is always recommended, as it allows to have pre-formatted more lisible tables.
 
+For confusing parameters (required in several modules), the first capital letter of module name is added before the parameter name. \
+Example: Gene Ontology Enrichment Analysis can be performed after Summarise, Compare and Merge modules. ```S_enrichment```, ```C_enrichment```, ```M_enrichment``` 
+are used so you can activate the enrichment for one module specifically, of several of them.
+
 ☑️ Default value\
 🔵 Key parameter\
 🟢 Secondary parameter
@@ -582,6 +586,25 @@ A cytoband file for hg38 version is already available in the LOncoG package.
 > LOncoG future version (3.0) will also allow to use genome coordinates instead, which are more precise and less obsolete (example: ```14:46695396-50395063```).
 
 ### Parameters
+#### 🔵 ```M_enrichment```
+- You can choose to perform a Gene Ontology Enrichment Anlysis on the mutated genes found in the sample:
+  - **Panther** > the Gene Ontology Enrichment Analysis will be performed using Panther database
+  - **ToppGene** > the Gene Ontology Enrichment Analysis will be performed using ToppGene database
+  - **both** > the Gene Ontology Enrichment Analysis will be performed using both Panther and ToppGene databases
+  - **none** > no Gene Ontology Enrichment Analysis will be performed
+- Options:
+  - ```Panther``` ☑️
+  - ```ToppGene```
+  - ```both```
+  - ```none```
+
+#### 🔵 ```chromosome_step```
+- The chromosome plot is a map of mutated chromosomes, with precise localisation of each mutation, giving a readble overview of the variants distribution in genome.
+Step value helps LOncoG to choose the adapted scale creating the plot.
+- Options:
+  - ```500000``` ☑️
+  - ```<your_value>```
+
 #### 🔵 ```min_patients_threshold_for_dataframes```
 - Minimum number of patients where mutated gene/variant is found, to be added in Merge genes/variants dataframes.
 For example, if you choose 5, the gene/variant must be found in 5 patients (files) of your cohort to be added to the dataframes.
@@ -594,13 +617,25 @@ For example, if you choose 5, the gene/variant must be found in 5 patients (file
 - Minimum number of patients where mutated variant is found, to be added in the UpSet plot.
 For example, if you choose 5, the categories with less than 5 patients will be cut out of the UpSet plot.
 - Options:
-  - ```5``` ☑️
+  - ```1``` ☑️
   - ```<your_value>```
 
 #### 🔵 ```min_patients_threshold_for_genes_upset_plot```
 - Minimum number of patients where mutated gene is found, to be added in the UpSet plot.
 - Options:
-  - ```5``` ☑️
+  - ```1``` ☑️
+  - ```<your_value>```
+
+#### 🔵 ```min_number_of_genes_for_upset_plot```
+- Minimum number of genes to be found each category to pe plot in the UpSet plot. A category is a list of common mutated genes between x patients.
+- Options:
+  - ```1``` ☑️
+  - ```<your_value>```
+
+#### 🔵 ```min_number_of_variants_for_upset_plot```
+- Minimum number of variants to be found each category to pe plot in the UpSet plot. A category is a list of common mutated variants between x patients.
+- Options:
+  - ```1``` ☑️
   - ```<your_value>```
 
 ### Output
@@ -631,7 +666,7 @@ For example, if you choose 5, the categories with less than 5 patients will be c
   - ```pdf```
   - ```all```
 
-#### 🟢 ```M_genes_table_format(s)```
+#### 🟢 ```M_mutated_genes_table_format(s)```
 - The genes table is a table with the mutated genes found in your cohort, with their characteristics, and the number (and name) of patients where they are mutated.
 - Options:
   - ```xlsx``` ☑️
@@ -645,14 +680,14 @@ For example, if you choose 5, the categories with less than 5 patients will be c
   - ```csv```
   - ```tsv```
 
-#### 🟢 ```M_Panther_format(s)```
+#### 🟢 ```M_Panther_table_format```
 - The Panther table is a table with the Panther Gene Ontology Enrichment Analysis results of your cohort (consedering all mutated genes after filtration).
 - Options:
   - ```xlsx``` ☑️
   - ```csv```
   - ```tsv```
 
-#### 🟢 ```M_ToppGene_format(s)```
+#### 🟢 ```M_ToppGene_table_format```
 - The ToppGene table is a table with the ToppGene Gene Ontology Enrichment Analysis results of your cohort (consedering all mutated genes after filtration).
 - Options:
   - ```xlsx``` ☑️
@@ -662,6 +697,15 @@ For example, if you choose 5, the categories with less than 5 patients will be c
 #### 🟢 ```upset_plot_format(s)```
 - The UpSet plot is a plot of the mutations distribution in your cohort, with the number of mutations for each category, for each time, mergin all files information.
 - 2 upset plots are created, one for genes, and one for variants. It highlights the patients that may have a similar mutation profile evolution between times.
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+
+#### 🟢 ```M_VAF_plot_format(s)```
+- LOncoG compares all allelic frequencies from population between two times, each time containing all variant information from all patients of your cohort.
 - Options:
   - ```png``` ☑️
   - ```jpg```
