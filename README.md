@@ -186,7 +186,7 @@ x outputs can be produced (depending on the success of each file to be created, 
 ![summarise_polyphen](toy_dataset/toy_output/samples/protein_Polyphen_impacts.png)
 protein_SIFT_impacts             |  protein_Polyphen_impacts
 :-------------------------:|:-------------------------:
-![](https://...Dark.png)  |  ![](https://...Ocean.png)
+![test](toy_dataset/toy_output/samples/protein_Polyphen_impacts.png)  |  ![test1](toy_dataset/toy_output/samples/protein_SIFT_impacts.png)
 6) ```ToppGene.xlsx```: a table with the results from ToppGene analysis (if you chose to run it)
 7) ```Panther.xlsx```: a table with the results from Panther analysis (if you chose to run it)
 8) ```mutated_genes.xslx```: a table with the mutated genes (and their characteristics) found in the passed exome
