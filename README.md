@@ -184,8 +184,8 @@ x outputs can be produced (depending on the success of each file to be created, 
 ![summarise_sift](toy_dataset/toy_output/samples/protein_SIFT_impacts.png)
 5) ```protein_Polyphen_impacts.png```: a boxplot for distribution of Polyphen2 scores and associated predictions
 ![summarise_polyphen](toy_dataset/toy_output/samples/protein_Polyphen_impacts.png)
-protein_SIFT_impacts             |  protein_Polyphen_impacts
-:-------------------------:|:-------------------------:
+protein_SIFT_impacts             |  protein_Polyphen_impacts \
+:-------------------------:|:-------------------------: \
 ![test](toy_dataset/toy_output/samples/protein_Polyphen_impacts.png)  |  ![test1](toy_dataset/toy_output/samples/protein_SIFT_impacts.png)
 6) ```ToppGene.xlsx```: a table with the results from ToppGene analysis (if you chose to run it)
 7) ```Panther.xlsx```: a table with the results from Panther analysis (if you chose to run it)
