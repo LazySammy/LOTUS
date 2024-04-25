@@ -157,5 +157,5 @@ The Filter module will use your filtering criterias to remove unwanted variants 
 It will create a new VCF file for each sample/exome, with the remaining variants. \
 If you choose ```keep_filtered_vcf_after_run = True```, a copy of the original VCF files will be saved in the output folder, including a 'failed_filters' field
 to indicate why the variant was removed. \
-Finally, the module will create a 'Filtered_stats.txt' file with statistics about the filtering process. The output folder should look like this:
+Finally, the module will create a 'Filtered_stats.txt' file with statistics about the filtering process. The output folder should look like this: \
 ![filter_output](tutorials/pictures/filter_output_example.png)
