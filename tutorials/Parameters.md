@@ -64,7 +64,7 @@ Here are some key arguments about the program in general, and also about input a
   - ```change``` ☑️ 
   - ```common```
   - ```all```
-  > ```change``` is advised, so you can study variants that may have a relation with the disease evolution or treatment response.
+> ```change``` is advised, so you can study variants that may have a relation with the disease evolution or treatment response.
 
 
 ### Input
@@ -147,9 +147,10 @@ If you don't want a filter to be applied, just set the parameter to 0 if min thr
     - **yes** > only mutations from exons and splicing (2 bp adjacent to the splicing site) will be conserved, recommended for WES data (Whole Exome Sequencing)
     - **no** > all mutations types will be conserved, recommended for WGS data (Whole Genome Sequencing)
     - **<your_mutations>** > you can specify the mutations you want to keep (ex: MISSENSE, NONSENSE, etc)
-    > ANNOVAR: 'exonic', 'splicing', 'ncRNA', 'ncRNA_intronic', 'ncRNA_exonic', 'UTR5', 'UTR3', 'intronic', 'upstream', 'downstream', 'intergenic'
-    are all possible values for ANNOVAR, you can tell LOncoG the ones you want to keep, separated by a comma (or fill ```yes``` to only keep exonic and splicing).
-    > Funcotator: COULD_NOT_DETERMINE, INTRON, FIVE_PRIME_UTR, THREE_PRIME_UTR, IGR, FIVE_PRIME_FLANK, THREE_PRIME_FLANK, MISSENSE, NONSENSE, NONSTOP, SILENT, SPLICE_SITE, IN_FRAME_DEL, IN_FRAME_INS, FRAME_SHIFT_INS, FRAME_SHIFT_DEL, START_CODON_SNP, START_CODON_INS, START_CODON_DEL, DE_NOVO_START_IN_FRAME, DE_NOVO_START_OUT_FRAME, RNA, LINCRNA are all possible values for Funcotator. You can tell LOncoG the ones you want to keep, separated by a comma (or fill ```yes``` to only keep missense, nonsense, nonstop, silent, splice_site, in_frame_del, in_frame_ins, frame_shift_ins, frame_shift_del, start_codon_snp, start_codon_ins, start_codon_del).
+> ANNOVAR: 'exonic', 'splicing', 'ncRNA', 'ncRNA_intronic', 'ncRNA_exonic', 'UTR5', 'UTR3', 'intronic', 'upstream', 'downstream', 'intergenic'
+are all possible values for ANNOVAR, you can tell LOncoG the ones you want to keep, separated by a comma (or fill ```yes``` to only keep exonic and splicing).
+
+> Funcotator: COULD_NOT_DETERMINE, INTRON, FIVE_PRIME_UTR, THREE_PRIME_UTR, IGR, FIVE_PRIME_FLANK, THREE_PRIME_FLANK, MISSENSE, NONSENSE, NONSTOP, SILENT, SPLICE_SITE, IN_FRAME_DEL, IN_FRAME_INS, FRAME_SHIFT_INS, FRAME_SHIFT_DEL, START_CODON_SNP, START_CODON_INS, START_CODON_DEL, DE_NOVO_START_IN_FRAME, DE_NOVO_START_OUT_FRAME, RNA, LINCRNA are all possible values for Funcotator. You can tell LOncoG the ones you want to keep, separated by a comma (or fill ```yes``` to only keep missense, nonsense, nonstop, silent, splice_site, in_frame_del, in_frame_ins, frame_shift_ins, frame_shift_del, start_codon_snp, start_codon_ins, start_codon_del).
 - Options:
   - ```yes``` ☑️ 
   - ```no```
@@ -180,7 +181,7 @@ For example: ```ExonicFunc.refGene=unknown``` will be filtered out if 'yes' is s
 - Options:
   - ```yes``` ☑️ 
   - ```no```
-  > ```yes``` is recommended, as it can help to remove false positive mutations and focus on the most impactful ones (maybe driver mutations)
+> ```yes``` is recommended, as it can help to remove false positive mutations and focus on the most impactful ones (maybe driver mutations)
 
 #### 🔵 ```filter_on_PolyPhen2_score```
 - The PolyPhen2 score is a more recent measure of the impact of a mutation on protein function. The higher it is, the better. It goes from 0 to 1.
@@ -190,7 +191,7 @@ For example: ```ExonicFunc.refGene=unknown``` will be filtered out if 'yes' is s
 - Options:
     - ```yes``` ☑️
     - ```no```
-    > ```yes``` is recommended, as it can help to remove false positive mutations and focus on the most impactful ones (maybe driver mutations)
+> ```yes``` is recommended, as it can help to remove false positive mutations and focus on the most impactful ones (maybe driver mutations)
 
 #### 🟢 ```keep_variant_if_no_VAF_pop ```
 - You can choose to keep the variants where the allelic frequency in the population is not available (not provided by annotators).
@@ -255,7 +256,7 @@ From these values, we can compute a SOR value (Strand Odds Ratio). If the varian
 - Options:
   - ```10``` ☑️ 
   - ```<your_value>```
-  > calculation method available here : [GATK website](https://gatk.broadinstitute.org/hc/en-us/articles/360036361772-StrandOddsRatio)
+  > calculation method available on [GATK website](https://gatk.broadinstitute.org/hc/en-us/articles/360036361772-StrandOddsRatio)
 
 #### 🔵 ```max_VAF_pop```
 - The minimum allelic frequency in the population (number of times the mutation has been observed in the population). 
@@ -302,7 +303,7 @@ The advised threshold can be found [here](https://www.ncbi.nlm.nih.gov/pmc/artic
 
 ####  🔵 ```PolyPhen2_preds_to_keep```
 - You can choose to only keep mutations predicted by Polyphen2 algorithm as probably damaging (D) or possibly damaging (P) or benign.
-D: Probably damaging (>=0.957), P: possibly damaging (0.453<=x<=0.956), B: benign (pp2_hdiv<=0.452).
+D: Probably damaging (>=0.957), P: possibly damaging (0.453<=x<=0.956), B: benign (pp2_hdiv<=0.452). \
 You can also choose to keep all of them.
 - Options:
   - ```probably damaging``` ☑️ 
@@ -335,7 +336,7 @@ Here are the parameters you can set to summarise the filtered variants (statisti
   - ```ToppGene```
   - ```both```
   - ```none```
-    > ```none``` is recommended for large datasets, Panther and ToppGene can only run if the list of genes contains less than 1000 names
+> ```none``` is recommended for large datasets, Panther and ToppGene can only run if the list of genes contains less than 1000 names
 
 ### Parameters
 #### 🟢 ```indel_profile_format(s)```
@@ -458,7 +459,7 @@ Here are the parameters you can set to compare the filtered variants between two
   - ```ToppGene```
   - ```both```
   - ```none```
-  > ```none``` is recommended for large datasets, Panther and ToppGene can only run if the list of genes contains less than 1000 names
+> ```none``` is recommended for large datasets, Panther and ToppGene can only run if the list of genes contains less than 1000 names
 
 ### Output
 #### 🔵 ```C_subtypes_plot```
