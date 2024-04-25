@@ -158,12 +158,13 @@ are all possible values for ANNOVAR, you can tell LOncoG the ones you want to ke
 
 #### 🔵 ```remove_non_driver_mutations```
 - If you want to remove the non-driver mutations from the filtered variants, fill ```yes```.
-Annovar driver mutations: 'frameshift_insertion', 'frameshift_deletion', 'frameshift_block_substitution', 'stopgain', 'stoploss'.
-Funcotator driver mutations: 'MISSENSE', 'NONSENSE', 'NONSTOP', 'START_CODON_SNP', 'DE_NOVO_START_IN_FRAME', 'DE_NOVO_START_OUT_FRAME', 'IN_FRAME_DEL', 'IN_FRAME_INS', 'FRAME_SHIFT_INS', 'FRAME_SHIFT_DEL', 'START_CODON_INS', 'START_CODON_DEL','DE_NOVO_START_IN_FRAME', 'DE_NOVO_START_OUT_FRAME', 'START_CODON_SNP', 'START_CODON_INS', 'START_CODON_DEL'.
 For example (ANNOVAR): a variant with ```ExonicFunc.refGene=nonframeshift_deletion``` will be filtered out if 'yes' is selected.
 - Options: 
   - ```yes``` ☑️
   - ```no```
+> ANNOVAR driver mutations: 'frameshift_insertion', 'frameshift_deletion', 'frameshift_block_substitution', 'stopgain', 'stoploss'.
+
+> Funcotator driver mutations: 'MISSENSE', 'NONSENSE', 'NONSTOP', 'START_CODON_SNP', 'DE_NOVO_START_IN_FRAME', 'DE_NOVO_START_OUT_FRAME', 'IN_FRAME_DEL', 'IN_FRAME_INS', 'FRAME_SHIFT_INS', 'FRAME_SHIFT_DEL', 'START_CODON_INS', 'START_CODON_DEL','DE_NOVO_START_IN_FRAME', 'DE_NOVO_START_OUT_FRAME', 'START_CODON_SNP', 'START_CODON_INS', 'START_CODON_DEL'.
 
 #### 🔵 ```remove_unknown_mutations```
 - If you want to remove the unknown mutations from the filtered variants, fill ```yes```.
@@ -320,6 +321,7 @@ Here are the parameters you can set to summarise the filtered variants (statisti
 ### Parameters
 #### 🔵 ```reference_genome```
 - The reference genome is required to get the gene names from the gene ids of reference genome. You must specifiy the file path and format (pk and fasta are available).
+The hg38 default reference genome file 
 - Options:
   - ```hg38.pk``` ☑️ 
   - ```<your_reference_genome>```
@@ -338,8 +340,8 @@ Here are the parameters you can set to summarise the filtered variants (statisti
   - ```none```
 > ```none``` is recommended for large datasets, Panther and ToppGene can only run if the list of genes contains less than 1000 names
 
-### Parameters
-#### 🟢 ```indel_profile_format(s)```
+### Output
+#### 🟢 ```S_indel_profile_format(s)```
 - Options:
   - ```png``` ☑️
   - ```jpg```
@@ -347,37 +349,31 @@ Here are the parameters you can set to summarise the filtered variants (statisti
   - ```pdf```
   - ```all```
 
-#### 🟢 ```indel_tables_format(s)```
-- Options:
-  - ```xlsx``` ☑️
-  - ```csv```
-  - ```tsv```
-
-#### 🟢 ```mutations_types_table_format(s)```
+#### 🟢 ```S_mutations_types_table_format```
 - Options:
   - ```xlsx``` ☑️
   - ```csv```
   - ```tsv```
   
-#### 🟢 ```mutations_subtypes_table_format(s)```
+#### 🟢 ```S_mutations_subtypes_table_format```
 - Options:
   - ```xlsx``` ☑️
   - ```csv```
   - ```tsv```
 
-#### 🟢 ```S_MutatedGenes_table_format(s)```
+#### 🟢 ```S_mutated_genes_table_format```
 - Options:
   - ```xlsx``` ☑️
   - ```csv```
   - ```both```
 
-#### 🟢 ```S_Panther_table_format(s)```
+#### 🟢 ```S_Panther_format```
 - Options:
   - ```xlsx``` ☑️
   - ```csv```
   - ```tsv```
 
-#### 🟢 ```S_ToppGene_table_format(s)```
+#### 🟢 ```S_ToppGene_table_format```
 - Options:
   - ```xlsx``` ☑️
   - ```csv```
@@ -391,7 +387,7 @@ Here are the parameters you can set to summarise the filtered variants (statisti
   - ```pdf```
   - ```all```
 
-#### 🟢 ```S_polyphen_protein_impacts_boxplot_format```
+#### 🟢 ```S_polyphen_protein_impacts_boxplot_format(s)```
 - Options:
   - ```png``` ☑️
   - ```jpg```
@@ -399,7 +395,7 @@ Here are the parameters you can set to summarise the filtered variants (statisti
   - ```pdf```
   - ```all```
 
-#### 🟢 ```S_subtypes_barplot_format```
+#### 🟢 ```S_subtypes_barplot_format(s)```
 - Options:
   - ```png``` ☑️
   - ```jpg```
@@ -415,7 +411,7 @@ Here are the parameters you can set to summarise the filtered variants (statisti
   - ```pdf```
   - ```all```
   
-#### 🟢 ```SNP_profile_formats(s)```
+#### 🟢 ```S_SNP_profile_formats(s)```
 - Options:
   - ```png``` ☑️
   - ```jpg```
@@ -423,7 +419,7 @@ Here are the parameters you can set to summarise the filtered variants (statisti
   - ```pdf```
   - ```all```
 
-#### 🟢 ```SNP_table_format(s)```
+#### 🟢 ```S_SNP_table_format```
 - Options:
   - ```xlsx``` ☑️
   - ```csv```
@@ -442,7 +438,7 @@ Here are the parameters you can set to compare the filtered variants between two
 
 ### Parameters
 #### 🔵 ```human_chromosomes_reference_file```
-- We need to know the human chromosomes gene names from litterature, to get the gene names from the gene ids of your reference genome.
+- We need to know the human chromosomes, with genes official gene positions and names from litterature, depending on your reference genome.
 - Options:
   - ```Homo_sapiens.GRCh38.108.chr.gff3```
   - ```<your_reference_file>```
@@ -476,6 +472,13 @@ Here are the parameters you can set to compare the filtered variants between two
   - ```piechart```
 > Mutation types such as "SNP", "INDEL", "SV", "CNV", are provided by annotators, but LOncoG can guess it if not specifically provided.
 
+#### 🟢  ```C_SNP_profile_plot_format(s)```
+- LOncoG will create a table with SNP types (CTA, CTC, etc) found in time 1 and time 2 variants. You can choose the format here.
+- Options:
+  - ```xlsx``` ☑️
+  - ```csv```
+  - ```tsv```
+
 #### 🟢  ```C_SNP_profile_table_format(s)```
 - LOncoG will create a table with SNP types (CTA, CTC, etc) found in time 1 and time 2 variants. You can choose the format here.
 - Options:
@@ -489,7 +492,7 @@ Here are the parameters you can set to compare the filtered variants between two
   - ```xlsx``` ☑️
   - ```csv```
   - ```tsv```
-#### 🟢  ```C_genes_table_format(s)```
+#### 🟢  ```C_mutated_genes_table_format(s)```
 - LOncoG will create a table with the mutated genes found in time 1 and time 2 files, with their characteristics. You can choose the format here.
 - Options:
   - ```xlsx``` ☑️
@@ -503,14 +506,14 @@ Here are the parameters you can set to compare the filtered variants between two
   - ```csv```
   - ```tsv```
 
-#### 🟢  ```C_Panther_table_format(s)```
+#### 🟢  ```C_Panther_table_format```
 - If the API worked, LOncoG creates a table with the Panther Gene Ontology Enrichment Analysis results. You can choose the format here.
 - Options:
   - ```xlsx``` ☑️
   - ```csv```
   - ```tsv```
 
-#### 🟢  ```C_ToppGene_table_format(s)```
+#### 🟢  ```C_ToppGene_table_format```
 - If the API worked, LOncoG creates a table with the ToppGene Gene Ontology Enrichment Analysis results. You can choose the format here.
 - Options:
   - ```xlsx``` ☑️
@@ -540,12 +543,6 @@ Here are the parameters you can set to compare the filtered variants between two
   - ```piechart```
 > Mutation subtypes such as "missense", "nonsense", "frameshift", are provided by ANNOVAR (RefGene database), Funcotator, SnpEff.
 
-#### 🔵  ```C_types_plot```
-- LOncoG will plot the mutations types comparison between time 1 and time 2. You can choose the type of plot here.
-- Options:
-  - ```barplot``` ☑️
-  - ```piechart```
-
 #### 🟢  ```C_subtypes_plot_format(s)```
 - LOncoG will plot the mutations subtypes comparison between time 1 and time 2. You can choose the format here.
 - Options:
@@ -554,6 +551,12 @@ Here are the parameters you can set to compare the filtered variants between two
   - ```svg```
   - ```pdf```
   - ```all```
+
+#### 🔵  ```C_types_plot```
+- LOncoG will plot the mutations types comparison between time 1 and time 2. You can choose the type of plot here.
+- Options:
+  - ```barplot``` ☑️
+  - ```piechart```
 
 #### 🟢  ```C_types_plot_format(s)```
 - LOncoG will plot the mutations types comparison between time 1 and time 2. You can choose the format here.
@@ -571,10 +574,12 @@ Here are the parameters you can set to merge the comparisons results of all pati
 
 ### Input
 #### 🔵 ```cytoband_file```
-- LOncoG needs to know the human chromosomes cytoband file to plot the mutations on chromosomes map.
+- LOncoG needs to know the path of the cytoband file used to retrieve human chromosomes regions coordinates, for the chromosomes map plot (example: ```14q21.3```).
+A cytoband file for hg38 version is already available in the LOncoG package.
 - Options:
-  - ```hg38_cytoband.tsv``` ☑️
+  - ```input/resources/hg38_cytoband.tsv``` ☑️
   - ```<your_cytoband_file>```
+> LOncoG future version (3.0) will also allow to use genome coordinates instead, which are more precise and less obsolete (example: ```14:46695396-50395063```).
 
 ### Parameters
 #### 🔵 ```min_patients_threshold_for_dataframes```
