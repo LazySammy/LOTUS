@@ -74,6 +74,15 @@ Here are some key arguments about the program in general, and also about input a
   - ```all```
   > ```change``` is advised, so you can study variants that may have a relation with the disease evolution or treatment response.
 
+#### 🔵 ```remove_non_driver_mutations```
+- If you want to remove the non-driver mutations from the filtered variants, fill ```yes```.
+Non driver mutations are 'non frameshift', 'synonymous' mutation subtypes from ANNOVAR.
+'stopgain', 'stoploss', 'frameshift' SNPs and indels are considered as driver mutations.
+For example: ```ExonicFunc.refGene=nonframeshift_deletion``` will be filtered out if 'yes' is selected.
+- Options: 
+  - ```yes``` ☑️ 
+  - ```no```
+
 ### Input
 #### 🔵 ```vcf_folder_path```
 - We need to know the path of the folder containing all of your annotated vcf, as LOncoG can find them.
@@ -141,7 +150,7 @@ Here are some key arguments about the program in general, and also about input a
 Here are the parameters you can set to filter the variants with LOncoG first module.
 If you don't want a filter to be applied, just set the parameter to 0 if min threshold, and 1000 if max threshold.
 
-#### 🟢 ```colored_execution```
+#### 🟢 ```working_method```
 - During LOncoG running, you can choose the execution method (efficiency, memory).
     - **Direct** > the execution will be faster but will use more memory
     - **In memory** > the execution will be slower but will use less memory
