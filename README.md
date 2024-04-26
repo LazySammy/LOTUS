@@ -154,10 +154,12 @@ To run the script, activate the environment if not already active, and run lonco
 python3 loncog.py
 ```
 You can even run LOncoG under a Windows environment, from your IDE (please make sure to activate the environment before running the script). 
-Some old IDEs such as PyScripter are not adapted to loading bars and colored printing, so you can choose ```colored_execution = no```.\
+Some old IDEs such as PyScripter are not adapted to loading bars and colored printing, so you can choose ```colored_execution = no```.
+
 LOncoG will then run the modules you chose, read the parameters from the [config.txt](config.txt) file, read the 
 input dataframe (at ```dataset_path``` location), and parse the VCF found at the ```vcf_folder``` location. \
-As you can remember the parameters and input dataset you used for each run, they are saved in the root of the output folder. \
+So you can remember the parameters and table you used for each run, they are saved in the root of the output folder. 
+
 The output will be saved in the [output](output/) folder by default, in a subfolder named with the date and time of the run. \
 If you chose a specific output folder (```output_folder_path```), the results will be saved here.
 
@@ -168,6 +170,12 @@ During the execution you will have more or less verbose prints dpeending on your
 <p float="center"><img src="tutorials/pictures/run_Merge.PNG" width="100%"/> </p>
 
 Once LOncoG is done, [```job_done.wav```](input/resources/job_done.wav) is played, so you are notified immediately.
+
+## Toy dataset
+In the [toy_dataset](toy_dataset) folder, you will find a toy dataset to test the software. \
+** It is highly recommended to use the toy dataset to understand the software functioning before using your own data.** \
+To perform a run with the toy dataset, set ```use_toy_dataset = yes``` in the [config.txt](config.txt) file.
+
 
 
 ## Output
@@ -203,7 +211,7 @@ The outputs from Summarise will be added to the Filter outputs in the ```samples
 <p><img src="tutorials/pictures/S_mutated_genes.PNG" width="100%"/></p>
 
 3) ```variants table```: a table with the variants (and their characteristics) found in the passed exome
-> example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/passed_variants.xlsx)
+> example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/passed_variants.xlsx) \
 > Note: if you choose xlsx format, the more interesting variants will be sorted on top of the table. \
 > Good indicators (low allelic frequency for example) are colored in green, and bad indicators go from yellow to red higlighting in dataframe.
 <p><img src="tutorials/pictures/S_variants.PNG" width="100%"/></p>
@@ -270,7 +278,7 @@ In the ```comparisons``` subfolder, one subfolder per patient will be created, w
 <p><img src="tutorials/pictures/C_mutated_genes.PNG" width="100%"/></p>
 
 4) ```variants table```: a table with the variants (and their characteristics) in common/differing between times.
-> example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/KTN102_t0-t1_change_variants.xlsx)
+> example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/KTN102_t0-t1_change_variants.xlsx) \
 > Note: if you choose xlsx format, the more interesting variants will be sorted on top of the table. \
 > Good indicators (low allelic frequency for example) are colored in green, and bad indicators go from yellow to red higlighting in dataframe.
 <p><img src="tutorials/pictures/C_variants.PNG" width="100%"/></p>
@@ -287,7 +295,7 @@ In the ```comparisons``` subfolder, one subfolder per patient will be created, w
 <p><img src="toy_dataset/toy_output/comparisons/KTN102_t0-t2/mutation_types.png" width="40%"/></p>
 
 10) ```mutation subtypes plot```: a barplot/piechart comparing the numbers of each subtype of mutation (frameshift insertion, missense, etc) between t1 and t2.
-> example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/mutation_subtypes.png)
+> example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/mutation_subtypes.png) \
 > Note: subtypes plot only works if you annotated your VCF files with ANNOVAR refGene database.
 <p><img src="toy_dataset/toy_output/comparisons/KTN102_t0-t1/mutation_subtypes.png" width="40%"/></p>
 
@@ -309,21 +317,50 @@ The ```Merge``` module will create plots to merge the information from all varia
 It is the most informative//powerful module, as variants and mutated genes encountered in several patients can be stronger candidates. \
 Merge will use the dataset you provided to understand the files that go together as a pair. \
 To compare mutated genes and variant characteristics, Merge uses all of Compare ```mutated genes table``` and ```variants table```. \
-There is no subfolder in ```merge``` subfolder, 
+There is no subfolder in ```merge``` subfolder, all Merge outputs are saved here (fusion of the whole cohort).
 
 11 outputs can be produced:
 1) ```merged stats file```: a text file with statistics (inside whole cohort) about the variants in several patients, and characteristics of the mutated genes.
+> example [here](toy_dataset/toy_output/merge/merged_stats.txt)
+<p><img src="tutorials/pictures/M_stats.PNG" width="40%"/></p>
+
 2) ```merge variants VCF file```: a VCF file with all variants found in whole dataset, with their key characteristics.
+> example [here](toy_dataset/toy_output/merge/merged_variants.vcf)
+
 3) ```chromosomes map plot```: a plot representing the frequency of mutated genes, as well as their localisation on the human genome.
+> example [here](toy_dataset/toy_output/merge/Chromosomes_map.png)
+<p><img src="tutorials/pictures/M_chromosomes.PNG" width="40%"/></p>
+
 4) ```mutated genes upset plot``` : an upset plot representing the mutated genes found in several patients.
+>  example [here](toy_dataset/toy_output/merge/upset_genes.png)
+<p><img src="tutorials/pictures/M_genes_upset.PNG" width="40%"/></p>
+
 5) ```variants upset plot```: an upset plot representing the variants found in several patients.
+> example [here](toy_dataset/toy_output/merge/upset_variants.png)
+<p><img src="tutorials/pictures/M_variants_upset.PNG" width="40%"/></p>
+
 6) ```mutated genes table```: a table with the mutated genes (and their characteristics), regarding the whole dataset.
+> example [here](toy_dataset/toy_output/merge/merged_genes.xlsx) \
 > Which genes were mutated in several patients? Which ones? What are their characteristics?
+<p><img src="tutorials/pictures/M_mutated_genes.PNG" width="100%"/></p>
+
 7) ```variants table```: a table with the filtered variants (and their characteristics), regarding the whole dataset.
+> example [here](toy_dataset/toy_output/merge/merged_variants.xlsx) \
 > Which variants were found in several patients? Which ones? What are their characteristics? \
 > If some patients have the same clonal evolution of drug resistance, they may share newly appeared variants, highlighted by Merge module.
+<p><img src="tutorials/pictures/M_variants.PNG" width="100%"/></p>
+
 8) ```mutation types plot```: a barplot/piechart comparing the numbers of each type of mutation (SNP, deletion, etc) between t1 and t2, merging all variants.
-9) ```mutation subtypes plot```: a barplot/piechart comparing the numbers of each subtype of mutation (frameshift insertion, missense, etc) between t1 and t2,merging all variants.
-10) ```VAF pop plot```: a double boxplot comparing the distribution of variant allelic frequencies in *population*, merging all variants, t1 *vs* t2 (t-test).
+> example [here](toy_dataset/toy_output/merge/mutation_types.png)
+
+9)  ```mutation subtypes plot```: a barplot/piechart comparing the numbers of each subtype of mutation (missense, etc) between t1 and t2, merging all variants.
+> example [here](toy_dataset/toy_output/merge/mutation_subtypes.png)
+
+10)  ```VAF pop plot```: a double boxplot comparing the distribution of variant allelic frequencies in *population*, merging all variants, t1 *vs* t2 (t-test).
+> example [here](toy_dataset/toy_output/merge/VAF_sample_scatter.png) \
 > Maybe more rare variants remain/appear after treatment, in cases of drug resistance for example.
-11) ```VAF sample plot```: a double boxplot comparing the distribution of the variant allelic frequencies in *dataset*, merging all variants, t1 *vs* t2 (t-test).
+<p><img src="tutorials/pictures/M_vaf_pop.PNG" width="40%"/></p>
+
+11)  ```VAF sample plot```: a double boxplot comparing the distribution of the variant allelic frequencies in *dataset*, merging all variants, t1 *vs* t2 (t-test).
+> example [here](toy_dataset/toy_output/merge/VAF_sample_scatter.png) 
+<p><img src="tutorials/pictures/M_vaf_sample.PNG" width="40%"/></p>

@@ -2,7 +2,9 @@
 1305 mutations appeared or disappeared in at least 1 patients of the cohort.
 
 --- Mutation subtypes ---
-
+synonymous SNV: 2148	nonsynonymous SNV: 2148
+stopgain: 262	startloss: 10	stoploss: 4
+frameshift insertion: 10frameshift deletion: 176
 
 --- Number of variants per patient ---
 KTN102_t1-t2: 600
