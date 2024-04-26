@@ -1,0 +1,118 @@
+### Global arguments
+## LOncoG
+module(s) = Filter, Summarise, Compare, Merge
+output_folder_path = no
+keep_filtered_vcf_after_run = no
+variants_selection_approach = change
+
+## Input
+vcf_folder_path = input/vcf
+dataset_path = input/dataset.xlsx
+time1_column_name = time1
+time2_column_name = time2
+pair_names_column_name = patient_id
+
+## Secondary
+log = LOncoG.log
+verbose_prints = no
+colored_execution = yes
+---------------------------
+
+---------------------------
+### Filter (F)
+working_method=Direct
+
+filter_on_mutation_location = yes
+remove_non_driver_mutations = yes
+remove_unknown_mutations = yes
+filter_on_SIFT_score = no
+filter_on_Polyphen2_score = no
+keep_variant_if_no_VAF_pop = yes
+keep_variant_if_no_SIFT_info = yes
+keep_variant_if_no_Polyphen2_info = yes
+
+min_alt_AD = 0
+min_alt_MBQ = 0
+min_DP = 0
+min_QUAL = 0
+min_STRANDQ = 0
+max_SB = 1
+max_SOR = 100
+max_VAF_pop = 1
+max_VAF_sample = 1
+max_SIFT_score = 0.3
+SIFT_preds_to_keep = all
+min_PolyPhen2_score = 0.5
+PolyPhen2_preds_to_keep = all
+---------------------------
+
+---------------------------
+### Summarise (S)
+## Parameters
+reference_genome = input/resources/reference_genome.pk
+S_enrichment = Panther
+#costs a lot of time
+
+## Output
+S_indel_profile_format(s) = png
+S_mutations_types_table_format = xlsx
+S_mutations_subtypes_table_format = xlsx
+S_mutated_genes_table_format = xlsx
+S_Panther_format = xlsx
+S_ToppGene_table_format = xlsx
+S_sift_protein_impacts_boxplot_format(s) = png
+S_polyphen_protein_impacts_boxplot_format(s) = png
+S_subtypes_barplot_format(s) = png
+S_types_barplot_format(s) = png
+S_SNP_profile_formats(s) = png
+S_SNP_table_format = xlsx
+S_variants_table_format = xlsx
+---------------------------
+
+---------------------------
+### Compare (C)
+## Parameters
+human_chromosomes_reference_file = input/resources/Homo_sapiens.GRCh38.108.chr.gff3
+C_enrichment = Panther
+
+## Output
+C_subtypes_plot = barplot
+C_types_plot = histogram, camembert
+C_SNP_profile_plot_format(s) = png
+C_SNP_profile_table_format(s) = xlsx
+C_indel_profile_plot_format(s) = png
+C_mutated_genes_table_format(s) = xlsx
+C_variants_table_format(s) = xlsx
+C_Panther_table_format = xlsx
+C_ToppGene_table_format = xlsx
+C_protein_impacts_format(s) = png
+C_subtypes_plot = barplot
+C_subtypes_plot_format(s) = png
+C_types_plot = barplot
+C_types_plot_format(s) = png
+---------------------------
+
+---------------------------
+### Merge (M)
+## Input
+cytoband_file=input/resources/hg38_cytoband.tsv
+
+## Parameters
+M_enrichment = Panther
+chromosome_step = 500000
+min_patients_threshold_for_dataframes = 1
+min_patients_threshold_for_genes_upset_plot = 1
+min_patients_threshold_for_variants_upset_plot = 1
+min_number_of_genes_for_upset_plot = 1
+min_number_of_variants_for_upset_plot = 1
+
+## Output
+chromosomes_plot_format(s) = png
+M_types_plot_format(s) = png
+M_subtypes_plot_format(s) = png
+M_mutated_genes_table_format(s) = xlsx
+M_variants_table_format(s) = xlsx
+M_Panther_table_format = xlsx
+M_ToppGene_table_format = xlsx
+upset_plots_format(s) = png
+M_VAF_plot_format(s) = png

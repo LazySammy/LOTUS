@@ -139,6 +139,14 @@ The software is designed to work with VCF files. You can use the toy dataset pro
 The VCF format must be respected, so LOncoG can parse files easily:
 ![VCF_format](tutorials/pictures/vcf_format.png)
 
+1) Download resources files from this link: https://drive.google.com/drive/folders/1gktCt6VzxNY-zJEjFUIUQHVW8jW0c1wM?usp=sharing. \
+> **If you don't use hg38 genome version, download the equivalent files in your own version**.
+2) Put the resources files in the [resources](input/resources/) folder. \
+3) Choose your VCF files and put them in the [vcf](input/vcf/) folder. \
+> Note: you can choose a custom path with the ```vcf_folder``` parameter in the [config.txt](config.txt) file.
+1) Fill your dataset table with the names of your VCF files (pair by pair), as explained above. \
+2) Run the software.
+
 ### Running the software
 For 20 patients (with 2 exomes of 10k variants each), the software will take around 30 minutes to run all modules (15 if no enrichment analysis). \
 To run the script, activate the environment if not already active, and run loncog.py from a Linux system as follows:
@@ -175,11 +183,11 @@ to indicate why the variant was removed. "LOTUS_filter" is added to the VCF FILT
 
 Finally, the module will create a 'filtered_stats.txt' file with statistics about the filtering process. \
 The output folder should look like this: 
-<p><img src="tutorials/pictures/filtered_stats.png" width="70%"/></p>
+<p><img src="tutorials/pictures/filtered_stats.PNG" width="70%"/></p>
 
-Example passed VCF file can be found [here](toy_dataset/toy_output/samples/KTN102_passed.vcf). \
-Example filtered VCF file can be found [here](toy_dataset/toy_output/samples/KTN102_filtered.vcf). \
-Example Filter stats file can be found [here](toy_dataset/toy_output/samples/filter_stats.txt).
+Example passed VCF file can be found [here](toy_dataset/toy_output/samples/toy_KTN102-t0/toy_KTN102-t0_passed.vcf). \
+Example filtered VCF file can be found [here](toy_dataset/toy_output/samples/toy_KTN102-t0/toy_KTN102-t0_filtered.vcf). \
+Example Filter stats file can be found [here](toy_dataset/toy_output/samples/filtered_stats.txt).
 
 <p float="center"><img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="49%"/></p>
 <p float="center">
