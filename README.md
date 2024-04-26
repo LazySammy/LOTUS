@@ -140,7 +140,7 @@ The VCF format must be respected, so LOncoG can parse files easily:
 ![VCF_format](tutorials/pictures/vcf_format.png)
 
 ### Running the software
-For 20 patients (with 2 exomes of 10k variants each), the software will take around 15 minutes to run all modules. \
+For 20 patients (with 2 exomes of 10k variants each), the software will take around 30 minutes to run all modules (15 if no enrichment analysis). \
 To run the script, activate the environment if not already active, and run loncog.py from a Linux system as follows:
 ```bash
 python3 loncog.py
@@ -158,13 +158,17 @@ During the execution you will have more or less verbose prints dpeending on your
   <img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="49%" />
   <img src="toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png" width="49%" /> 
 </p>
+<p float="center">
+  <img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="49%" />
+  <img src="toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png" width="49%" /> 
+</p>
 
 Once LOncoG is done, [```job_done.wav```](input/resources/job_done.wav) is played, so you are notified immediately.
 
 
 ## Output
 A folder called ```samples``` will be created in the output folder, containing the results of the Filter and Summarise modules. \
-There will be one subfolder per sample/exome, taking asa a name the name of the corresponding VCF file.
+There will be one subfolder per sample/exome, taking as a name the corresponding VCF filename.
 
 ### Filter
 The ```Filter``` module will use your filtering criterias to remove unwanted variants from your VCF files.
