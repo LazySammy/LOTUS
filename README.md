@@ -153,6 +153,15 @@ As you can remember the parameters and input dataset you used for each run, they
 The output will be saved in the [output](output/) folder by default, in a subfolder named with the date and time of the run. \
 If you chose a specific output folder (```output_folder_path```), the results will be saved here.
 
+During the execution you will have more or less verbose prints dpeending on your choice, that should look like this:
+<p float="center">
+  <img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="49%" />
+  <img src="toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png" width="49%" /> 
+</p>
+
+Once LOncoG is done, [```job_done.wav```](input/resources/job_done.wav) is played, so you are notified immediately.
+
+
 ## Output
 A folder called ```samples``` will be created in the output folder, containing the results of the Filter and Summarise modules. \
 There will be one subfolder per sample/exome, taking asa a name the name of the corresponding VCF file.
