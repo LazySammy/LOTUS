@@ -218,7 +218,7 @@ The outputs from Summarise will be added to the Filter outputs in the ```samples
 
 4) ```SNP profile table```: a table with exact frequencies of the SNPs found in the passed exome
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/SNP_profile.xlsx)
-<p><img src="tutorials/pictures/S_snp_table.PNG" width="65%"/></p>
+<p><img src="tutorials/pictures/S_snp_table.PNG" width="100%"/></p>
 
 5) ```SNP profile plot```: a barplot with the distribution of the SNPs found in the passed exome
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/SNP_profile.png)
@@ -247,11 +247,11 @@ The outputs from Summarise will be added to the Filter outputs in the ```samples
 
 12) ```ToppGene table```: a table with the results from ToppGene analysis (if you chose to run it)
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t1/GO_ToppGene.xlsx)
-<p><img src="tutorials/pictures/S_toppgene.PNG" width="65%"/></p>
+<p><img src="tutorials/pictures/S_toppgene.PNG" width="100%"/></p>
 
 13) ```Panther table```: a table with the results from Panther analysis (if you chose to run it)
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t1/GO_Panther.xlsx)
-<p><img src="tutorials/pictures/S_panther.PNG" width="65%"/></p>
+<p><img src="tutorials/pictures/S_panther.PNG" width="100%"/></p>
 
 After parsing all of your VCF files, Summarise module creates 2 last output, in output folder root:
 - ```mutation types table```: numbers of each type of mutation, for all samples of your cohort (SNP, Indel, etc)
@@ -310,7 +310,7 @@ In the ```comparisons``` subfolder, one subfolder per patient will be created, w
 13) ```ToppGene table```: a table with the results from ToppGene analysis (if you chose to run it), for common/differing variants.
 14) ```Panther table```: a table with the results from Panther analysis (if you chose to run it), for common/differing variants.
 > example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/GO_Panther.xlsx)
-<p><img src="tutorials/pictures/C_panther.PNG" width="65%"/></p>
+<p><img src="tutorials/pictures/C_panther.PNG" width="100%"/></p>
 
 ### Merge
 The ```Merge``` module will create plots to merge the information from all variants of your cohort. \
