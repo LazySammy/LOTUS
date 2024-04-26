@@ -613,15 +613,15 @@ For example, if you choose 5, the gene/variant must be found in 5 patients (file
   - ```<your_value>```
 > This parameter is useful to find the most recurrent mutations in your cohort, and to avoid false positive mutations.
 
-#### 🔵 ```min_patients_threshold_for_variants_upset_plot```
-- Minimum number of patients where mutated variant is found, to be added in the UpSet plot.
-For example, if you choose 5, the categories with less than 5 patients will be cut out of the UpSet plot.
+#### 🔵 ```min_patients_threshold_for_genes_upset_plot```
+- Minimum number of patients where mutated gene is found, to be added in the UpSet plot.
 - Options:
   - ```1``` ☑️
   - ```<your_value>```
-
-#### 🔵 ```min_patients_threshold_for_genes_upset_plot```
-- Minimum number of patients where mutated gene is found, to be added in the UpSet plot.
+  - 
+#### 🔵 ```min_patients_threshold_for_variants_upset_plot```
+- Minimum number of patients where mutated variant is found, to be added in the UpSet plot.
+For example, if you choose 5, the categories with less than 5 patients will be cut out of the UpSet plot.
 - Options:
   - ```1``` ☑️
   - ```<your_value>```
@@ -694,8 +694,12 @@ For example, if you choose 5, the categories with less than 5 patients will be c
   - ```csv```
   - ```tsv```
 
-#### 🟢 ```upset_plot_format(s)```
-- The UpSet plot is a plot of the mutations distribution in your cohort, with the number of mutations for each category, for each time, mergin all files information.
+#### 🟢 ```upset_plots_format(s)```
+- The UpSet plots are key plots that highlight of common mutated genes or variants between 2, 3, n patients of your cohort (all combinations are computed).
+If you chose ```min_number_of_variants_for_upset_plot = 5```, the *variants* upset plot will only show the categories with at least 5 variants in common.
+If you chose ```min_number_of_genes_for_upset_plot = 5```, the *genes* upset plot will only show the categories with at least 5 genes in common.
+If you chose ```min_patients_threshold_for_genes_upset_plot = 5```, the *genes* upset plot will only show the categories with at least 5 patients in common.
+If you chose ```min_patients_threshold_for_variants_upset_plot = 5```, the *variants* upset plot will only show the categories with at least 5 patients in common.
 - 2 upset plots are created, one for genes, and one for variants. It highlights the patients that may have a similar mutation profile evolution between times.
 - Options:
   - ```png``` ☑️

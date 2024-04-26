@@ -4,7 +4,7 @@
 
 <p align="center"> 
     <a href="#contributors" alt="Contributors">
-        <img src="https://img.shields.io/badge/contributors-3-lightblue" /></a>
+        <img src="https://img.shields.io/badge/contributors-3-lightblue" /></a> 
     <a href="#backers" alt="Backers">
         <img src="https://img.shields.io/badge/backers-2-lightblue" /></a>
     <a href="#commits" alt="Commits">
@@ -32,7 +32,7 @@
 </p>
 
 ### $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space OncoGenomics \space analysis}$$
-This software plots, compare and merge information from all exomes of a cohort of cancer patients before and after treatment. It also includes a customizable filter to help you removing remaining germline and/or non driver mutations. The Filter, Summarise, Compare and Merge modules can be run separately or all together. If your study is not longitudinal, you can just run the first two modules to get a graphical and statistical sumup of the most impactant variants from your WES data. The software is designed to be user-friendly and to be used by bioinformaticians, biologists and even clinicians research teams.
+This software plots, compares and merges information from all exomes of a cohort of cancer patients before and after treatment. It also includes a customizable filter to help you removing remaining germline and/or non driver mutations (even without a paired normal sample). The Filter, Summarise, Compare and Merge modules can be run separately or all together. If your study is not longitudinal, you can just run the first two modules to get a graphical and statistical sumup of the most impactant variants from your WES data. The software is designed to be user-friendly and to be used by bioinformaticians, biologists and even clinicians research teams.
 
 ![LOncoG simple workflow](tutorials/pictures/LOncoG_workflow.png)
 
@@ -140,6 +140,7 @@ The VCF format must be respected, so LOncoG can parse files easily:
 ![VCF_format](tutorials/pictures/vcf_format.png)
 
 ### Running the software
+For 20 patients (with 2 exomes of 10k variants each), the software will take around 15 minutes to run all modules. \
 To run the script, activate the environment if not already active, and run loncog.py from a Linux system as follows:
 ```bash
 python3 loncog.py
@@ -161,7 +162,7 @@ The ```Filter``` module will use your filtering criterias to remove unwanted var
 It will create a new VCF file for each sample/exome, with the remaining variants ("passed" means "variants that passed LOncoG filter"). \
 
 If you choose ```keep_filtered_vcf_after_run = True```, a copy of the original VCF files will be saved in the output folder, including a 'failed_filters' field
-to indicate why the variant was removed. \
+to indicate why the variant was removed. "LOTUS_filter" is added to the VCF FILTER field of all variants, and LOTUS_filter=PASS in the variants that passed LOncoG filter. \
 
 Finally, the module will create a 'Filtered_stats.txt' file with statistics about the filtering process. \
 The output folder should look like this: 
@@ -175,7 +176,6 @@ Example Filter stats file can be found [here](toy_dataset/toy_output/samples/fil
   <img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="49%" />
   <img src="toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png" width="49%" /> 
 </p>
-
 
 ### Summarise
 The ```Summarise``` module will create plots and tables to summarize the variants from your VCF "passed" files (created by ```Filter``` module). \
