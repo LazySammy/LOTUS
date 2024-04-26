@@ -155,12 +155,12 @@ If you chose a specific output folder (```output_folder_path```), the results wi
 
 During the execution you will have more or less verbose prints dpeending on your choice, that should look like this:
 <p float="center">
-  <img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="49%" />
-  <img src="toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png" width="49%" /> 
+  <img src="tutorials/pictures/run_Filter.PNG" width="49%" />
+  <img src="tutorials/pictures/run_Summarise.PNG" width="49%" /> 
 </p>
 <p float="center">
-  <img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="49%" />
-  <img src="toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png" width="49%" /> 
+  <img src="tutorials/pictures/run_Compare.PNG" width="49%" />
+  <img src="tutorials/pictures/run_Merge.PNG" width="49%" /> 
 </p>
 
 Once LOncoG is done, [```job_done.wav```](input/resources/job_done.wav) is played, so you are notified immediately.
