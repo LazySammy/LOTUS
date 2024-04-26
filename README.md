@@ -171,7 +171,7 @@ During the execution you will have more or less verbose prints dpeending on your
 
 Once LOncoG is done, [```job_done.wav```](input/resources/job_done.wav) is played, so you are notified immediately.
 
-## Toy dataset
+## Toy-dataset
 In the [toy_dataset](toy_dataset) folder, you will find a toy dataset to test the software. \
 ** It is highly recommended to use the toy dataset to understand the software functioning before using your own data.** \
 To perform a run with the toy dataset, set ```use_toy_dataset = yes``` in the [config.txt](config.txt) file.
