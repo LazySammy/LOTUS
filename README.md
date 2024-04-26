@@ -257,24 +257,52 @@ Compare will create statistics and plots for each pair of exome, depending on yo
 > For example: if you selected ```change```, the variants that appeared or disappeared between time 1 and time 2 will be higlighted.
 In the ```comparisons``` subfolder, one subfolder per patient will be created, with the name of the pair of exomes.
 
-14 outputs can be produced:
-MUSIC ASSASSINS CREED TWO STEPS FROM HELL
+10 outputs can be produced:
 1) ```compare stats file```: a text file with statistics about the variants in common/differing between times.
+> example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/changed_variants_stats.txt)
+<p><img src="tutorials/pictures/C_stats.PNG" width="40%"/></p>
+
 2) ```common/changed variants VCF file```: a VCF file with only the variants in common/differing between times and their key characteristics.
+> example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/KTN102_t0-t1_change_variants.vcf)
+
 3) ```mutated genes table```: a table with the mutated genes (and their characteristics) in common/differing between times.
+> example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/KTN102_t0-t1_change_genes.xlsx)
+<p><img src="tutorials/pictures/C_mutated_genes.PNG" width="100%"/></p>
+
 4) ```variants table```: a table with the variants (and their characteristics) in common/differing between times.
+> example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/KTN102_t0-t1_change_variants.xlsx)
 > Note: if you choose xlsx format, the more interesting variants will be sorted on top of the table. \
 > Good indicators (low allelic frequency for example) are colored in green, and bad indicators go from yellow to red higlighting in dataframe.
-1) ```SNP profile table```: a table with exact frequencies of the SNPs in common/differing between times.
-2) ```SNP profile plot```: a mirror barplot comparing the distribution of SNPs between both times, for each patient.
-3) ```indel profile table```: a table with exact frequencies of the Indels in common/differing between times.
-4) ```indel profile plot```: a mirror barplot comparing the distribution of insertions and deletions between both times, for each patient.
-5) ```mutation types plot```: a barplot/piechart comparing the numbers of each type of mutation (SNP, deletion, etc) between t1 and t2.
-6)  ```mutation subtypes plot```: a barplot/piechart comparing the numbers of each subtype of mutation (frameshift insertion, missense, etc) between t1 and t2.
-7)  ```protein SIFT impacts plot```: a comparison double boxplot for distribution of SIFT scores and associated predictions in t1 and t2 (with t-test).
-8)  ```protein Polyphen impacts plot```: a boxplot for distribution of Polyphen2 scores and associated predictions in t1 and t2 (with t-test).
-9)  ```ToppGene table```: a table with the results from ToppGene analysis (if you chose to run it), for common/differing variants.
-10) ```Panther table```: a table with the results from Panther analysis (if you chose to run it), for common/differing variants.
+<p><img src="tutorials/pictures/C_variants.PNG" width="100%"/></p>
+
+5) ```SNP profile table```: a table with exact frequencies of the SNPs in common/differing between times.
+6) ```SNP profile plot```: a mirror barplot comparing the distribution of SNPs between both times, for each patient.
+> example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/SNP_profile.png)
+<p><img src="tutorials/pictures/C_snp_plot.PNG" width="40%"/></p>
+
+7) ```indel profile table```: a table with exact frequencies of the Indels in common/differing between times.
+8) ```indel profile plot```: a mirror barplot comparing the distribution of insertions and deletions between both times, for each patient.
+9)  ```mutation types plot```: a barplot/piechart comparing the numbers of each type of mutation (SNP, deletion, etc) between t1 and t2.
+> example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t2/mutation_types.png)
+<p><img src="toy_dataset/toy_output/comparisons/KTN102_t0-t2/mutation_types.png" width="40%"/></p>
+
+10) ```mutation subtypes plot```: a barplot/piechart comparing the numbers of each subtype of mutation (frameshift insertion, missense, etc) between t1 and t2.
+> example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/mutation_subtypes.png)
+> Note: subtypes plot only works if you annotated your VCF files with ANNOVAR refGene database.
+<p><img src="toy_dataset/toy_output/comparisons/KTN102_t0-t1/mutation_subtypes.png" width="40%"/></p>
+
+11) ```protein SIFT impacts plot```: a comparison double boxplot for distribution of SIFT scores and associated predictions in t1 and t2 (with t-test).
+> example [here](toy_dataset/toy_output/comparisons/KTN102_t1-t2/SIFT_protein_impacts.png)
+<p><img src="toy_dataset/toy_output/comparisons/KTN102_t1-t2/SIFT_protein_impacts.png" width="40%"/></p>
+
+12) ```protein Polyphen impacts plot```: a boxplot for distribution of Polyphen2 scores and associated predictions in t1 and t2 (with t-test).
+> example [here](toy_dataset/toy_output/comparisons/KTN102_t1-t2/Polyphen2_protein_impacts.png)
+<p><img src="toy_dataset/toy_output/comparisons/KTN102_t1-t2/Polyphen2_protein_impacts.png" width="40%"/></p>
+
+13) ```ToppGene table```: a table with the results from ToppGene analysis (if you chose to run it), for common/differing variants.
+14) ```Panther table```: a table with the results from Panther analysis (if you chose to run it), for common/differing variants.
+> example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/GO_Panther.xlsx)
+<p><img src="tutorials/pictures/C_panther.PNG" width="40%"/></p>
 
 ### Merge
 The ```Merge``` module will create plots to merge the information from all variants of your cohort. \

@@ -40,12 +40,13 @@ Here are some key arguments about the program in general, and also about input a
 
 #### 🔵 ```output_folder_path```
 - Choose the path where you want to save the results of the analysis:
-    - **new** > creates a new folder in "output" folder with date as a name (format : ```DD-MM-YY(hour)```, ```26-04-24(11h42)```)
+    - **no** > creates a new folder in "output" folder with date as a name (format : ```DD-MM-YY(hour)```, ```26-04-24(11h42)```)
     - **<your path>** > creates a new folder located at the path specified
 If you want the output to be saved in a specific folder, or if **you have already run a module before**, you can specify the path of the folder where the results are saved. **For example, if you have already run Filter and Summarise in a folder, you can use its path to complete it with Compare and Merge analysis.**
 If you choose to run Filter or Summarise again, it will overwrite the previous results if you don't change the output_folder_path.
+*If you choose ```no``` and run multiples times in the same minute, ` is added to the folder name to avoid overwriting.*
 - Options: 
-  - ```new``` ☑️ 
+  - ```no``` ☑️ 
   - ```<you path>```
 
 #### 🔵 ```keep_filtered_vcf_after_run```
