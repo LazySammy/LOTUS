@@ -191,7 +191,7 @@ to indicate why the variant was removed. "LOTUS_filter" is added to the VCF FILT
 
 Finally, the module will create a 'filtered_stats.txt' file with statistics about the filtering process. \
 The output folder should look like this: 
-<p><img src="tutorials/pictures/filtered_stats.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/filtered_stats.PNG" width="65%"/></p>
 
 Example passed VCF file can be found [here](toy_dataset/toy_output/samples/toy_KTN102-t0/toy_KTN102-t0_passed.vcf). \
 Example filtered VCF file can be found [here](toy_dataset/toy_output/samples/toy_KTN102-t0/toy_KTN102-t0_filtered.vcf). \
@@ -204,7 +204,7 @@ The outputs from Summarise will be added to the Filter outputs in the ```samples
 13 outputs can be produced (depending on the success of each file to be created, depending on your data).
 1) ```passed stats file```: a txt file with statistics about the variants characteristics, for one filtered exome.
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/passed_stats.txt)
-<p><img src="tutorials/pictures/passed_stats.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/passed_stats.PNG" width="65%"/></p>
 
 2) ```mutated genes table```: a table with the mutated genes (and their characteristics) found in the passed exome.
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/mutated_genes.xlsx)
@@ -218,40 +218,40 @@ The outputs from Summarise will be added to the Filter outputs in the ```samples
 
 4) ```SNP profile table```: a table with exact frequencies of the SNPs found in the passed exome
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/SNP_profile.xlsx)
-<p><img src="tutorials/pictures/S_snp_table.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/S_snp_table.PNG" width="65%"/></p>
 
 5) ```SNP profile plot```: a barplot with the distribution of the SNPs found in the passed exome
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/SNP_profile.png)
-<p><img src="tutorials/pictures/S_snp_plot.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/S_snp_plot.PNG" width="65%"/></p>
 
 6) ```indel profile table```: a table with exact frequencies of the Indels found in the passed exome
 7) ```indel profile plot```: a barplot with the distribution of the Indels types found in the passed exome
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t2/indel_profile.png)
-<p><img src="tutorials/pictures/S_indel_plot.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/S_indel_plot.PNG" width="65%"/></p>
 
 8) ```mutation types plot```: a barplot/piechart with the numbers of each type of mutation (SNP, deletion, etc) found in the passed exome
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t2/passed_mutation_types.png)
-<p><img src="toy_dataset/toy_output/samples/toy_KTN102-t2/passed_mutation_types.png" width="40%"/></p>
+<p><img src="toy_dataset/toy_output/samples/toy_KTN102-t2/passed_mutation_types.png" width="65%"/></p>
 
 9)  ```mutation subtypes plot```: a barplot/piechart with the numbers of each subtype of mutation (frameshift insertion, missense, etc) found in the passed exome
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t2/passed_mutation_subtypes.png)
-<p><img src="toy_dataset/toy_output/samples/toy_KTN102-t2/passed_mutation_subtypes.png" width="40%"/></p>
+<p><img src="toy_dataset/toy_output/samples/toy_KTN102-t2/passed_mutation_subtypes.png" width="65%"/></p>
 
 10) ```protein SIFT impacts plot```: a boxplot for distribution of SIFT scores and associated predictions 
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t2/passed_SIFT_protein_impact_scores.png)
-<p><img src="tutorials/pictures/S_sift.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/S_sift.PNG" width="65%"/></p>
 
 11) ```protein Polyphen impacts plot```: a boxplot for distribution of Polyphen2 scores and associated predictions
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t2/passed_Polyphen2_protein_impact_scores.png)
-<p><img src="tutorials/pictures/S_polyphen.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/S_polyphen.PNG" width="65%"/></p>
 
 12) ```ToppGene table```: a table with the results from ToppGene analysis (if you chose to run it)
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t1/GO_ToppGene.xlsx)
-<p><img src="tutorials/pictures/S_toppgene.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/S_toppgene.PNG" width="65%"/></p>
 
 13) ```Panther table```: a table with the results from Panther analysis (if you chose to run it)
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t1/GO_Panther.xlsx)
-<p><img src="tutorials/pictures/S_panther.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/S_panther.PNG" width="65%"/></p>
 
 After parsing all of your VCF files, Summarise module creates 2 last output, in output folder root:
 - ```mutation types table```: numbers of each type of mutation, for all samples of your cohort (SNP, Indel, etc)
@@ -268,7 +268,7 @@ In the ```comparisons``` subfolder, one subfolder per patient will be created, w
 10 outputs can be produced:
 1) ```compare stats file```: a text file with statistics about the variants in common/differing between times.
 > example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/changed_variants_stats.txt)
-<p><img src="tutorials/pictures/C_stats.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/C_stats.PNG" width="65%"/></p>
 
 2) ```common/changed variants VCF file```: a VCF file with only the variants in common/differing between times and their key characteristics.
 > example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/KTN102_t0-t1_change_variants.vcf)
@@ -286,31 +286,31 @@ In the ```comparisons``` subfolder, one subfolder per patient will be created, w
 5) ```SNP profile table```: a table with exact frequencies of the SNPs in common/differing between times.
 6) ```SNP profile plot```: a mirror barplot comparing the distribution of SNPs between both times, for each patient.
 > example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/SNP_profile.png)
-<p><img src="tutorials/pictures/C_snp_plot.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/C_snp_plot.PNG" width="65%"/></p>
 
 7) ```indel profile table```: a table with exact frequencies of the Indels in common/differing between times.
 8) ```indel profile plot```: a mirror barplot comparing the distribution of insertions and deletions between both times, for each patient.
 9)  ```mutation types plot```: a barplot/piechart comparing the numbers of each type of mutation (SNP, deletion, etc) between t1 and t2.
 > example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t2/mutation_types.png)
-<p><img src="toy_dataset/toy_output/comparisons/KTN102_t0-t2/mutation_types.png" width="40%"/></p>
+<p><img src="toy_dataset/toy_output/comparisons/KTN102_t0-t2/mutation_types.png" width="65%"/></p>
 
 10) ```mutation subtypes plot```: a barplot/piechart comparing the numbers of each subtype of mutation (frameshift insertion, missense, etc) between t1 and t2.
 > example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/mutation_subtypes.png) \
 > Note: subtypes plot only works if you annotated your VCF files with ANNOVAR refGene database.
-<p><img src="toy_dataset/toy_output/comparisons/KTN102_t0-t1/mutation_subtypes.png" width="40%"/></p>
+<p><img src="toy_dataset/toy_output/comparisons/KTN102_t0-t1/mutation_subtypes.png" width="65%"/></p>
 
 11) ```protein SIFT impacts plot```: a comparison double boxplot for distribution of SIFT scores and associated predictions in t1 and t2 (with t-test).
 > example [here](toy_dataset/toy_output/comparisons/KTN102_t1-t2/SIFT_protein_impacts.png)
-<p><img src="toy_dataset/toy_output/comparisons/KTN102_t1-t2/SIFT_protein_impacts.png" width="40%"/></p>
+<p><img src="toy_dataset/toy_output/comparisons/KTN102_t1-t2/SIFT_protein_impacts.png" width="65%"/></p>
 
 12) ```protein Polyphen impacts plot```: a boxplot for distribution of Polyphen2 scores and associated predictions in t1 and t2 (with t-test).
 > example [here](toy_dataset/toy_output/comparisons/KTN102_t1-t2/Polyphen2_protein_impacts.png)
-<p><img src="toy_dataset/toy_output/comparisons/KTN102_t1-t2/Polyphen2_protein_impacts.png" width="40%"/></p>
+<p><img src="toy_dataset/toy_output/comparisons/KTN102_t1-t2/Polyphen2_protein_impacts.png" width="65%"/></p>
 
 13) ```ToppGene table```: a table with the results from ToppGene analysis (if you chose to run it), for common/differing variants.
 14) ```Panther table```: a table with the results from Panther analysis (if you chose to run it), for common/differing variants.
 > example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/GO_Panther.xlsx)
-<p><img src="tutorials/pictures/C_panther.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/C_panther.PNG" width="65%"/></p>
 
 ### Merge
 The ```Merge``` module will create plots to merge the information from all variants of your cohort. \
@@ -322,22 +322,22 @@ There is no subfolder in ```merge``` subfolder, all Merge outputs are saved here
 11 outputs can be produced:
 1) ```merged stats file```: a text file with statistics (inside whole cohort) about the variants in several patients, and characteristics of the mutated genes.
 > example [here](toy_dataset/toy_output/merge/merged_stats.txt)
-<p><img src="tutorials/pictures/M_stats.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/M_stats.PNG" width="65%"/></p>
 
 2) ```merge variants VCF file```: a VCF file with all variants found in whole dataset, with their key characteristics.
 > example [here](toy_dataset/toy_output/merge/merged_variants.vcf)
 
 3) ```chromosomes map plot```: a plot representing the frequency of mutated genes, as well as their localisation on the human genome.
 > example [here](toy_dataset/toy_output/merge/Chromosomes_map.png)
-<p><img src="tutorials/pictures/M_chromosomes.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/M_chromosomes.PNG" width="65%"/></p>
 
 4) ```mutated genes upset plot``` : an upset plot representing the mutated genes found in several patients.
 >  example [here](toy_dataset/toy_output/merge/upset_genes.png)
-<p><img src="tutorials/pictures/M_genes_upset.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/M_genes_upset.PNG" width="65%"/></p>
 
 5) ```variants upset plot```: an upset plot representing the variants found in several patients.
 > example [here](toy_dataset/toy_output/merge/upset_variants.png)
-<p><img src="tutorials/pictures/M_variants_upset.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/M_variants_upset.PNG" width="65%"/></p>
 
 6) ```mutated genes table```: a table with the mutated genes (and their characteristics), regarding the whole dataset.
 > example [here](toy_dataset/toy_output/merge/merged_genes.xlsx) \
@@ -359,8 +359,8 @@ There is no subfolder in ```merge``` subfolder, all Merge outputs are saved here
 10)  ```VAF pop plot```: a double boxplot comparing the distribution of variant allelic frequencies in *population*, merging all variants, t1 *vs* t2 (t-test).
 > example [here](toy_dataset/toy_output/merge/VAF_sample_scatter.png) \
 > Maybe more rare variants remain/appear after treatment, in cases of drug resistance for example.
-<p><img src="tutorials/pictures/M_vaf_pop.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/M_vaf_pop.PNG" width="65%"/></p>
 
 11)  ```VAF sample plot```: a double boxplot comparing the distribution of the variant allelic frequencies in *dataset*, merging all variants, t1 *vs* t2 (t-test).
 > example [here](toy_dataset/toy_output/merge/VAF_sample_scatter.png) 
-<p><img src="tutorials/pictures/M_vaf_sample.PNG" width="40%"/></p>
+<p><img src="tutorials/pictures/M_vaf_sample.PNG" width="65%"/></p>
