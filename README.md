@@ -154,14 +154,10 @@ The output will be saved in the [output](output/) folder by default, in a subfol
 If you chose a specific output folder (```output_folder_path```), the results will be saved here.
 
 During the execution you will have more or less verbose prints dpeending on your choice, that should look like this:
-<p float="center">
-  <img src="tutorials/pictures/run_Filter.PNG" width="49%" />
-  <img src="tutorials/pictures/run_Summarise.PNG" width="49%" /> 
-</p>
-<p float="center">
-  <img src="tutorials/pictures/run_Compare.PNG" width="49%" />
-  <img src="tutorials/pictures/run_Merge.PNG" width="49%" /> 
-</p>
+<p float="center"><img src="tutorials/pictures/run_Filter.PNG" width="100%"/></p>
+<p float="center"><img src="tutorials/pictures/run_Summarise.PNG" width="100%"/></p>
+<p float="center"><img src="tutorials/pictures/run_Compare.PNG" width="100%"/></p>
+<p float="center"><img src="tutorials/pictures/run_Merge.PNG" width="100%"/> </p>
 
 Once LOncoG is done, [```job_done.wav```](input/resources/job_done.wav) is played, so you are notified immediately.
 
