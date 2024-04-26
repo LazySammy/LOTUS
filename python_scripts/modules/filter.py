@@ -1104,7 +1104,8 @@ def filter(dict_colors, dict_para, output1, output2, vcf_file: str, logger: str,
 def main(dict_colors, args, vcf_file, recover):
 
 	if recover:
-		args = manage_parameters('config.txt', True)
+		config_path = args['config_path']
+		args = manage_parameters(config_path, True)
 	dict_para = copy.copy(args)
 
 	output_path = dict_para['output_path_sample'].replace(".vcf","")

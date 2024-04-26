@@ -123,7 +123,7 @@ This section describes the quick steps you need to follow to run the software.
 
 ### Parameters
 The power of LOncoG is that you can run the modules separately or all together. 
-** If you have already ran a module before**, you can specify the path of the folder where the results are saved. **For example, if you have already run Filter and Summarise in a folder, you can use its path to complete it with Compare and Merge analysis. If you don't specify, LOncoG will not be able to read results from Filter and Summarise, that are necessary for Compare and Merge modules.**
+**If you have already ran a module before**, you can specify the path of the folder where the results are saved. **For example, if you have already run Filter and Summarise in a folder, you can use its path to complete it with Compare and Merge analysis. If you don't specify, LOncoG will not be able to read results from Filter and Summarise, that are necessary for Compare and Merge modules.**
 Choose the parameters for the software in the [config.txt](config.txt) file. \
 An exhaustive description with examples and advices is available in [PARAMETERS.md](tutorials/Parameters.md) file.
 
@@ -139,10 +139,11 @@ The software is designed to work with VCF files. You can use the toy dataset pro
 The VCF format must be respected, so LOncoG can parse files easily:
 ![VCF_format](tutorials/pictures/vcf_format.png)
 
-1) Download resources files from this link: https://drive.google.com/drive/folders/1gktCt6VzxNY-zJEjFUIUQHVW8jW0c1wM?usp=sharing. \
+1) Download resources files from this link: \
+https://drive.google.com/drive/folders/1gktCt6VzxNY-zJEjFUIUQHVW8jW0c1wM?usp=sharing. \
 > **If you don't use hg38 genome version, download the equivalent files in your own version**.
-2) Put the resources files in the [resources](input/resources/) folder. \
-3) Choose your VCF files and put them in the [vcf](input/vcf/) folder. \
+1) Put the resources files in the [resources](input/resources/) folder. \
+2) Choose your VCF files and put them in the [vcf](input/vcf/) folder. \
 > Note: you can choose a custom path with the ```vcf_folder``` parameter in the [config.txt](config.txt) file.
 1) Fill your dataset table with the names of your VCF files (pair by pair), as explained above. \
 2) Run the software.
@@ -173,10 +174,11 @@ Once LOncoG is done, [```job_done.wav```](input/resources/job_done.wav) is playe
 
 ## Toy-dataset
 In the [toy_dataset](toy_dataset) folder, you will find a toy dataset to test the software. \
-** It is highly recommended to use the toy dataset to understand the software functioning before using your own data.** \
-To perform a run with the toy dataset, set ```use_toy_dataset = yes``` in the [config.txt](config.txt) file.
-
-
+**It is highly recommended to use the toy dataset to understand the software functioning before using your own data.** \
+To perform a run with the toy dataset, set ```use_toy_dataset = yes``` in the [config.txt](config.txt) file. \
+It will run every module, and output the results in the [toy_output](toy_dataset/new_toy_output) folder. \
+The output you should get is available in the [toy_output](toy_dataset/toy_output) folder. \
+**This way, you can easily understand the link between dataset table, input files and output files.**
 
 ## Output
 A folder called ```samples``` will be created in the output folder, containing the results of the Filter and Summarise. \
@@ -187,11 +189,11 @@ The ```Filter``` module will use your filtering criterias to remove unwanted var
 It will create a new VCF file for each sample/exome, with the remaining variants ("passed" means "variants that passed LOncoG filter").
 
 If you choose ```keep_filtered_vcf_after_run = True```, a copy of the original VCF files will be saved in the output folder, including a 'failed_filters' field
-to indicate why the variant was removed. "LOTUS_filter" is added to the VCF FILTER field of all variants, and LOTUS_filter=PASS in the variants that passed LOncoG filter. \
+to indicate why the variant was removed. "LOTUS_filter" is added to the VCF FILTER field of all variants, and LOTUS_filter=PASS in the variants that passed LOncoG filter.
 
 Finally, the module will create a 'filtered_stats.txt' file with statistics about the filtering process. \
 The output folder should look like this: 
-<p><img src="tutorials/pictures/filtered_stats.PNG" width="65%"/></p>
+<p><img src="tutorials/pictures/filtered_stats.PNG" width="50%"/></p>
 
 Example passed VCF file can be found [here](toy_dataset/toy_output/samples/toy_KTN102-t0/toy_KTN102-t0_passed.vcf). \
 Example filtered VCF file can be found [here](toy_dataset/toy_output/samples/toy_KTN102-t0/toy_KTN102-t0_filtered.vcf). \
@@ -218,11 +220,11 @@ The outputs from Summarise will be added to the Filter outputs in the ```samples
 
 4) ```SNP profile table```: a table with exact frequencies of the SNPs found in the passed exome
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/SNP_profile.xlsx)
-<p><img src="tutorials/pictures/S_snp_table.PNG" width="100%"/></p>
+<p><img src="tutorials/pictures/S_snp_table.PNG" width="50%"/></p>
 
 5) ```SNP profile plot```: a barplot with the distribution of the SNPs found in the passed exome
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/SNP_profile.png)
-<p><img src="tutorials/pictures/S_snp_plot.PNG" width="65%"/></p>
+<p><img src="tutorials/pictures/S_snp_plot.PNG" width="80%"/></p>
 
 6) ```indel profile table```: a table with exact frequencies of the Indels found in the passed exome
 7) ```indel profile plot```: a barplot with the distribution of the Indels types found in the passed exome
@@ -231,19 +233,19 @@ The outputs from Summarise will be added to the Filter outputs in the ```samples
 
 8) ```mutation types plot```: a barplot/piechart with the numbers of each type of mutation (SNP, deletion, etc) found in the passed exome
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t2/passed_mutation_types.png)
-<p><img src="toy_dataset/toy_output/samples/toy_KTN102-t2/passed_mutation_types.png" width="65%"/></p>
+<p><img src="toy_dataset/toy_output/samples/toy_KTN102-t2/passed_mutation_types.png" width="85%"/></p>
 
 9)  ```mutation subtypes plot```: a barplot/piechart with the numbers of each subtype of mutation (frameshift insertion, missense, etc) found in the passed exome
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t2/passed_mutation_subtypes.png)
-<p><img src="toy_dataset/toy_output/samples/toy_KTN102-t2/passed_mutation_subtypes.png" width="65%"/></p>
+<p><img src="toy_dataset/toy_output/samples/toy_KTN102-t2/passed_mutation_subtypes.png" width="85%"/></p>
 
 10) ```protein SIFT impacts plot```: a boxplot for distribution of SIFT scores and associated predictions 
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t2/passed_SIFT_protein_impact_scores.png)
-<p><img src="tutorials/pictures/S_sift.PNG" width="65%"/></p>
+<p><img src="tutorials/pictures/S_sift.PNG" width="80%"/></p>
 
 11) ```protein Polyphen impacts plot```: a boxplot for distribution of Polyphen2 scores and associated predictions
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t2/passed_Polyphen2_protein_impact_scores.png)
-<p><img src="tutorials/pictures/S_polyphen.PNG" width="65%"/></p>
+<p><img src="tutorials/pictures/S_polyphen.PNG" width="80%"/></p>
 
 12) ```ToppGene table```: a table with the results from ToppGene analysis (if you chose to run it)
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t1/GO_ToppGene.xlsx)
@@ -286,26 +288,26 @@ In the ```comparisons``` subfolder, one subfolder per patient will be created, w
 5) ```SNP profile table```: a table with exact frequencies of the SNPs in common/differing between times.
 6) ```SNP profile plot```: a mirror barplot comparing the distribution of SNPs between both times, for each patient.
 > example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/SNP_profile.png)
-<p><img src="tutorials/pictures/C_snp_plot.PNG" width="65%"/></p>
+<p><img src="tutorials/pictures/C_snp_plot.PNG" width="80%"/></p>
 
 7) ```indel profile table```: a table with exact frequencies of the Indels in common/differing between times.
 8) ```indel profile plot```: a mirror barplot comparing the distribution of insertions and deletions between both times, for each patient.
 9)  ```mutation types plot```: a barplot/piechart comparing the numbers of each type of mutation (SNP, deletion, etc) between t1 and t2.
 > example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t2/mutation_types.png)
-<p><img src="toy_dataset/toy_output/comparisons/KTN102_t0-t2/mutation_types.png" width="65%"/></p>
+<p><img src="toy_dataset/toy_output/comparisons/KTN102_t0-t2/mutation_types.png" width="75%"/></p>
 
 10) ```mutation subtypes plot```: a barplot/piechart comparing the numbers of each subtype of mutation (frameshift insertion, missense, etc) between t1 and t2.
 > example [here](toy_dataset/toy_output/comparisons/KTN102_t0-t1/mutation_subtypes.png) \
 > Note: subtypes plot only works if you annotated your VCF files with ANNOVAR refGene database.
-<p><img src="toy_dataset/toy_output/comparisons/KTN102_t0-t1/mutation_subtypes.png" width="65%"/></p>
+<p><img src="toy_dataset/toy_output/comparisons/KTN102_t0-t1/mutation_subtypes.png" width="75%"/></p>
 
 11) ```protein SIFT impacts plot```: a comparison double boxplot for distribution of SIFT scores and associated predictions in t1 and t2 (with t-test).
 > example [here](toy_dataset/toy_output/comparisons/KTN102_t1-t2/SIFT_protein_impacts.png)
-<p><img src="toy_dataset/toy_output/comparisons/KTN102_t1-t2/SIFT_protein_impacts.png" width="65%"/></p>
+<p><img src="toy_dataset/toy_output/comparisons/KTN102_t1-t2/SIFT_protein_impacts.png" width="80%"/></p>
 
 12) ```protein Polyphen impacts plot```: a boxplot for distribution of Polyphen2 scores and associated predictions in t1 and t2 (with t-test).
 > example [here](toy_dataset/toy_output/comparisons/KTN102_t1-t2/Polyphen2_protein_impacts.png)
-<p><img src="toy_dataset/toy_output/comparisons/KTN102_t1-t2/Polyphen2_protein_impacts.png" width="65%"/></p>
+<p><img src="toy_dataset/toy_output/comparisons/KTN102_t1-t2/Polyphen2_protein_impacts.png" width="80%"/></p>
 
 13) ```ToppGene table```: a table with the results from ToppGene analysis (if you chose to run it), for common/differing variants.
 14) ```Panther table```: a table with the results from Panther analysis (if you chose to run it), for common/differing variants.
@@ -329,15 +331,15 @@ There is no subfolder in ```merge``` subfolder, all Merge outputs are saved here
 
 3) ```chromosomes map plot```: a plot representing the frequency of mutated genes, as well as their localisation on the human genome.
 > example [here](toy_dataset/toy_output/merge/Chromosomes_map.png)
-<p><img src="tutorials/pictures/M_chromosomes.PNG" width="65%"/></p>
+<p><img src="tutorials/pictures/M_chromosomes.PNG" width="85%"/></p>
 
 4) ```mutated genes upset plot``` : an upset plot representing the mutated genes found in several patients.
 >  example [here](toy_dataset/toy_output/merge/upset_genes.png)
-<p><img src="tutorials/pictures/M_genes_upset.PNG" width="65%"/></p>
+<p><img src="tutorials/pictures/M_genes_upset.PNG" width="80%"/></p>
 
 5) ```variants upset plot```: an upset plot representing the variants found in several patients.
 > example [here](toy_dataset/toy_output/merge/upset_variants.png)
-<p><img src="tutorials/pictures/M_variants_upset.PNG" width="65%"/></p>
+<p><img src="tutorials/pictures/M_variants_upset.PNG" width="70%"/></p>
 
 6) ```mutated genes table```: a table with the mutated genes (and their characteristics), regarding the whole dataset.
 > example [here](toy_dataset/toy_output/merge/merged_genes.xlsx) \

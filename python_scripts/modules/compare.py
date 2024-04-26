@@ -998,7 +998,7 @@ def create_protein_impacts_plots(dict_para, dict_impacts, pair_id):
 			'Polyphen2 score': polyphen2_score,
 			'Polyphen2 pred': polyphen2_pred}
 
-	config_path = 'config.txt'
+	config_path = dict_para['config_path']
 	with open(config_path, "r") as file:
 		lines = file.readlines()
 		for line in lines:
@@ -1584,7 +1584,7 @@ def write_stats(dict_para, df_variants, dict_variants):
 						 'chr21': 0, 'chr22': 0, 'chrX': 0, 'chrY': 0, 'chrM': 0}
 	gene_counts = {}
 
-	config_path = 'config.txt'
+	config_path = dict_para['config_path']
 	with open(config_path, "r") as file:
 		lines = file.readlines()
 		for line in lines:

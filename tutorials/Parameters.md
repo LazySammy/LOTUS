@@ -73,10 +73,11 @@ If you choose to run Filter or Summarise again, it will overwrite the previous r
 
 #### 🔵 ```use_toy_dataset```
 If you want to test LOncoG with a toy dataset (small dataset with 2 patients and 3 timepoints with pre-filled parameters and dataset table), fill ```yes```.
-More details about the dataset in the [global README](../README.md##Toy-dataset).
+More details about the dataset in the [global README](../README.md) ```Toy dataset``` section.
 - Options: 
   - ```yes``` ☑️ 
   - ```no```
+
 
 ### Input
 #### 🔵 ```vcf_folder_path```

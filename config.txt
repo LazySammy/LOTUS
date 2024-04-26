@@ -4,6 +4,7 @@ module(s) = Filter, Summarise, Compare, Merge
 output_folder_path = no
 keep_filtered_vcf_after_run = no
 variants_selection_approach = change
+use_toy_dataset = yes
 
 ## Input
 vcf_folder_path = input/vcf

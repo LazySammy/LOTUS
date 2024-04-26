@@ -1461,7 +1461,7 @@ def write_stats(dict_subtypes, dict_parameters, vcf_file_filter: str, vcf_file_p
 	Input : path to the vcf file from filter module (optional), path to the vcf file containing only pass variants from filter module, counter containing vcf stats and the output path file
 	Output : Write the vcf stats file
 	'''
-	config_path = 'config.txt'
+	config_path = dict_parameters['config_path']
 	with open(config_path, "r") as file:
 		lines = file.readlines()
 		for line in lines:
@@ -2032,7 +2032,7 @@ def create_mutations_subtypes_barplot(dict_para):
 
 
 def create_protein_impacts_plots(dict_para, dict_impacts):
-	config_path = 'config.txt'
+	config_path = dict_para['config_path']
 	with open(config_path, "r") as file:
 		lines = file.readlines()
 		for line in lines:

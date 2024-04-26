@@ -649,8 +649,8 @@ def write_stats_merge(args, df_variants_M, pairs):
 	for variant_id, variant_info in variants_dict.items():
 		for key in mutation_counts.keys():
 			try:
-				if key == variant_info['Mutation']:
-					mutation_counts[key] += 1
+				if key in variant_info['Mutation']:
+					mutation_counts[key] += variant_info['Mutation'].count(key)
 			except:
 				print('not annotated by ANNOVAR')
 		for key in chromosome_counts.keys():
@@ -1601,14 +1601,15 @@ def merge_results(args, file_paths, category, output, infos, cytoband_file, chro
 	##########################################
 	# Save genes list files (.xlsx and .tsv) #
 	logger.info(f'Save genes list files in {Path(output).with_suffix(".MutatedGenes.xlsx")} and {Path(output).with_suffix(".MutatedGenes.tsv")}')
+	df_final_genes.index.name = "Gene(s)"
 
 	if 'XLSX' in args['M_mutated_genes_table_format(s)'].upper():
-		df_final_genes = pd.DataFrame(df_final_genes)
-		improve_df_style(df_final_genes, args['output_path'] + 'merge/merged_genes.xlsx')
+		df_final_genes.to_excel(args['output_path'] + 'merge/merged_genes.xlsx', index=True)
+		# improve_df_style(df_final_genes, args['output_path'] + 'merge/merged_genes.xlsx')
 	elif 'TSV' in args['M_mutated_genes_table_format(s)'].upper():
-		df_final_genes.to_csv(output, sep='\t')
+		df_final_genes.to_csv(output, sep='\t', index=True)
 	elif 'CSV' in args['M_mutated_genes_table_format(s)'].upper():
-		df_final_genes.to_csv(output, sep=',')
+		df_final_genes.to_csv(output, sep=',', index=True)
 
 	df_variants_M = create_variants_table(args)
 	write_stats_merge(args, df_variants_M, pair_names_column)
@@ -2109,7 +2110,7 @@ def main(args, output_path):
 	l_col2_new = [name.split('.funco')[0] for name in l_col2_names]
 	nb_files = len(l_col1_new) + len(l_col2_new)
 	names = [col1 + "___" + col2 for col1, col2 in zip(l_col1_new, l_col2_new)]
-	path = "config.txt"
+	path = args['config_path']
 	with open(path, 'r') as file:
 		for line in file:
 			if line.startswith('#') or line == '\n' or line.startswith('------'):
