@@ -14,7 +14,7 @@
     <a href="#codacy" alt="Codacy">
         <img src="https://img.shields.io/badge/codacy-B-lightgreen" /></a>
     <a href="#languages" alt="Languages">
-        <img src="https://img.shields.io/badge/language-Python 3-brightgreen" /></a>
+        <img src="https://img.shields.io/badge/language-Python 3-brightgreen"/></a>
     <a href="#version" alt="Version">
         <img src="https://img.shields.io/badge/version-2.0-brightgreen" /></a>
     <a href="#packages" alt="Packages">
