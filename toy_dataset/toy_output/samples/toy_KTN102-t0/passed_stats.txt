@@ -1,0 +1,27 @@
+----- MUTATIONS -----
+toy_KTN102-t0_passed.vcf
+Total variants (after filtering): 238
+
+----- MUTATION TYPES -----
+SNP: 226		DNP: 0	TNP: 0	ONP: 0
+INDEL: 12	INSERTION: 0, DELETION: 12
+
+----- MUTATION SUBTYPES -----
+synonymous SNV: 0	non synonymous SNV: 203
+frameshift substitution: 0	non frameshift substitution: 0
+stopgain: 21	stoploss: 1	startloss: 1
+frameshift insertion: 0     non frameshift insertion: 0
+frameshift deletion: 12     non frameshift deletion: 0
+unknown: 0
+
+----- IMPACT ON PROTEIN -----
+SIFT scores counts: 0-0.05 = 122, 0.05-0.2 = 55, 0.2-1 = 15, not found = 46
+SIFT predictions: not found = 46, deleterious = 122, tolerated = 70
+Polyphen2 scores counts: 0-0.45 = 50, 0.45-0.95 = 29, 0.95-1 = 114, not found = 45
+Polyphen predictions: not found = 45, probably damaging = 111, possibly damaging = 32, benign = 50
+
+----- IMPACTED GENES -----
+-> number of impacted genes for each mutation category: 
+SNP: 222		DNP: 0	TNP: 0	ONP: 0
+INDEL: 12 	INSERTION: 0	DELETION: 12
+-> number of impacted genes: 234

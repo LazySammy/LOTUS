@@ -1,0 +1,41 @@
+0 mutations appeared or disappeared in all patients of the cohort.
+1305 mutations appeared or disappeared in at least 1 patients of the cohort.
+
+--- Mutation subtypes ---
+
+
+--- Number of variants per patient ---
+KTN102_t1-t2: 600
+KTN102_t0-t2: 596
+KTN102_t0-t1: 480
+KTN115_t0-t2: 406
+KTN115_t1-t2: 331
+KTN115_t0-t1: 197
+
+--- Variants characteristics ---
+Average DP: 205		Average AD: 190
+Average VAF sample: 0.072	
+
+--- 10 most mutated chromosomes ---
+chr19: 121
+chr1: 113
+chr2: 89
+chr17: 87
+chr3: 77
+chr11: 77
+chr16: 69
+chr9: 65
+chr6: 62
+chr12: 59
+
+--- 10 most mutated genes ---
+TTN: 5
+TUBGCP6: 4
+ANKK1: 3
+PRAG1: 3
+RAI1: 3
+ECT2L: 2
+KCNK18: 2
+MAMDC4: 2
+S1PR5: 2
+LOXHD1: 2

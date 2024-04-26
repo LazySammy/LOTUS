@@ -1,0 +1,10 @@
+Number of variants : 4931
+Number of variants that passed the filter : 135
+Number of variants that did not pass the filters : 4796
+
+----- FILTER -----
+number of variants that failed to pass each filter
+mutation_location : 4716
+high_SIFT_score : 20
+non_driver_mutation : 53
+unknown_mutation : 4722

@@ -1,0 +1,243 @@
+136 mutations disappeared and 61 mutations appeared between 2 times.
+
+--- Mutation subtypes ---
+nonsynonymous SNV: 134
+stopgain: 17	startloss: 1	frameshift deletion: 45
+
+--- Characteristics ---
+Average DP: 454		Average AD: 421
+Average VAF sample: 0.06	   Average VAF pop: 0.002434
+
+----- Impact on protein -----
+SIFT scores counts: 
+-1-0.05 = 76, 0.05-0.2 = 40, 0.2-1.5 = 12, not found = 69
+
+SIFT predictions: 
+Deleterious = 77, Tolerated = 51, not found = 69
+
+Polyphen2 scores counts: 
+-1-0.45 = 34, 0.45-0.95 = 22, 0.95-1.5 = 73, not found = 68
+
+Polyphen predictions: 
+Possibly damaging = 22, Benign = 34, not found = 68, Probably damaging = 73
+
+--- Locations ---
+chr2: 21
+chr1: 17
+chr19: 17
+chr17: 14
+chr3: 11
+chr5: 11
+chr9: 11
+chr11: 10
+chr6: 9
+chr7: 9
+chr12: 9
+chr16: 8
+chrX: 8
+chr20: 7
+chr10: 6
+chr4: 5
+chr22: 5
+chr8: 4
+chr13: 4
+chr14: 4
+chr15: 3
+chr18: 2
+chr21: 2
+
+--- Mutated genes ---
+S1PR5: 2
+KCNK18: 2
+DYNC2H1: 2
+HDAC6: 1
+KIAA0408: 1
+HCCS: 1
+TLE4: 1
+PMS1: 1
+RLF: 1
+DCST1: 1
+TMEM199: 1
+FEM1A: 1
+TAF1C: 1
+HSPA6: 1
+PLIN4: 1
+KRT17: 1
+FIP1L1: 1
+IFNA17: 1
+FAM83F: 1
+HPCAL1: 1
+NARF: 1
+DBF4: 1
+KMT2D: 1
+KCNK10: 1
+PPP1R3F: 1
+CETN3: 1
+VWCE: 1
+SNX9: 1
+PTGER1: 1
+ICAM3: 1
+TAS1R2: 1
+INSRR: 1
+ARRDC2: 1
+HOXA4: 1
+AHRR: 1
+TPO: 1
+NPB: 1
+GLB1: 1
+TOGARAM1: 1
+LMO2: 1
+TRPM2: 1
+CHAF1A: 1
+VSX1: 1
+MEGF8: 1
+WDR72: 1
+PRSS23: 1
+FGFRL1: 1
+PLEKHM1: 1
+RPE65: 1
+NCKAP5L: 1
+HSD17B3: 1
+MAP3K11: 1
+KIF11: 1
+CNTNAP5: 1
+TLR9: 1
+ST14: 1
+TOR2A: 1
+FZD1: 1
+OBSCN: 1
+CELSR3: 1
+OR13G1: 1
+LRP3: 1
+PPL: 1
+PAK4: 1
+ALDH6A1: 1
+CAVIN1: 1
+GPR39: 1
+PIK3CB: 1
+GXYLT1: 1
+SDK1: 1
+EXT1: 1
+APBA1: 1
+CUBN: 1
+CCDC180: 1
+MTUS2: 1
+IMP4: 1
+ANKRD28: 1
+TBCCD1: 1
+BMP2K: 1
+ETAA1: 1
+PDE1B: 1
+KCNMB1: 1
+HMCN1: 1
+FBN3: 1
+UNKL: 1
+TUBGCP6: 1
+TMCO6: 1
+IARS1: 1
+INTS2: 1
+SAMD14: 1
+AMIGO2: 1
+ADAM33: 1
+ARID1B: 1
+LMTK3: 1
+SEMA6C: 1
+C16orf71: 1
+AVP: 1
+C1orf116: 1
+CAAP1: 1
+ASAH2B: 1
+CERT1: 1
+ZNF746: 1
+STXBP5: 1
+RALGAPB: 1
+MAPK8IP2: 1
+RGPD1: 1
+ZNF579: 1
+RABEP2: 1
+PRRT4: 1
+COL10A1: 1
+UNC5D: 1
+MFSD4A: 1
+SLC12A7: 1
+COLGALT2: 1
+IL2RB: 1
+RASAL1: 1
+SPR: 1
+TOR4A: 1
+PKN1: 1
+HES6: 1
+DIP2B: 1
+SIRT4: 1
+KLHDC7B: 1
+IGSF1: 1
+SLC6A1: 1
+MC5R: 1
+TRPM1: 1
+RRP1: 1
+CIC: 1
+CRYBG3: 1
+ECT2L: 1
+APEX2: 1
+RPS6KC1: 1
+HEATR5A: 1
+PLK3: 1
+RNFT1: 1
+C2CD6: 1
+INPP4B: 1
+MED1: 1
+CEP57L1: 1
+RBM45: 1
+SLC9A4: 1
+THSD7B: 1
+TBC1D10C: 1
+VPS50: 1
+EFR3A: 1
+UBN2: 1
+SNX29: 1
+ZRANB3: 1
+ARPP21: 1
+MC2R: 1
+ASCC3: 1
+ATF6: 1
+FAT2: 1
+PRSS12: 1
+SENP6: 1
+SPDYE21: 1
+SACS: 1
+PALB2: 1
+THOC2: 1
+MTMR1: 1
+PPIP5K2: 1
+HCN1: 1
+MGST1: 1
+ADGRV1: 1
+MUC16: 1
+MFN1: 1
+RCE1: 1
+SNAPC4: 1
+RAI14: 1
+TTN: 1
+MTAP: 1
+PTRH2: 1
+UNC13C: 1
+LPIN1: 1
+DYNC1LI2: 1
+C2CD3: 1
+USP9X: 1
+BPTF: 1
+BAG3: 1
+CFH: 1
+DDRGK1: 1
+CLIP4: 1
+RUBCNL: 1
+PSMD2: 1
+UCHL3: 1
+EMILIN3: 1
+CEP250: 1
+MYO15A: 1
+NEB: 1
+PEX13: 1
+DBI: 1
+BHLHE22: 1
+MYO15B: 1
