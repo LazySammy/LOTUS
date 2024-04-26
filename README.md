@@ -155,36 +155,38 @@ If you chose a specific output folder (```output_folder_path```), the results wi
 
 During the execution you will have more or less verbose prints dpeending on your choice, that should look like this:
 <p float="center"><img src="tutorials/pictures/run_Filter.PNG" width="100%"/></p>
-<p float="center"><img src="tutorials/pictures/run_Summarise.PNG" width="80%"/></p>
-<p float="center"><img src="tutorials/pictures/run_Compare.PNG" width="90%"/></p>
+<p float="center"><img src="tutorials/pictures/run_Summarise.PNG" width="70%"/></p>
+<p float="center"><img src="tutorials/pictures/run_Compare.PNG" width="80%"/></p>
 <p float="center"><img src="tutorials/pictures/run_Merge.PNG" width="100%"/> </p>
 
 Once LOncoG is done, [```job_done.wav```](input/resources/job_done.wav) is played, so you are notified immediately.
 
 
 ## Output
-A folder called ```samples``` will be created in the output folder, containing the results of the Filter and Summarise modules. \
+A folder called ```samples``` will be created in the output folder, containing the results of the Filter and Summarise. \
 There will be one subfolder per sample/exome, taking as a name the corresponding VCF filename.
 
 ### Filter
-The ```Filter``` module will use your filtering criterias to remove unwanted variants from your VCF files.
-It will create a new VCF file for each sample/exome, with the remaining variants ("passed" means "variants that passed LOncoG filter"). \
+The ```Filter``` module will use your filtering criterias to remove unwanted variants from your VCF files. \
+It will create a new VCF file for each sample/exome, with the remaining variants ("passed" means "variants that passed LOncoG filter").
 
 If you choose ```keep_filtered_vcf_after_run = True```, a copy of the original VCF files will be saved in the output folder, including a 'failed_filters' field
 to indicate why the variant was removed. "LOTUS_filter" is added to the VCF FILTER field of all variants, and LOTUS_filter=PASS in the variants that passed LOncoG filter. \
 
-Finally, the module will create a 'Filtered_stats.txt' file with statistics about the filtering process. \
+Finally, the module will create a 'filtered_stats.txt' file with statistics about the filtering process. \
 The output folder should look like this: 
-<p><img src="tutorials/pictures/filter_output_example.png" width="25%"/></p>
+<p><img src="tutorials/pictures/filtered_stats.png" width="70%"/></p>
 
 Example passed VCF file can be found [here](toy_dataset/toy_output/samples/KTN102_passed.vcf). \
 Example filtered VCF file can be found [here](toy_dataset/toy_output/samples/KTN102_filtered.vcf). \
 Example Filter stats file can be found [here](toy_dataset/toy_output/samples/filter_stats.txt).
 
+<p float="center"><img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="49%"/></p>
 <p float="center">
   <img src="toy_dataset/toy_output/samples/1/1_passed_protein_impacts.png" width="49%" />
   <img src="toy_dataset/toy_output/samples/2/2_passed_protein_impacts.png" width="49%" /> 
 </p>
+
 
 ### Summarise
 The ```Summarise``` module will create plots and tables to summarize the variants from your VCF "passed" files (created by ```Filter``` module). \
