@@ -143,10 +143,10 @@ The VCF format must be respected, so LOncoG can parse files easily:
 https://drive.google.com/drive/folders/1gktCt6VzxNY-zJEjFUIUQHVW8jW0c1wM?usp=sharing. \
 > **If you don't use hg38 genome version, download the equivalent files in your own version**.
 1) Put the resources files in the [resources](input/resources/) folder. \
-2) Choose your VCF files and put them in the [vcf](input/vcf/) folder. \
+3) Choose your VCF files and put them in the [vcf](input/vcf/) folder. \
 > Note: you can choose a custom path with the ```vcf_folder``` parameter in the [config.txt](config.txt) file.
-1) Fill your dataset table with the names of your VCF files (pair by pair), as explained above. \
-2) Run the software.
+4) Fill your dataset table with the names of your VCF files (pair by pair), as explained above. \
+5) Run the software.
 
 ### Running the software
 For 20 patients (with 2 exomes of 10k variants each), the software will take around 30 minutes to run all modules (15 if no enrichment analysis). \
@@ -220,7 +220,7 @@ The outputs from Summarise will be added to the Filter outputs in the ```samples
 
 4) ```SNP profile table```: a table with exact frequencies of the SNPs found in the passed exome
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/SNP_profile.xlsx)
-<p><img src="tutorials/pictures/S_snp_table.PNG" width="50%"/></p>
+<p><img src="tutorials/pictures/S_snp_table.PNG" width="30%"/></p>
 
 5) ```SNP profile plot```: a barplot with the distribution of the SNPs found in the passed exome
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/SNP_profile.png)
