@@ -206,7 +206,7 @@ The outputs from Summarise will be added to the Filter outputs in the ```samples
 13 outputs can be produced (depending on the success of each file to be created, depending on your data).
 1) ```passed stats file```: a txt file with statistics about the variants characteristics, for one filtered exome.
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/passed_stats.txt)
-<p><img src="tutorials/pictures/passed_stats.PNG" width="65%"/></p>
+<p><img src="tutorials/pictures/passed_stats.PNG" width="75%"/></p>
 
 2) ```mutated genes table```: a table with the mutated genes (and their characteristics) found in the passed exome.
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/mutated_genes.xlsx)
@@ -220,7 +220,7 @@ The outputs from Summarise will be added to the Filter outputs in the ```samples
 
 4) ```SNP profile table```: a table with exact frequencies of the SNPs found in the passed exome
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/SNP_profile.xlsx)
-<p><img src="tutorials/pictures/S_snp_table.PNG" width="30%"/></p>
+<p><img src="tutorials/pictures/S_snp_table.PNG" width="35%"/></p>
 
 5) ```SNP profile plot```: a barplot with the distribution of the SNPs found in the passed exome
 > example [here](toy_dataset/toy_output/samples/toy_KTN102-t0/SNP_profile.png)
