@@ -8,6 +8,7 @@
 import datetime
 import logging
 import math
+import scipy.stats as stats
 import sys
 import os
 import pandas as pd
@@ -15,6 +16,7 @@ import re
 import numpy as np
 import warnings
 import matplotlib.pyplot as plt
+from matplotlib.ticker import ScalarFormatter
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill, Alignment, Border, Side
 from pathlib import Path
@@ -288,7 +290,7 @@ def modify_variants_pass_and_get_genes(dict_para, file1, weak, strong, gene_name
 							try:
 								add_to_genes_anno(keep_vcf, genes, gene, 'no', chromosome, gene_position, mg[i], mc[i], mp[i], anno_info[i])
 							except:
-								print('a')
+								print('not annotated with ANNOVAR')
 					except:
 						# print("not annotated with ANNOVAR")
 						pass
@@ -441,7 +443,11 @@ def create_snp_plot(args, df_snp, df_snp2):
 		plt.savefig(outname + '.svg', dpi=600)
 	if 'JPG' in formats:
 		plt.savefig(outname + '.jpg', dpi=600)
-
+	if 'ALL' in formats:
+		plt.savefig(outname + '.png', dpi=600)
+		plt.savefig(outname + '.pdf', dpi=600)
+		plt.savefig(outname + '.svg', dpi=600)
+		plt.savefig(outname + '.jpg', dpi=600)
 	plt.close()
 
 
@@ -628,16 +634,25 @@ def create_graph_indel(deletion1, deletion2, insertion1, insertion2, outname, lo
 	logger.info(f'Draw indel size barplot in {outname}')
 
 	formats = dict_para['C_indel_profile_plot_format(s)'].upper()
+	outname = Path(outname)
 	if 'PNG' in formats:
 		outname = Path(outname).with_suffix('.png')
+		plt.savefig(outname)
 	if 'JPG' in formats:
 		outname = Path(outname).with_suffix('.jpg')
+		plt.savefig(outname)
 	if 'PDF' in formats:
 		outname = Path(outname).with_suffix('.pdf')
+		plt.savefig(outname)
 	if 'SVG' in formats:
 		outname = Path(outname).with_suffix('.svg')
-	plt.savefig(outname)
+		plt.savefig(outname)
 
+	if 'ALL' in formats:
+		plt.savefig(Path(outname).with_suffix('.png'))
+		plt.savefig(Path(outname).with_suffix('.pdf'))
+		plt.savefig(Path(outname).with_suffix('.svg'))
+		plt.savefig(Path(outname).with_suffix('.jpg'))
 	plt.close()
 
 
@@ -784,7 +799,11 @@ def create_mutation_types_barplot(dict_para, dic_mutation_types_t1, dic_mutation
 		plt.savefig(path + '.svg', dpi=600)
 	if 'JPG' in file_formats:
 		plt.savefig(path + '.jpg', dpi=600)
-
+	if 'ALL' in file_formats:
+		plt.savefig(path + '.png', dpi=600)
+		plt.savefig(path + '.pdf', dpi=600)
+		plt.savefig(path + '.svg', dpi=600)
+		plt.savefig(path + '.jpg', dpi=600)
 	plt.close()
 
 
@@ -839,7 +858,7 @@ def create_mutation_subtypes_barplot(dict_para, dic_mutation_subtypes_t1, dic_mu
 	try:
 		ax.set_ylim(0, max(max(values_t1), max(values_t2)) * 1.1)
 	except:
-		print('a')
+		pass
 
 	offset = bar_width / 2
 
@@ -873,6 +892,11 @@ def create_mutation_subtypes_barplot(dict_para, dic_mutation_subtypes_t1, dic_mu
 	if 'SVG' in file_formats:
 		plt.savefig(path + '.svg', dpi=400)
 	if 'JPG' in file_formats:
+		plt.savefig(path + '.jpg', dpi=400)
+	if 'ALL' in file_formats:
+		plt.savefig(path + '.png', dpi=400)
+		plt.savefig(path + '.pdf', dpi=400)
+		plt.savefig(path + '.svg', dpi=400)
 		plt.savefig(path + '.jpg', dpi=400)
 
 	plt.close()
@@ -1159,12 +1183,9 @@ def create_protein_impacts_plots(dict_para, dict_impacts, pair_id):
 	sift_scores2 = [score for score in sift_scores2 if score != 'not found']
 
 	fig, ax = plt.subplots(figsize=(12, 6))
-	bplot1 = ax.boxplot(sift_scores1, positions=[1], notch=True, vert=True, patch_artist=True, labels=['Protein Impacts: t1'])
-	bplot2 = ax.boxplot(sift_scores2, positions=[2], notch=True, vert=True, patch_artist=True, labels=['Protein Impacts: t2'])
-	colors = ['forestgreen', 'darkblue']
-	for bplot in (bplot1, bplot2):
-		for patch, color in zip(bplot['boxes'], colors):
-			patch.set_facecolor(color)
+	bplot1 = ax.boxplot(sift_scores1, positions=[1], notch=True, vert=True, patch_artist=True, labels=['Protein Impacts: t1'], boxprops = dict(facecolor='forestgreen'))
+	bplot2 = ax.boxplot(sift_scores2, positions=[2], notch=True, vert=True, patch_artist=True, labels=['Protein Impacts: t2'], boxprops = dict(facecolor='darkblue'))
+
 	ax.set_title(f'Boxplot comparing SIFT predicted protein impacts between times,\n for patient {pair_id}', fontsize=14, pad=10)
 	ax.set_ylabel('SIFT Score', fontsize=12, labelpad=15)
 	ax.set_xlim(0, 3)
@@ -1322,6 +1343,12 @@ def create_protein_impacts_plots(dict_para, dict_impacts, pair_id):
 		plt.savefig(output_path + '.svg', dpi=400)
 	if 'JPG' in dict_para['C_protein_impacts_format(s)'].upper():
 		plt.savefig(output_path + '.jpg', dpi=400)
+	if 'ALL' in dict_para['C_protein_impacts_format(s)'].upper():
+		plt.savefig(output_path + '.png', dpi=400)
+		plt.savefig(output_path + '.pdf', dpi=400)
+		plt.savefig(output_path + '.svg', dpi=400)
+		plt.savefig(output_path + '.jpg', dpi=400)
+
 	plt.close()
 
 	polyphen_scores1 = [mutation['Polyphen2 score'] for mutation in protein_impacts1.values() if 'Polyphen2 score' in mutation]
@@ -1335,12 +1362,9 @@ def create_protein_impacts_plots(dict_para, dict_impacts, pair_id):
 		polyphen_scores1 = [0]
 
 	fig, ax = plt.subplots(figsize=(12, 6))
-	bplot1 = ax.boxplot(polyphen_scores1, positions=[1], notch=True, vert=True, patch_artist=True, labels=['Protein Impacts: t1'])
-	bplot2 = ax.boxplot(polyphen_scores2, positions=[2], notch=True, vert=True, patch_artist=True, labels=['Protein Impacts: t2'])
-	colors = ['forestgreen', 'darkblue']
-	for bplot in (bplot1, bplot2):
-		for patch, color in zip(bplot['boxes'], colors):
-			patch.set_facecolor(color)
+	bplot1 = ax.boxplot(polyphen_scores1, positions=[1], notch=True, vert=True, patch_artist=True, labels=['Protein Impacts: t1'], boxprops = dict(facecolor='forestgreen'))
+	bplot2 = ax.boxplot(polyphen_scores2, positions=[2], notch=True, vert=True, patch_artist=True, labels=['Protein Impacts: t2'], boxprops = dict(facecolor='darkblue'))
+
 	ax.set_title(f'Boxplot comparing Polyphen2 predicted protein impacts between times,\n for patient {pair_id}', fontsize=14, pad=10)
 	ax.set_ylabel('Polyphen2 Score', fontsize=12, labelpad=15)
 	ax.set_xlim(0, 4)
@@ -1504,6 +1528,11 @@ def create_protein_impacts_plots(dict_para, dict_impacts, pair_id):
 		plt.savefig(output_path + '.svg', dpi=400)
 	if 'JPG' in dict_para['C_protein_impacts_format(s)'].upper():
 		plt.savefig(output_path + '.jpg', dpi=400)
+	if 'ALL' in dict_para['C_protein_impacts_format(s)'].upper():
+		plt.savefig(output_path + '.png', dpi=400)
+		plt.savefig(output_path + '.pdf', dpi=400)
+		plt.savefig(output_path + '.svg', dpi=400)
+		plt.savefig(output_path + '.jpg', dpi=400)
 
 	# only change variants !
 	# categories = []
@@ -1585,6 +1614,7 @@ def write_stats(dict_para, df_variants, dict_variants):
 	gene_counts = {}
 
 	config_path = dict_para['config_path']
+
 	with open(config_path, "r") as file:
 		lines = file.readlines()
 		for line in lines:
@@ -1747,7 +1777,7 @@ def write_stats(dict_para, df_variants, dict_variants):
 		if mutation_counts['nonframeshift_deletion'] > 0:
 			o.write(f'\nnonframeshift deletion: {mutation_counts["nonframeshift_deletion"]}\t')
 		if mutation_counts['frameshift_deletion'] > 0:
-			o.write(f'frameshift deletion: {mutation_counts["frameshift_deletion"]}')
+			o.write(f'\tframeshift deletion: {mutation_counts["frameshift_deletion"]}')
 		if mutation_counts['nonframeshift_substitution'] > 0:
 			o.write(f'\nnonframeshift substitution: {mutation_counts["nonframeshift_substitution"]}\t')
 		if mutation_counts['frameshift_substitution'] > 0:
@@ -1795,6 +1825,385 @@ def write_stats(dict_para, df_variants, dict_variants):
 			o.write(f'{gene}: {count}\n')
 
 		return dict_impacts_counts
+
+
+def create_mutation_subtypes_piechart(dict_para, dic_mutation_subtypes_t1, dic_mutation_subtypes_t2, pair_id):
+	plt.clf()
+	labels = [label for label in dic_mutation_subtypes_t1]
+	values_t1 = [dic_mutation_subtypes_t1[label] for label in labels]
+	values_t2 = [dic_mutation_subtypes_t2[label] for label in labels]
+
+	for i in range(len(values_t1)):
+		if values_t1[i] == 0 and values_t2[i] == 0:
+			values_t1[i] = None
+			values_t2[i] = None
+			labels[i] = None
+
+	values_t1 = [x for x in values_t1 if x is not None]
+	values_t2 = [x for x in values_t2 if x is not None]
+	labels = [x for x in labels if x is not None]
+
+	for i in range(len(labels)):
+		if labels[i] == "nonsynonymous SNV":
+			labels[i] = "ns SNV"
+
+	colors = {'synonymous SNV': '#77c3ec',  # Blue
+			  'ns SNV': '#89cff0',  # Light Blue
+			  'frameshift substitution': '#aec9aa',  # Green
+			  'non frameshift substitution': '#95b89b',  # Light Green
+			  'stopgain': '#e68a00',  # Dark Orange
+			  'stoploss': '#ff9933',  # Light Orange
+			  'startloss': '#ffcc66',  # Lighter Orange
+			  'frameshift insertion': '#ff6666',  # Red
+			  'non frameshift insertion': '#ff9999',  # Light Red
+			  'frameshift deletion': '#b366ff',  # Purple
+			  'non frameshift deletion': '#cc99ff',  # Light Purple
+			  'unknown': '#4d4d4d'}
+
+	dark_colors = {'synonymous SNV': '#66a8dd',  # Darker Blue
+			  'ns SNV': '#77b6e0',  # Darker Light Blue
+			  'frameshift substitution': '#99bfa1',  # Darker Green
+			  'non frameshift substitution': '#88af92',  # Darker Light Green
+			  'stopgain': '#d17a00',  # Darker Dark Orange
+			  'stoploss': '#e68c26',  # Darker Light Orange
+			  'startloss': '#f5b14d',  # Darker Lighter Orange
+			  'frameshift insertion': '#e65c5c',  # Darker Red
+			  'non frameshift insertion': '#e68989',  # Darker Light Red
+			  'frameshift deletion': '#9e54d9',  # Darker Purple
+			  'non frameshift deletion': '#b879ff',  # Darker Light Purple
+			  'unknown': '#404040'}
+
+	colors_filtered = [colors[label] for label in labels]
+	dark_colors_filtered = [dark_colors[label] for label in labels]
+
+	total1 = sum(values_t1)
+	print_labels = True
+	for value in values_t1:
+		if value / total1 < 0.04:
+			print_labels = False
+			break
+
+	total2 = sum(values_t2)
+	print_labels = True
+	for value in values_t2:
+		if value / total2 < 0.04:
+			print_labels = False
+			break
+
+	fig, ax = plt.subplots()
+	if print_labels:
+		patches_outer, texts_outer, pcts_outer = ax.pie(
+			values_t1, labels=labels, autopct='%.0f%%',
+			wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 9}, pctdistance=0.8, startangle=90, colors=dark_colors_filtered)
+
+		for i, patch_outer in enumerate(patches_outer):
+			texts_outer[i].set_color(patch_outer.get_facecolor())
+
+		patches_inner, texts_inner, pcts_inner = ax.pie(
+			values_t2, autopct='%.0f%%',
+			wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 9}, pctdistance=0.8, startangle=90, radius=0.7, colors=dark_colors_filtered)
+
+		for i, patch_inner in enumerate(patches_inner):
+			texts_inner[i].set_color(patch_inner.get_facecolor())
+
+		plt.setp(pcts_outer, color='black')
+		plt.setp(texts_outer, fontweight=600)
+
+		plt.setp(pcts_inner, color='black')
+		plt.setp(texts_inner, fontweight=600)
+
+		centre_circle = plt.Circle((0, 0), 0.3, color='black', fc='white', linewidth=0, edgecolor='black')
+		fig.gca().add_artist(centre_circle)
+		plt.title('Mutation types proportions in t1 and t2,\nfor patient ' + pair_id, fontsize=10)
+		plt.tight_layout()
+	else:
+		patches_outer, pcts_outer = ax.pie(
+			values_t1, wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 9}, pctdistance=0.8, startangle=90, colors=colors_filtered)
+
+		patches_inner, pcts_inner = ax.pie(
+			values_t2, wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 9}, pctdistance=0.8, startangle=90, radius=0.73, colors=colors_filtered)
+
+		plt.setp(pcts_outer, color='black')
+		plt.setp(pcts_inner, color='black')
+
+		centre_circle = plt.Circle((0, 0), 0.5, color='black', fc='white', linewidth=0, edgecolor='black')
+		fig.gca().add_artist(centre_circle)
+		plt.tight_layout()
+
+		fig.legend(labels, loc='center', bbox_to_anchor=(0.5, 0.5), fontsize=8.5, edgecolor='white')
+		plt.annotate('Mutation types proportions in t1 and t2,\nfor patient ' + pair_id, xy=(0.5, 1), xytext=(0, 1.15), ha='center', va='center', fontsize=10)
+		plt.annotate('t1', xy=(0, 1), xytext=(-0.85, 0), ha='center', va='center', fontsize=10)
+		plt.annotate('t2', xy=(0, 1), xytext=(-0.62, 0), ha='center', va='center', fontsize=10)
+
+	file_formats = dict_para['C_types_plot_format(s)'].upper()
+	path = dict_para['output_path_comparison'] + 'mutation_subtypes'
+	if 'PNG' in file_formats:
+		plt.savefig(path + '.png', dpi=600)
+	if 'PDF' in file_formats:
+		plt.savefig(path + '.pdf', dpi=600)
+	if 'SVG' in file_formats:
+		plt.savefig(path + '.svg', dpi=600)
+	if 'JPG' in file_formats:
+		plt.savefig(path + '.jpg', dpi=600)
+	if 'ALL' in file_formats:
+		plt.savefig(path + '.png', dpi=600)
+		plt.savefig(path + '.pdf', dpi=600)
+		plt.savefig(path + '.svg', dpi=600)
+		plt.savefig(path + '.jpg', dpi=600)
+
+
+def create_mutation_types_piechart(dict_para, dic_mutation_types_t1, dic_mutation_types_t2, pair_id):
+	labels = [label for label in dic_mutation_types_t1 if dic_mutation_types_t1[label] != 0 or dic_mutation_types_t2[label] != 0]
+	values_t1 = [dic_mutation_types_t1[label] for label in labels]
+	values_t2 = [dic_mutation_types_t2[label] for label in labels]
+	indel_index = labels.index('INDEL')
+	labels.remove('INDEL')
+	values_t1.pop(indel_index)
+	values_t2.pop(indel_index)
+
+	colors = {'SNP': '#77c3ec',
+			  'DNP': '#89cff0',
+			  'TNP': '#9dd9f3',
+			  'ONP': '#b8e2f2',
+			  'INDEL': '#95b89b',
+			  'INSERTION': '#aec9aa',
+			  'DELETION': '#bed8c0'}
+
+	dark_colors = {'SNP': '#59a4d3',
+			  'DNP': '#6aa9d5',
+			  'TNP': '#7bb0d8',
+			  'ONP': '#8cb6da',
+			  'INDEL': '#6d927b',
+			  'INSERTION': '#7a9d7f',
+			  'DELETION': '#89a986'}
+
+	colors_filtered = [colors[label] for label in labels]
+	dark_colors_filtered = [dark_colors[label] for label in labels]
+
+	total1 = sum(values_t1)
+	print_labels = True
+	for value in values_t1:
+		if value / total1 < 0.05:
+			print_labels = False
+			break
+
+	total2 = sum(values_t2)
+	for value in values_t2:
+		if value / total2 < 0.05:
+			print_labels = False
+			break
+
+	fig, ax = plt.subplots()
+	if print_labels:
+		patches_outer, texts_outer, pcts_outer = ax.pie(
+			values_t1, labels=labels, autopct='%.0f%%',
+			wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 8.5}, pctdistance=0.85, startangle=90, colors=dark_colors_filtered)
+
+		for i, patch_outer in enumerate(patches_outer):
+			texts_outer[i].set_color(patch_outer.get_facecolor())
+
+		patches_inner, texts_inner, pcts_inner = ax.pie(
+			values_t2, autopct='%.0f%%',
+			wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 8.5}, pctdistance=0.75, startangle=90, radius=0.7, colors=dark_colors_filtered)
+
+		for i, patch_inner in enumerate(patches_inner):
+			texts_inner[i].set_color(patch_inner.get_facecolor())
+
+		plt.setp(pcts_outer, color='black')
+		plt.setp(texts_outer, fontweight=600)
+
+		plt.setp(pcts_inner, color='black')
+		plt.setp(texts_inner, fontweight=600)
+
+		centre_circle = plt.Circle((0, 0), 0.4, color='black', fc='white', linewidth=0, edgecolor='black')
+		fig.gca().add_artist(centre_circle)
+		plt.title('Mutation types proportions in t1 and t2,\nfor patient ' + pair_id, fontsize=10)
+		plt.tight_layout()
+
+		plt.annotate('t1', xy=(0, 1), xytext=(-0.85, 0), ha='center', va='center', fontsize=10)
+		plt.annotate('t2', xy=(0, 1), xytext=(-0.55, 0), ha='center', va='center', fontsize=10)
+	else:
+		patches_outer, pcts_outer = ax.pie(
+			values_t1, wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 9}, pctdistance=0.8, startangle=90, colors=colors_filtered)
+
+		patches_inner, pcts_inner = ax.pie(
+			values_t2, wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 9}, pctdistance=0.8, startangle=90, radius=0.73, colors=colors_filtered)
+
+		plt.setp(pcts_outer, color='black')
+		plt.setp(pcts_inner, color='black')
+
+		centre_circle = plt.Circle((0, 0), 0.5, color='black', fc='white', linewidth=0, edgecolor='black')
+		fig.gca().add_artist(centre_circle)
+		plt.tight_layout()
+		fig.legend(labels, loc='center', bbox_to_anchor=(0.5, 0.5), fontsize=8, edgecolor='white')
+		plt.annotate('Mutation types proportions in t1 and t2,\nfor patient ' + pair_id, xy=(0.5, 1), xytext=(0, 1.15), ha='center', va='center', fontsize=10)
+		plt.annotate('t1', xy=(0, 1), xytext=(-0.85, 0), ha='center', va='center', fontsize=10)
+		plt.annotate('t2', xy=(0, 1), xytext=(-0.62, 0), ha='center', va='center', fontsize=10)
+
+	file_formats = dict_para['C_types_plot_format(s)'].upper()
+	path = dict_para['output_path_comparison'] + 'mutation_types'
+	if 'PNG' in file_formats:
+		plt.savefig(path + '.png', dpi=600)
+	if 'PDF' in file_formats:
+		plt.savefig(path + '.pdf', dpi=600)
+	if 'SVG' in file_formats:
+		plt.savefig(path + '.svg', dpi=600)
+	if 'JPG' in file_formats:
+		plt.savefig(path + '.jpg', dpi=600)
+	if 'ALL' in file_formats:
+		plt.savefig(path + '.png', dpi=600)
+		plt.savefig(path + '.pdf', dpi=600)
+		plt.savefig(path + '.svg', dpi=600)
+		plt.savefig(path + '.jpg', dpi=600)
+
+
+def create_VAF_pop_boxplot(args, df_variants, pair_id):
+	t1_VAF_pop = df_variants.loc[df_variants['time'] == 't1', 'VAF pop'].tolist()
+	t1_VAF_pop = [float(x) for x in t1_VAF_pop if x != 'not found']
+	t2_VAF_pop = df_variants.loc[df_variants['time'] == 't2', 'VAF pop'].tolist()
+	t2_VAF_pop = [float(x) for x in t2_VAF_pop if x != 'not found']
+
+	plt.clf()
+	data = [t1_VAF_pop, t2_VAF_pop]
+	fig, ax = plt.subplots()
+
+	boxplot_colors = ['forestgreen', 'darkblue']
+	boxplot = ax.boxplot(data, patch_artist=True, labels=['t1', 't2'])
+
+	for patch, color in zip(boxplot['boxes'], boxplot_colors):
+		patch.set_facecolor(color)
+
+	ax.set_ylabel('VAF pop', labelpad=10)
+	ax.set_title('Comparison of VAF pop between two times', fontsize=11)
+
+	no_stats = False
+	# Perform t-test if n > 10 in each time
+	if len(t1_VAF_pop) > 10 and len(t2_VAF_pop) > 10:
+		statistic, p_value = stats.ttest_ind(t1_VAF_pop, t2_VAF_pop)
+	else:
+		no_stats = True
+	if not no_stats:
+		if p_value < 0.05:
+			if np.mean(t1_VAF_pop) > np.mean(t2_VAF_pop):
+				conclusion = 't1 > t2'
+			else:
+				conclusion = 't1 < t2'
+			p_value = 'p < 0.05 (*)'
+			significance = 'significant difference'
+		else:
+			conclusion = 't1 = t2'
+			p_value = 'p > 0.05'
+			significance = 'no significant difference'
+
+		significance_text = f"{conclusion}\n{significance}\np-value: {p_value}\n(t-test)"
+		ax.text(0.5, 0.95, significance_text, transform=ax.transAxes,
+				verticalalignment='top', horizontalalignment='center',
+				bbox={'facecolor': 'white', 'edgecolor': 'black', 'pad': 5},
+				fontsize=8)
+
+	file_formats = args['C_VAF_pop_plot_format(s)'].upper()
+	path = args['output_path_comparison'] + 'VAF_pop_boxplot'
+
+	formatter = ScalarFormatter(useMathText=True)
+	formatter.set_powerlimits((0, 0))
+	plt.gca().yaxis.set_major_formatter(formatter)
+
+	if 'PNG' in file_formats:
+		path = path + '.png'
+		plt.savefig(path, dpi=400)
+	if 'PDF' in file_formats:
+		path = path + '.pdf'
+		plt.savefig(path, dpi=400)
+	if 'SVG' in file_formats:
+		path = path + '.svg'
+		plt.savefig(path, dpi=400)
+	if 'JPG' in file_formats:
+		path = path + '.jpg'
+		plt.savefig(path, dpi=400)
+	if 'ALL' in file_formats:
+		plt.savefig(path + '.png', dpi=400)
+		plt.savefig(path + '.pdf', dpi=400)
+		plt.savefig(path + '.svg', dpi=400)
+		plt.savefig(path + '.jpg', dpi=400)
+
+	plt.close()
+
+
+def create_VAF_sample_boxplot(args, df_variants, pair_id):
+	t1_VAF_sample = df_variants.loc[df_variants['time'] == 't1', 'VAF sample'].tolist()
+	t1_VAF_sample = [float(x) for x in t1_VAF_sample if x != 'not found']
+	t2_VAF_sample = df_variants.loc[df_variants['time'] == 't2', 'VAF sample'].tolist()
+	t2_VAF_sample = [float(x) for x in t2_VAF_sample if x != 'not found']
+
+	plt.clf()
+	data = [t1_VAF_sample, t2_VAF_sample]
+	fig, ax = plt.subplots()
+
+	boxplot_colors = ['forestgreen', 'darkblue']
+	boxplot = ax.boxplot(data, patch_artist=True, labels=['t1', 't2'])
+
+	for patch, color in zip(boxplot['boxes'], boxplot_colors):
+		patch.set_facecolor(color)
+
+	ax.set_ylabel('VAF sample', labelpad=10)
+	ax.set_title('Comparison of VAF sample between two times', fontsize=11)
+
+	no_stats = False
+
+	# Perform t-test if n>10 in each time
+	if len(t1_VAF_sample) > 10 and len(t2_VAF_sample) > 10:
+		statistic, p_value = stats.ttest_ind(t1_VAF_sample, t2_VAF_sample)
+	else:
+		no_stats = True
+
+	if not no_stats:
+		if p_value < 0.05:
+			if np.mean(t1_VAF_sample) > np.mean(t2_VAF_sample):
+				conclusion = 't1 > t2'
+			else:
+				conclusion = 't1 < t2'
+			p_value = 'p < 0.05 (*)'
+			significance = 'significant difference'
+		else:
+			conclusion = 't1 = t2'
+			p_value = 'p > 0.05'
+			significance = 'no significant difference'
+
+		significance_text = f"{conclusion}\n{significance}\np-value: {p_value}\n(t-test)"
+		ax.text(0.5, 0.95, significance_text, transform=ax.transAxes,
+				verticalalignment='top', horizontalalignment='center',
+				bbox={'facecolor': 'white', 'edgecolor': 'black', 'pad': 5},
+				fontsize=8)
+
+	file_formats = args['C_VAF_sample_plot_format(s)'].upper()
+	path = args['output_path_comparison'] + 'VAF_sample_boxplot'
+
+	formatter = ScalarFormatter(useMathText=True)
+	formatter.set_powerlimits((0, 0))
+	plt.gca().yaxis.set_major_formatter(formatter)
+
+	if 'PNG' in file_formats:
+		path = path + '.png'
+		plt.savefig(path, dpi=400)
+	if 'PDF' in file_formats:
+		path = path + '.pdf'
+		plt.savefig(path, dpi=400)
+	if 'SVG' in file_formats:
+		path = path + '.svg'
+		plt.savefig(path, dpi=400)
+	if 'JPG' in file_formats:
+		path = path + '.jpg'
+		plt.savefig(path, dpi=400)
+
+	plt.close()
 
 
 def compare_vcf(out_gene, dict_para, gene_name_dico: {}, gene_id_dico: {}, transcript_dico: {}, infos: str, enrichment: bool, df_dataset, logger):
@@ -2458,12 +2867,7 @@ def compare_vcf(out_gene, dict_para, gene_name_dico: {}, gene_id_dico: {}, trans
 			# print('dict_passed2')
 			k += 1
 
-		# table creation
 		dict_variants = {}
-		try:
-			a = dfGenes['Gene']
-		except:
-			print('a')
 		for gene in dfGenes['Gene']:
 			times = ["g.(t1)", "g.(t2)"]
 			for time in times:
@@ -3162,12 +3566,26 @@ def compare_vcf(out_gene, dict_para, gene_name_dico: {}, gene_id_dico: {}, trans
 					  f'{change} genes contain at least one variant that appeared or disappeared between t1 and t2, {union} genes contain at least one variant in t1 or t2.')
 
 		print('Creating mutation types and subtypes plots...')
-		if dict_para['C_types_plot'].strip().lower() == 'barplot':
+		if 'bar' in dict_para['C_types_plot'].strip().lower():
 			create_mutation_types_barplot(dict_para, dic_mutation_types_t1, dic_mutation_types_t2)
-		#TODO: create_mutation_types_piechart(dict_para, dic_mutation_types_t1, dic_mutation_types_t2)
-		if dict_para['C_subtypes_plot'].strip().lower() == 'barplot':
+		elif 'PIE' in dict_para['C_types_plot'].strip().upper():
+			create_mutation_types_piechart(dict_para, dic_mutation_types_t1, dic_mutation_types_t2, pair_id)
+		elif 'BOTH' in dict_para['C_types_plot'].strip().upper():
+			create_mutation_types_barplot(dict_para, dic_mutation_types_t1, dic_mutation_types_t2)
+			create_mutation_types_piechart(dict_para, dic_mutation_types_t1, dic_mutation_types_t2, pair_id)
+
+		if 'bar' in dict_para['C_subtypes_plot'].strip().lower():
 			create_mutation_subtypes_barplot(dict_para, dic_mutation_subtypes_t1, dic_mutation_subtypes_t2)
-		#TODO: create_mutation_subtypes_piechart(dict_para, dic_mutation_subtypes_t1, dic_mutation_subtypes_t2)
+		elif 'PIE' in dict_para['C_subtypes_plot'].strip().upper():
+			create_mutation_subtypes_piechart(dict_para, dic_mutation_subtypes_t1, dic_mutation_subtypes_t2, pair_id)
+		elif 'BOTH' in dict_para['C_subtypes_plot'].strip().upper():
+			create_mutation_subtypes_barplot(dict_para, dic_mutation_subtypes_t1, dic_mutation_subtypes_t2)
+			create_mutation_subtypes_piechart(dict_para, dic_mutation_subtypes_t1, dic_mutation_subtypes_t2, pair_id)
+
+		if 'VAF pop' in df_variants.columns:
+			create_VAF_pop_boxplot(dict_para, df_variants, pair_id)
+		if 'VAF sample' in df_variants.columns:
+			create_VAF_sample_boxplot(dict_para, df_variants, pair_id)
 
 		################################################
 		# Biological process enrichment using the genes list with the ToppGene and Panther API
@@ -3188,9 +3606,11 @@ def compare_vcf(out_gene, dict_para, gene_name_dico: {}, gene_id_dico: {}, trans
 
 def main(args, df):
 	output_path = args['output_path_comparison']
-	enrichment = args['C_enrichment']
+	enrichment = args['C_enrichment'].upper()
 	if 'YES' in enrichment or 'TRUE' in enrichment or 'PANTHER' in enrichment or 'TOPPGENE' in enrichment:
 		enrichment = True
+	else:
+		enrichment = False
 	if args['variants_selection_approach'].upper() == 'CHANGE':
 		mode = 'change'
 	elif args['variants_selection_approach'].upper() == 'UNION':

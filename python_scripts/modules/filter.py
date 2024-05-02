@@ -698,13 +698,13 @@ def write_filter_stats(dict_para, dict_colors, write_filtered_file, chr_variants
 	if dict_para['verbose_prints'].upper() == 'TRUE':
 		print('Write stats file...')
 	with open(out_stats, 'w') as f:
-		f.write('Number of variants : ' + str(chr_variants) + '\n')
-		f.write('Number of variants that passed the filter : ' + str(passed_count) + '\n')
-		f.write('Number of variants that did not pass the filters : ' + str(chr_variants - passed_count) + '\n')
+		f.write('Number of variants: ' + str(chr_variants) + '\n')
+		f.write('Number of variants that passed the filter: ' + str(passed_count) + '\n')
+		f.write('Number of variants that did not pass the filters: ' + str(chr_variants - passed_count) + '\n')
 		f.write('\n----- FILTER -----\n')
 		f.write('number of variants that failed to pass each filter\n')
 		for key in stats.keys():
-			f.write(key + ' : ' + str(stats[key]) + '\n')
+			f.write(key + ': ' + str(stats[key]) + '\n')
 
 def filter(dict_colors, dict_para, output1, output2, vcf_file: str, logger: str, working_method: str, filter_ad: int, filter_qual: int, filter_mbq: int, filter_dp: int,
 		   filter_mqsbz: int, filter_af_population: float):

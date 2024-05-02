@@ -1536,6 +1536,7 @@ def write_stats(dict_subtypes, dict_parameters, vcf_file_filter: str, vcf_file_p
 	logger.info('Write stats file')
 
 	with open(out_stats, 'w') as o:
+		o.write('file: ' + vcf_file_pass.split('/')[-1])
 		o.write('----- MUTATIONS -----\n')
 		mutation_counts = {'synonymous_SNV', 'nonsynonymous_SNV', 'stopgain', 'startloss', 'stoploss', 'nonframeshift_insertion',
 						   'frameshift_insertion', 'nonframeshift_deletion', 'frameshift_deletion',
@@ -1552,7 +1553,6 @@ def write_stats(dict_subtypes, dict_parameters, vcf_file_filter: str, vcf_file_p
 				else:
 					mutation_type = mutation_type.replace(" ", "")
 					mutation_counts[mutation_type] = mutation_counts[mutation_type] + count
-		o.write(vcf_file_pass.split('/')[-1])
 		o.write(f'\nTotal variants (after filtering): {stats["PASS"]}\n')
 		o.write(f'\n----- MUTATION TYPES -----\n')
 		o.write(f'SNP: {stats["SNP"][0]}\t\tDNP: {stats["DNP"][0]}\tTNP: {stats["TNP"][0]}\tONP: {stats["ONP"][0]}\n')
@@ -2296,44 +2296,205 @@ def create_protein_impacts_plots(dict_para, dict_impacts):
 	plt.close()
 
 
-# sift_color = '#8B0000'
-	# polyphen2_color = '#00008B'
-	#
-	# fig, ax = plt.subplots()
-	# bars = ax.bar(true_categories, values)
-	#
-	# for i, category in enumerate(true_categories):
-	# 	if 'SIFT' in category:
-	# 		bars[i].set_color(sift_color)
-	# 	elif 'Polyphen2' in category:
-	# 		bars[i].set_color(polyphen2_color)
-	#
-	# for bar in bars:
-	# 	height = bar.get_height()
-	# 	ax.text(bar.get_x() + bar.get_width() / 2, height, str(int(height)), ha='center', va='bottom')
-	#
-	# ax.set_ylim(0, max(values) * 1.1)  # Adjust the multiplier (1.2) to control the range
-	# ax.set_ylabel('Count', labelpad=15)
-	# ax.set_title('Mutation Analysis')
-	#
-	# plt.xticks(rotation=45, ha='right', fontsize=10)
-	# plt.subplots_adjust(bottom=0.4)
-	# fig.set_size_inches(10, 6)
-	#
-	# sample_path = dict_para['output_path_sample'].split('.vcf')[0] + '/passed_stats.txt'
-	# sample_name = sample_path.split('/passed_sta')[0].split('samples/')[1]
-	# plt.title("Protein impact for each mutation found in \n" + sample_name, pad=12, fontsize=12)
-	#
-	# if 'PNG' in dict_para['S_protein_impacts_format(s)'].upper():
-	# 	plt.savefig(sample_path.split('stats')[0] + 'protein_impacts.png', dpi=400)
-	# if 'SVG' in dict_para['S_protein_impacts_format(s)'].upper():
-	# 	plt.savefig(sample_path.split('stats')[0] + 'protein_impacts.svg', dpi=400)
-	# if 'PDF' in dict_para['S_protein_impacts_format(s)'].upper():
-	# 	plt.savefig(sample_path.split('stats')[0] + 'protein_impacts.pdf', dpi=400)
-	# if 'JPG' in dict_para['S_protein_impacts_format(s)'].upper():
-	# 	plt.savefig(sample_path.split('stats')[0] + 'protein_impacts.jpg', dpi=400)
-	#
-	# plt.close()
+def create_mutations_types_piechart(dict_para):
+	dict_info = {'SNP': 0, 'DNP': 0, 'TNP': 0, 'ONP': 0, 'INDEL': 0, 'INSERTION': 0, 'DELETION': 0}
+	sample_path = dict_para['output_path_sample'].replace(".vcf", "") + '/passed_stats.txt'
+	with (open(sample_path, 'r') as file):
+		for line in file:
+			line = line.strip().replace('\t', ' ')
+			if 'impacted' in line:
+				break
+			elif not line.startswith("#") and not line.startswith("---"):
+				if 'SNP: ' in line:
+					match = re.search(r'SNP: (\d+)', line)
+					value = match.group(1) if match else None
+					dict_info['SNP'] = value
+				if 'DNP: ' in line:
+					match = re.search(r'DNP: (\d+)', line)
+					value = match.group(1) if match else None
+					dict_info['DNP'] = value
+				if 'TNP: ' in line:
+					match = re.search(r'TNP: (\d+)', line)
+					value = match.group(1) if match else None
+					dict_info['TNP'] = value
+				if 'ONP: ' in line:
+					match = re.search(r'ONP: (\d+)', line)
+					value = match.group(1) if match else None
+					dict_info['ONP'] = value
+				if 'INSERTION: ' in line:
+					match = re.search(r'INSERTION: (\d+)', line)
+					value = match.group(1) if match else None
+					dict_info['INSERTION'] = value
+				if 'DELETION: ' in line:
+					match = re.search(r'DELETION: (\d+)', line)
+					value = match.group(1) if match else None
+					dict_info['DELETION'] = value
+				if 'INDEL: ' in line:
+					match = re.search(r'INDEL: (\d+)', line)
+					value = match.group(1) if match else None
+					dict_info['INDEL'] = value
+
+	categories = list(dict_info.keys())
+	values = [0 if value is None else int(value) for value in dict_info.values()]
+	categories_filtered = [cat for cat, val in zip(categories, values) if val != 0]
+	colors = {'SNP': '#77c3ec',
+			  'DNP': '#89cff0',
+			  'TNP': '#9dd9f3',
+			  'ONP': '#b8e2f2',
+			  'INDEL': '#95b89b',
+			  'INSERTION': '#aec9aa',
+			  'DELETION': '#bed8c0'}
+
+	values_filtered = [val for val in values if val != 0]
+	sample_path = dict_para['output_path_sample'].replace(".vcf", "") + '/passed_stats.txt'
+	sample_name = sample_path.split('/passed_sta')[0].split('samples/')[1].split('/')[0]
+
+	colors_filtered = [colors[label] for label in categories_filtered]
+	total = sum(values_filtered)
+	print_labels = True
+	for value in values_filtered:
+		if value / total < 0.05:
+			print_labels = False
+			break
+
+	sample_name = sample_path.split('/passed_sta')[0].split('samples/')[1].split('/')[0]
+	plt.clf()
+	fig, ax = plt.subplots()
+	if print_labels:
+		wedgeprops = {'linewidth': 1.0, 'edgecolor': 'black'}
+		ax.pie(values_filtered, labels=categories_filtered, colors=colors_filtered, autopct='%1.1f%%', wedgeprops=wedgeprops)
+
+		plt.title('Mutation subtypes proportions for patient ' + sample_name, loc='center', fontsize=10, pad=-20)
+		plt.tight_layout()
+	else:
+		wedgeprops = {'linewidth': 1.0, 'edgecolor': 'black'}
+		ax.pie(values_filtered, colors=colors_filtered, wedgeprops=wedgeprops)
+		plt.subplots_adjust(left=-0.13)
+		total_sum = sum(values_filtered)
+		percentages = [round((value / total_sum) * 100, 1) for value in values_filtered]
+		annotations = []
+		for category, value in zip(categories_filtered, percentages):
+			annotation = category + ": " + str(value) + '%'
+			annotations.append(annotation)
+		fig.legend(annotations, loc='center', bbox_to_anchor=(0.75, 0.5), fontsize='small', edgecolor='black')
+		plt.annotate('Mutation types proportions for patient ' + sample_name, xy=(0.5, 1), xytext=(0.65, 1.15), ha='center', va='center', fontsize=10)
+
+	fig.savefig(sample_path.split('stats')[0] + 'mutation_types.png', dpi=400)
+	plt.clf()
+
+
+def create_mutations_subtypes_piechart(dict_para):
+	dic_subtypes = {'synonymous SNV': 0, 'non synonymous SNV': 0, 'frameshift substitution': 0,
+					'non frameshift substitution': 0, 'stopgain': 0, 'stoploss': 0,
+					'startloss': 0, 'frameshift insertion': 0,
+					'non frameshift insertion': 0, 'frameshift deletion': 0,
+					'non frameshift deletion': 0, 'unknown': 0}
+	sample_path = dict_para['output_path_sample'].replace(".vcf", "") + '/passed_stats.txt'
+	with open(sample_path, 'r') as file:
+		for line in file:
+			line = line.strip().replace('\t', ' ')
+			if 'impacted' in line:
+				break
+			elif not line.startswith("#") and not line.startswith("---"):
+				if 'synonymous SNV' in line:
+					match = re.search(r'synonymous SNV: (\d+)', line)
+					value = match.group(1) if match else None
+					dic_subtypes['synonymous SNV'] = value
+				if 'non synonymous SNV' in line:
+					match = re.search(r'non synonymous SNV: (\d+)', line)
+					value = match.group(1) if match else None
+					dic_subtypes['non synonymous SNV'] = value
+				if 'frameshift substitution' in line:
+					match = re.search(r'frameshift substitution: (\d+)', line)
+					value = match.group(1) if match else None
+					dic_subtypes['frameshift substitution'] = value
+				if 'non frameshift substitution' in line:
+					match = re.search(r'non frameshift substitution: (\d+)', line)
+					value = match.group(1) if match else None
+					dic_subtypes['non frameshift substitution'] = value
+				if 'stopgain' in line:
+					match = re.search(r'stopgain: (\d+)', line)
+					value = match.group(1) if match else None
+					dic_subtypes['stopgain'] = value
+				if 'stoploss' in line:
+					match = re.search(r'stoploss: (\d+)', line)
+					value = match.group(1) if match else None
+					dic_subtypes['stoploss'] = value
+				if 'startloss' in line:
+					match = re.search(r'startloss: (\d+)', line)
+					value = match.group(1) if match else None
+					dic_subtypes['startloss'] = value
+				if 'frameshift insertion' in line:
+					match = re.search(r'frameshift insertion: (\d+)', line)
+					value = match.group(1) if match else None
+					dic_subtypes['frameshift insertion'] = value
+				if 'non frameshift insertion' in line:
+					match = re.search(r'non frameshift insertion: (\d+)', line)
+					value = match.group(1) if match else None
+					dic_subtypes['non frameshift insertion'] = value
+				if 'frameshift deletion' in line:
+					match = re.search(r'frameshift deletion: (\d+)', line)
+					value = match.group(1) if match else None
+					dic_subtypes['frameshift deletion'] = value
+				if 'non frameshift deletion' in line:
+					match = re.search(r'non frameshift deletion: (\d+)', line)
+					value = match.group(1) if match else None
+					dic_subtypes['non frameshift deletion'] = value
+				if 'unknown' in line:
+					match = re.search(r'unknown: (\d+)', line)
+					value = match.group(1) if match else None
+					dic_subtypes['unknown'] = value
+
+	categories = list(dic_subtypes.keys())
+	values = [0 if value is None else int(value) for value in dic_subtypes.values()]
+	categories_filtered = [cat for cat, val in zip(categories, values) if val != 0]
+	colors = {'synonymous SNV': '#77c3ec',  # Blue
+			  'non synonymous SNV': '#89cff0',  # Light Blue
+			  'frameshift substitution': '#aec9aa',  # Green
+			  'non frameshift substitution': '#95b89b',  # Light Green
+			  'stopgain': '#e68a00',  # Dark Orange
+			  'stoploss': '#ff9933',  # Light Orange
+			  'startloss': '#ffcc66',  # Lighter Orange
+			  'frameshift insertion': '#ff6666',  # Red
+			  'non frameshift insertion': '#ff9999',  # Light Red
+			  'frameshift deletion': '#b366ff',  # Purple
+			  'non frameshift deletion': '#cc99ff',  # Light Purple
+			  'unknown': '#4d4d4d'}
+
+	values_filtered = [val for val in values if val != 0]
+	colors_filtered = [colors[label] for label in categories_filtered]
+	total = sum(values_filtered)
+	print_labels = True
+	for value in values_filtered:
+		if value / total < 0.05:
+			print_labels = False
+			break
+
+	sample_name = sample_path.split('/passed_sta')[0].split('samples/')[1].split('/')[0]
+	plt.clf()
+	fig, ax = plt.subplots()
+
+	categories_filtered = ['ns SNV' if x == 'non synonymous SNV' else x for x in categories_filtered]
+
+	if print_labels:
+		ax.pie(values_filtered, labels=categories_filtered, colors=colors_filtered, autopct='%1.1f%%')
+
+		plt.title('Mutation subtypes proportions for patient ' + sample_name, loc='center', fontsize=10, pad=-20)
+		plt.tight_layout()
+	else:
+		ax.pie(values_filtered, colors=colors_filtered, wedgeprops={'linewidth': 1, 'edgecolor': 'black'})
+		plt.subplots_adjust(left=-0.25)
+		total_sum = sum(values_filtered)
+		percentages = [round((value / total_sum) * 100, 1) for value in values_filtered]
+		annotations = []
+		for category, value in zip(categories_filtered, percentages):
+			annotation = category + ": " + str(value) + '%'
+			annotations.append(annotation)
+		fig.legend(annotations, loc='center', bbox_to_anchor=(0.72, 0.5), fontsize=8, edgecolor='black')
+		plt.annotate('Mutation subtypes proportions for patient ' + sample_name, xy=(0.5, 1), xytext=(0.8, 1.15), ha='center', va='center', fontsize=10)
+
+	fig.savefig(sample_path.split('stats')[0] + 'mutation_subtypes.png', dpi=400)
+	plt.clf()
 
 def summary(last, dict_para, dict_colors, output_path, vcf_file_filter: str, vcf_file_pass: str, genome_file: str,
 			out_stats: str, out_genes: str, SNP_profile: str, out_indel: str, logger, enrichment: bool):
@@ -2357,8 +2518,21 @@ def summary(last, dict_para, dict_colors, output_path, vcf_file_filter: str, vcf
 	# Write stats file
 	write_stats(genes_list, dict_para, vcf_file_filter, vcf_file_pass, out_stats, stats, dict_impacts, logger)
 
-	create_mutations_types_barplot(dict_para)
-	create_mutations_subtypes_barplot(dict_para)
+	if 'BAR' in dict_para['S_types_plot'].strip().upper():
+		create_mutations_types_barplot(dict_para)
+	elif 'PIE' in dict_para['S_types_plot'].strip().upper():
+		create_mutations_types_piechart(dict_para)
+	elif 'BOTH' in dict_para['S_subtypes_plot'].strip().upper():
+		create_mutations_types_barplot(dict_para)
+		create_mutations_types_piechart(dict_para)
+
+	if 'BAR' in dict_para['S_subtypes_plot'].strip().upper():
+		create_mutations_subtypes_barplot(dict_para)
+	elif 'PIE' in dict_para['S_subtypes_plot'].strip().upper():
+		create_mutations_subtypes_piechart(dict_para)
+	elif 'BOTH' in dict_para['S_subtypes_plot'].strip().upper():
+		create_mutations_subtypes_barplot(dict_para)
+		create_mutations_subtypes_piechart(dict_para)
 
 	##########################################
 	# Write genes tables

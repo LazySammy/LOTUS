@@ -407,6 +407,12 @@ The hg38 default reference genome file
   - ```pdf```
   - ```all```
 
+#### 🔵 ```S_subtypes_plot```
+- Options:
+  - ```barplot``` ☑️
+  - ```piechart```
+
+
 #### 🟢 ```S_subtypes_barplot_format(s)```
 - Options:
   - ```png``` ☑️
@@ -414,6 +420,12 @@ The hg38 default reference genome file
   - ```svg```
   - ```pdf```
   - ```all```
+
+#### 🔵 ```S_types_plot```
+- Options:
+  - ```barplot``` ☑️
+  - ```piechart```
+
 
 #### 🟢 ```S_types_barplot_format(s)```
 - Options:
@@ -579,6 +591,24 @@ Here are the parameters you can set to compare the filtered variants between two
   - ```pdf```
   - ```all```
 
+#### 🟢  ```C_VAF_pop_plot_format(s)```
+- LOncoG will plot a comparison of the variants allelic frequencies in population between time 1 and time 2 for each patient. You can choose the format here.
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+
+#### 🟢  ```C_VAF_sample_plot_format(s)```
+- LOncoG will plot a comparison of the variants allelic frequencies in sample between time 1 and time 2 for each patient. You can choose the format here.
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+
 ---------------------------
 
 ## MERGE (M)
@@ -656,14 +686,28 @@ For example, if you choose 5, the categories with less than 5 patients will be c
   - ```pdf```
   - ```all```
 
+#### 🔵 ```M_types_plot```
+- This plot compares the mutations types distribution between times, using remaining variants from all patients of the cohort. You can choose the aspect(s) here.
+- Options:
+  - ```barplot``` ☑️
+  - ```piechart```
+  - ```both```
+
 #### 🟢 ```M_types_plot_format(s)```
-- The types plot is a plot of the mutations types distribution in your cohort, with the number of mutations for each type, for each time, mergin all files information.
+- This plot compares the mutations types distribution between times, using remaining variants from all patients of the cohort. You can choose the format(s) here.
 - Options:
   - ```png``` ☑️
   - ```jpg```
   - ```svg```
   - ```pdf```
   - ```all```
+
+#### 🔵 ```M_subtypes_plot```
+- This plot compares the mutations subtypes distribution between times, using remaining variants from all patients of the cohort. You can choose the aspect(s) here.
+- Options:
+  - ```barplot``` ☑️
+  - ```piechart```
+  - ```both```
 
 #### 🟢 ```M_subtypes_plot_format(s)```
 - The subtypes plot is a plot of the mutations subtypes distribution in your cohort, with the number of mutations for each subtype, for each time, mergin all files information.
@@ -716,8 +760,17 @@ If you chose ```min_patients_threshold_for_variants_upset_plot = 5```, the *vari
   - ```pdf```
   - ```all```
 
-#### 🟢 ```M_VAF_plot_format(s)```
-- LOncoG compares all allelic frequencies from population between two times, each time containing all variant information from all patients of your cohort.
+#### 🟢 ```M_VAF_pop_plot_format(s)```
+- LOncoG compares all allelic frequencies within population between two times, each time containing all variant information from all patients of your cohort.
+- Options:
+  - ```png``` ☑️
+  - ```jpg```
+  - ```svg```
+  - ```pdf```
+  - ```all```
+
+#### 🟢 ```M_VAF_sample_plot_format(s)``
+- LOncoG compares all allelic frequencies within samples between two times, each time containing all variant information from all patients of your cohort.
 - Options:
   - ```png``` ☑️
   - ```jpg```

@@ -21,7 +21,26 @@ from python_scripts.manage_parameters import manage_parameters
 
 warnings.filterwarnings("ignore")
 
-dict_para = manage_parameters('config.txt', False)
+# real run or toy run?
+toy_dataset = 'FALSE'
+with open('config.txt', "r") as file:
+	lines = file.readlines()
+	for line in lines:
+		if "use_toy_dataset" in line:
+			toy_dataset = line.split("use_toy_dataset =")[1].strip().upper()
+if toy_dataset == 'YES' or toy_dataset == 'TRUE':
+	toy_dataset = True
+	config_path = 'toy_dataset/toy_config.txt'
+else:
+	toy_dataset = False
+	config_path = 'config.txt'
+
+dict_para = manage_parameters(config_path, False)
+if toy_dataset:
+	dict_para['config_path'] = 'toy_dataset/toy_config.txt'
+else:
+	dict_para['config_path'] = 'config.txt'
+
 if dict_para['colored_execution'].upper() == 'TRUE' or dict_para['colored_execution'].upper() == 'YES':
 	colored = True
 else:
@@ -203,7 +222,7 @@ if 'COMPARE' in modules:
 							input_vcf = dict_para['vcf_folder_path'] + file_name + '.vcf'
 							print(f"\n{yellow2}{bold}Filtering to recover {file_name}.vcf ...{reset_bold}")
 							output_path_sample = output_path + 'samples/' + file_name + '/'
-							filter.main(dict_colors, dict_para, input_vcf, dict_para, output_path_sample, True)
+							filter.main(dict_colors, dict_para, input_vcf, output_path_sample, True)
 	if 'XLSX' in dict_para['dataset_path'].upper():
 		df = pd.read_excel(dict_para['dataset_path'])
 	elif 'CSV' in dict_para['dataset_path'].upper():

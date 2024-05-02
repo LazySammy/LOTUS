@@ -26,7 +26,7 @@ from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl import Workbook
 from upsetplot import from_memberships
 from upsetplot import UpSet
-from python_scripts.reusable_functions.check_files import verif_output, verif_input_config_merge, verif_input_xlsx, verif_input_tsv, \
+from python_scripts.reusable_functions.check_files import verif_output, verif_input_xlsx, verif_input_tsv, \
 	verif_input, verif_supplementary_information_file
 from python_scripts.api_requests.toppgene_api import ToppGene_GOEA
 from python_scripts.api_requests.panther_api import Panther_GOEA
@@ -358,7 +358,7 @@ def create_mutation_types_barplot(args, dic_mutation_types_t1, dic_mutation_type
 	ax.set_title(mode + ' mutation types comparison between time 1 and time 2\n(crossover of all patients from the cohort)', fontsize=16, pad=10)
 	ax.set_xticks(x)
 	ax.set_xticklabels(labels, fontsize=13)
-	ax.set_ylim(0, max(max(values_t1), max(values_t2)) * 1.1)
+	ax.set_ylim(0, max(max(values_t1), max(values_t2)) * 1.02)
 
 	offset = bar_width / 2
 	ax.set_xticks(x - offset, minor=False)
@@ -443,10 +443,10 @@ def create_mutation_subtypes_barplot(args, dic_mutation_subtypes_t1, dic_mutatio
 		ax.set_xticklabels(labels, rotation=0, fontsize=11, ha='center')
 	else:
 		ax.set_xticklabels(labels, rotation=90, fontsize=11, ha='center')  # Adjust ha='right'
-	ax.set_ylim(0, max(max(values_t1), max(values_t2)) * 1.1)
+	ax.set_ylim(0, max(max(values_t1), max(values_t2)) * 1.02)
 
 	ax.tick_params(axis='y', labelsize=13)
-	ax.legend(fontsize=14, edgecolor='black')
+	ax.legend(fontsize=14, edgecolor='white')
 	plt.tight_layout()
 
 	file_formats = args['M_subtypes_plot_format(s)'].upper()
@@ -634,7 +634,7 @@ def improve_df_style(df_variants_merge, path):
 						cell.fill = PatternFill(start_color=highlight_colors['orange'], end_color=highlight_colors['orange'], fill_type="solid")
 	wb.save(path)
 
-def write_stats_merge(args, df_variants_M, pairs):
+def write_stats_merge(args, df_variants_M, df_genes_M, pairs):
 	out_stats = args['output_path'] + 'merge/merged_stats.txt'
 	df_variants_M.set_index('Variant', inplace=True)
 	variants_dict = df_variants_M.to_dict(orient='index')
@@ -670,14 +670,23 @@ def write_stats_merge(args, df_variants_M, pairs):
 	top_10_chromosomes_with_values = {chromosome: sorted_chromosome_counts[chromosome] for chromosome in list(sorted_chromosome_counts.keys())[:10]}
 	sorted_pair_counts = dict(sorted(pair_counts.items(), key=lambda x: x[1], reverse=True))
 
-	min_var_patients = args['min_patients_threshold_for_variants_upset_plot']
+	min_var_patients = int(args['min_patients_threshold_for_variants_upset_plot'])
 	found_in_all_patients = []
 	found_in_at_least_x_patients = []
 	for index, row in df_variants_M.iterrows():
 		if row['Count'] == len(pairs):
 			found_in_all_patients.append(index)
-		if row['Count'] >= len(min_var_patients):
+		if row['Count'] >= min_var_patients:
 			found_in_at_least_x_patients.append(index)
+
+	min_genes_patients = args['min_patients_threshold_for_genes_upset_plot']
+	gene_found_in_all_patients = []
+	gene_found_in_at_least_x_patients = []
+	for index, row in df_genes_M.iterrows():
+		if row['n samples'] == len(pairs):
+			gene_found_in_all_patients.append(index)
+		if row['n samples'] >= int(min_genes_patients):
+			gene_found_in_at_least_x_patients.append(index)
 
 	dict_variants_counts = {}
 	for index, row in df_variants_M.iterrows():
@@ -709,9 +718,44 @@ def write_stats_merge(args, df_variants_M, pairs):
 		# avg_VAF_pop = 'not found'
 		# print('no VAF pop found')
 
+	approach_text = 'ERROR'
+	if 'CHANGE' in args["variants_selection_approach"].upper():
+		approach = 'changed'
+		approach_text = "appeared or disappeared between times"
+	elif 'COMMON' in args["variants_selection_approach"].upper():
+		approach = 'common'
+		approach_text = "common to both times"
+
+	if len(found_in_all_patients) < 2:
+		plural_variants = ''
+	else:
+		plural_variants = 's'
+	if len(gene_found_in_all_patients) < 2:
+		plural_genes = ''
+		genes_text = ''
+	else:
+		plural_genes = "s"
+		genes_text = gene_found_in_all_patients
+
 	with open(out_stats, 'w') as o:
-		o.write(f'{len(found_in_all_patients)} mutations appeared or disappeared in all patients of the cohort.\n')
-		o.write(f'{len(found_in_at_least_x_patients)} mutations appeared or disappeared in at least {min_var_patients} patients of the cohort.\n\n')
+		o.write(f'{len(found_in_all_patients)} mutation{plural_variants} {approach_text}, after summing variants from whole cohort.\n')
+		if len(found_in_all_patients) > 0 and len(found_in_all_patients) < 10:
+			l_text = str(found_in_all_patients).replace("[", "").replace("]", "").replace("'", "").replace(",", ", ")
+			o.write(f'-> {l_text}\n')
+		o.write(f'{len(found_in_at_least_x_patients)} mutation{plural_variants} {approach_text} in at least {min_var_patients} patients of the cohort.\n\n')
+		if len(found_in_at_least_x_patients) > 0 and len(found_in_at_least_x_patients) < 10:
+			l_text = str(found_in_at_least_x_patients).replace("[","").replace("]","").replace("'","").replace(",",", ")
+			o.write(f'-> {l_text}\n')
+
+		o.write(f'{len(gene_found_in_all_patients)} gene{plural_genes} {approach_text}, after summing variants from whole cohort.\n')
+		if len(gene_found_in_all_patients) > 0 and len(gene_found_in_all_patients) < 10:
+			l_text = str(gene_found_in_all_patients).replace("[", "").replace("]", "").replace("'", "").replace(",", ", ")
+			o.write(f'-> {l_text}\n')
+		o.write(f'{len(gene_found_in_at_least_x_patients)} mutation{plural_genes} {approach_text} in at least {min_genes_patients} patients of the cohort.\n\n')
+		if len(gene_found_in_at_least_x_patients) > 0 and len(gene_found_in_at_least_x_patients) < 10:
+			l_text = str(gene_found_in_all_patients).replace("[","").replace("]","").replace("'","").replace(",",", ")
+			o.write(f'-> {l_text}\n')
+
 		o.write('--- Mutation subtypes ---\n')
 		if mutation_counts['synonymous_SNV'] > 0:
 			o.write(f'synonymous SNV: {mutation_counts["synonymous_SNV"]}\t')
@@ -736,7 +780,7 @@ def write_stats_merge(args, df_variants_M, pairs):
 		if mutation_counts['frameshift_substitution'] > 0:
 			o.write(f'frameshift substitution: {mutation_counts["frameshift_substitution"]}')
 
-		o.write('\n\n--- Number of variants per patient ---\n')
+		o.write(f'\n\n--- Number of variants per patient ({approach} selection approach) ---\n')
 		for pair, count in sorted_pair_counts.items():
 			o.write(f'{pair}: {count}\n')
 
@@ -1077,7 +1121,7 @@ def create_merged_vcf(args, df_variants_M):
 	# print("VCF file created successfully.")
 
 
-def create_VAF_pop_scatter_plot(args, df_variants_M):
+def create_VAF_pop_boxplot(args, df_variants_M):
 	t1 = df_variants_M[df_variants_M['Time'] == 't1']
 	t1_VAF_pop = t1['VAF pop'].tolist()
 	t1_VAF_pop = [float(x) for x in t1_VAF_pop if x != 'not found']
@@ -1096,7 +1140,7 @@ def create_VAF_pop_scatter_plot(args, df_variants_M):
 		patch.set_facecolor(color)
 
 	ax.set_ylabel('VAF pop', labelpad=10)
-	ax.set_title('Comparison of VAF pop between two times')
+	ax.set_title('Comparison of VAF pop between two times', fontsize=11)
 
 	no_stats = False
 
@@ -1125,8 +1169,8 @@ def create_VAF_pop_scatter_plot(args, df_variants_M):
 				bbox={'facecolor': 'white', 'edgecolor': 'black', 'pad': 5},
 				fontsize=8)
 
-	file_formats = args['M_VAF_plot_format(s)'].upper()
-	path = args['output_path'] + 'merge/VAF_pop_scatter'
+	file_formats = args['M_VAF_pop_plot_format(s)'].upper()
+	path = args['output_path'] + 'merge/VAF_pop_boxplot'
 
 	formatter = ScalarFormatter(useMathText=True)
 	formatter.set_powerlimits((0, 0))
@@ -1148,7 +1192,7 @@ def create_VAF_pop_scatter_plot(args, df_variants_M):
 	plt.close()
 
 
-def create_VAF_sample_scatter_plot(args, df_variants_M):
+def create_VAF_sample_boxplot(args, df_variants_M):
 	t1 = df_variants_M[df_variants_M['Time'] == 't1']
 	t1_VAF_sample = t1['VAF sample'].tolist()
 	t2 = df_variants_M[df_variants_M['Time'] == 't2']
@@ -1165,7 +1209,7 @@ def create_VAF_sample_scatter_plot(args, df_variants_M):
 		patch.set_facecolor(color)
 
 	ax.set_ylabel('VAF sample', labelpad=10)
-	ax.set_title('Comparison of VAF sample between two times')
+	ax.set_title('Comparison of VAF sample between two times', fontsize=11)
 
 	no_stats = False
 
@@ -1194,8 +1238,8 @@ def create_VAF_sample_scatter_plot(args, df_variants_M):
 				bbox={'facecolor': 'white', 'edgecolor': 'black', 'pad': 5},
 				fontsize=8)
 
-	file_formats = args['M_VAF_plot_format(s)'].upper()
-	path = args['output_path'] + 'merge/VAF_sample_scatter'
+	file_formats = args['M_VAF_sample_plot_format(s)'].upper()
+	path = args['output_path'] + 'merge/VAF_sample_boxplot'
 
 	formatter = ScalarFormatter(useMathText=True)
 	formatter.set_powerlimits((0, 0))
@@ -1217,8 +1261,260 @@ def create_VAF_sample_scatter_plot(args, df_variants_M):
 	plt.close()
 
 
+def create_mutation_types_piechart(args, dic_unique_mutation_types_t1, dic_unique_mutation_types_t2):
+	values_t1 = []
+	values_t2 = []
+	labels = []
+
+	all_keys = set(dic_unique_mutation_types_t1.keys()).union(dic_unique_mutation_types_t2.keys())
+	for key in all_keys:
+		values_t1.append(dic_unique_mutation_types_t1.get(key, 0))
+		values_t2.append(dic_unique_mutation_types_t2.get(key, 0))
+		labels.append(key)
+
+	labels = [label.upper() for label in labels]
+
+	colors = {'SNP': '#77c3ec',
+			  'DNP': '#89cff0',
+			  'TNP': '#9dd9f3',
+			  'ONP': '#b8e2f2',
+			  'INDEL': '#95b89b',
+			  'INSERTION': '#aec9aa',
+			  'DELETION': '#bed8c0'}
+
+	dark_colors = {'SNP': '#59a4d3',
+				   'DNP': '#6aa9d5',
+				   'TNP': '#7bb0d8',
+				   'ONP': '#8cb6da',
+				   'INDEL': '#6d927b',
+				   'INSERTION': '#7a9d7f',
+				   'DELETION': '#89a986'}
+
+	colors_filtered = [colors[label] for label in labels]
+	dark_colors_filtered = [dark_colors[label] for label in labels]
+
+	total1 = sum(values_t1)
+	print_labels = True
+	for value in values_t1:
+		if value / total1 < 0.05:
+			print_labels = False
+			break
+
+	total2 = sum(values_t2)
+	for value in values_t2:
+		if value / total2 < 0.05:
+			print_labels = False
+			break
+
+	fig, ax = plt.subplots()
+	if print_labels:
+		patches_outer, texts_outer, pcts_outer = ax.pie(
+			values_t1, labels=labels, autopct='%.0f%%',
+			wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 8.5}, pctdistance=0.85, startangle=90, colors=dark_colors_filtered)
+
+		for i, patch_outer in enumerate(patches_outer):
+			texts_outer[i].set_color(patch_outer.get_facecolor())
+
+		patches_inner, texts_inner, pcts_inner = ax.pie(
+			values_t2, autopct='%.0f%%',
+			wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 8.5}, pctdistance=0.75, startangle=90, radius=0.7, colors=dark_colors_filtered)
+
+		for i, patch_inner in enumerate(patches_inner):
+			texts_inner[i].set_color(patch_inner.get_facecolor())
+
+		plt.setp(pcts_outer, color='black')
+		plt.setp(texts_outer, fontweight=600)
+
+		plt.setp(pcts_inner, color='black')
+		plt.setp(texts_inner, fontweight=600)
+
+		centre_circle = plt.Circle((0, 0), 0.4, color='black', fc='white', linewidth=0, edgecolor='black')
+		fig.gca().add_artist(centre_circle)
+		plt.title('Mutation types proportions (t1 vs t2), merging whole cohort', fontsize=10)
+		plt.tight_layout()
+
+		plt.annotate('t1', xy=(0, 1), xytext=(-0.85, 0), ha='center', va='center', fontsize=10)
+		plt.annotate('t2', xy=(0, 1), xytext=(-0.55, 0), ha='center', va='center', fontsize=10)
+	else:
+		patches_outer, pcts_outer = ax.pie(
+			values_t1, wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 9}, pctdistance=0.8, startangle=90, colors=colors_filtered)
+
+		patches_inner, pcts_inner = ax.pie(
+			values_t2, wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 9}, pctdistance=0.8, startangle=90, radius=0.73, colors=colors_filtered)
+
+		plt.setp(pcts_outer, color='black')
+		plt.setp(pcts_inner, color='black')
+
+		centre_circle = plt.Circle((0, 0), 0.5, color='black', fc='white', linewidth=0, edgecolor='black')
+		fig.gca().add_artist(centre_circle)
+		plt.tight_layout()
+		fig.legend(labels, loc='center', bbox_to_anchor=(0.5, 0.5), fontsize=9, edgecolor='white')
+		plt.annotate('Mutation types proportions (t1/t2), merging whole cohort', xy=(0.55, 1), xytext=(0, 1.15), ha='center', va='center', fontsize=10)
+		plt.annotate('t1', xy=(0, 1), xytext=(-0.85, 0), ha='center', va='center', fontsize=10)
+		plt.annotate('t2', xy=(0, 1), xytext=(-0.62, 0), ha='center', va='center', fontsize=10)
+
+	file_formats = args['M_types_plot_format(s)'].upper()
+	path = args['output_path'] + 'merge/mutation_types'
+	if 'PNG' in file_formats:
+		plt.savefig(path + '.png', dpi=600)
+	if 'PDF' in file_formats:
+		plt.savefig(path + '.pdf', dpi=600)
+	if 'SVG' in file_formats:
+		plt.savefig(path + '.svg', dpi=600)
+	if 'JPG' in file_formats:
+		plt.savefig(path + '.jpg', dpi=600)
+	if 'ALL' in file_formats:
+		plt.savefig(path + '.png', dpi=600)
+		plt.savefig(path + '.pdf', dpi=600)
+		plt.savefig(path + '.svg', dpi=600)
+		plt.savefig(path + '.jpg', dpi=600)
+
+
+def create_mutation_subtypes_piechart(args, dic_unique_mutation_subtypes_t1, dic_unique_mutation_subtypes_t2):
+	values_t1 = []
+	values_t2 = []
+	labels = []
+
+	all_keys = set(dic_unique_mutation_subtypes_t1.keys()).union(dic_unique_mutation_subtypes_t2.keys())
+	for key in all_keys:
+		values_t1.append(dic_unique_mutation_subtypes_t1.get(key, 0))
+		values_t2.append(dic_unique_mutation_subtypes_t2.get(key, 0))
+		labels.append(key)
+
+	labels = [label.replace('_', ' ') for label in labels]
+	labels = [label.replace('nons', 'non s') for label in labels]
+
+	for i in range(len(labels)):
+		if labels[i] == "non synonymous SNV":
+			labels[i] = "ns SNV"
+
+	colors = {'synonymous SNV': '#77c3ec',  # Blue
+			  'ns SNV': '#89cff0',  # Light Blue
+			  'frameshift  substitution': '#aec9aa',  # Green
+			  'nonframeshift substitution': '#95b89b',  # Light Green
+			  'stopgain': '#e68a00',  # Dark Orange
+			  'stoploss': '#ff9933',  # Light Orange
+			  'startloss': '#ffcc66',  # Lighter Orange
+			  'frameshift insertion': '#ff6666',  # Red
+			  'non frameshift insertion': '#ff9999',  # Light Red
+			  'frameshift deletion': '#b366ff',  # Purple
+			  'non frameshift deletion': '#cc99ff',  # Light Purple
+			  'unknown': '#4d4d4d'}
+
+	dark_colors = {'synonymous SNV': '#66a8dd',  # Darker Blue
+			  'ns SNV': '#77b6e0',  # Darker Light Blue
+			  'frameshift substitution': '#99bfa1',  # Darker Green
+			  'nonframeshift substitution': '#88af92',  # Darker Light Green
+			  'stopgain': '#d17a00',  # Darker Dark Orange
+			  'stoploss': '#e68c26',  # Darker Light Orange
+			  'startloss': '#f5b14d',  # Darker Lighter Orange
+			  'frameshift insertion': '#e65c5c',  # Darker Red
+			  'non frameshift insertion': '#e68989',  # Darker Light Red
+			  'frameshift deletion': '#9e54d9',  # Darker Purple
+			  'non frameshift deletion': '#b879ff',  # Darker Light Purple
+			  'unknown': '#404040'}
+
+	colors_filtered = [colors[label] for label in labels]
+	dark_colors_filtered = [dark_colors[label] for label in labels]
+
+	total1 = sum(values_t1)
+	print_labels = True
+	for value in values_t1:
+		if value / total1 < 0.04:
+			print_labels = False
+			break
+
+	total2 = sum(values_t2)
+	print_labels = True
+	for value in values_t2:
+		if value / total2 < 0.04:
+			print_labels = False
+			break
+
+	fig, ax = plt.subplots()
+	if print_labels:
+		patches_outer, texts_outer, pcts_outer = ax.pie(
+			values_t1, labels=labels, autopct='%.0f%%',
+			wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 9}, pctdistance=0.8, startangle=90, colors=dark_colors_filtered)
+
+		for i, patch_outer in enumerate(patches_outer):
+			texts_outer[i].set_color(patch_outer.get_facecolor())
+
+		patches_inner, texts_inner, pcts_inner = ax.pie(
+			values_t2, autopct='%.0f%%',
+			wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 9}, pctdistance=0.8, startangle=90, radius=0.7, colors=dark_colors_filtered)
+
+		for i, patch_inner in enumerate(patches_inner):
+			texts_inner[i].set_color(patch_inner.get_facecolor())
+
+		plt.setp(pcts_outer, color='black')
+		plt.setp(texts_outer, fontweight=600)
+
+		plt.setp(pcts_inner, color='black')
+		plt.setp(texts_inner, fontweight=600)
+
+		centre_circle = plt.Circle((0, 0), 0.3, color='black', fc='white', linewidth=0, edgecolor='black')
+		fig.gca().add_artist(centre_circle)
+		plt.title('Mutation subtypes proportions (t1/t2), merging whole cohort', fontsize=10)
+		plt.tight_layout()
+	else:
+		patches_outer, pcts_outer = ax.pie(
+			values_t1, wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 9}, pctdistance=0.8, startangle=90, colors=colors_filtered)
+
+		patches_inner, pcts_inner = ax.pie(
+			values_t2, wedgeprops={'linewidth': 1.0, 'edgecolor': 'black'},
+			textprops={'fontsize': 9}, pctdistance=0.8, startangle=90, radius=0.73, colors=colors_filtered)
+
+		plt.setp(pcts_outer, color='black')
+		plt.setp(pcts_inner, color='black')
+
+		centre_circle = plt.Circle((0, 0), 0.5, color='black', fc='white', linewidth=0, edgecolor='black')
+		fig.gca().add_artist(centre_circle)
+		plt.tight_layout()
+
+		if len(labels) > 4:
+			legend_fontsize = 7.5
+		else:
+			legend_fontsize = 8.5
+		fig.legend(labels, loc='center', bbox_to_anchor=(0.5, 0.5), fontsize=legend_fontsize, edgecolor='white')
+		plt.annotate('Mutation subtypes proportions (t1/t2), merging whole cohort', xy=(0.5, 1), xytext=(0, 1.15), ha='center', va='center', fontsize=10)
+		plt.annotate('t1', xy=(0, 1), xytext=(-0.85, 0), ha='center', va='center', fontsize=10)
+		plt.annotate('t2', xy=(0, 1), xytext=(-0.62, 0), ha='center', va='center', fontsize=10)
+
+	file_formats = args['M_subtypes_plot_format(s)'].upper()
+	path = args['output_path'] + 'merge/mutation_subtypes'
+	if 'PNG' in file_formats:
+		plt.savefig(path + '.png', dpi=600)
+	if 'PDF' in file_formats:
+		plt.savefig(path + '.pdf', dpi=600)
+	if 'SVG' in file_formats:
+		plt.savefig(path + '.svg', dpi=600)
+	if 'JPG' in file_formats:
+		plt.savefig(path + '.jpg', dpi=600)
+	if 'ALL' in file_formats:
+		plt.savefig(path + '.png', dpi=600)
+		plt.savefig(path + '.pdf', dpi=600)
+		plt.savefig(path + '.svg', dpi=600)
+		plt.savefig(path + '.jpg', dpi=600)
+
+
 def merge_results(args, file_paths, category, output, infos, cytoband_file, chromosomes_output, step, nb_files, enrichment, logger):
 	# Count mutation types and subtypes (and plot them)
+
+	types_barplot = False
+	if 'BAR' in args['M_types_plot'].upper() or 'BOTH' in args['M_types_plot'].upper():
+		types_barplot = True
+
+	subtypes_barplot = False
+	if 'BAR' in args['M_subtypes_plot'].upper() or 'BOTH' in args['M_types_plot'].upper():
+		subtypes_barplot = True
 
 	# mutation_types_counting_method = args['mutations_types_counting'].upper()
 	mutation_types_counting_method = 'UNIQUE'
@@ -1226,19 +1522,30 @@ def merge_results(args, file_paths, category, output, infos, cytoband_file, chro
 		print('Counting and plotting unique mutations types and subtypes...')
 		try:  # ANNOVAR
 			dic_unique_mutation_types_t1, dic_unique_mutation_types_t2, dic_unique_mutation_subtypes_t1, dic_unique_mutation_subtypes_t2 = count_mutation_types(args, 'UNIQUE')
-			create_mutation_types_barplot(args, dic_unique_mutation_types_t1, dic_unique_mutation_types_t2, 'UNIQUE')
-			create_mutation_subtypes_barplot(args, dic_unique_mutation_subtypes_t1, dic_unique_mutation_subtypes_t2, 'UNIQUE')
+			if types_barplot:
+				create_mutation_types_barplot(args, dic_unique_mutation_types_t1, dic_unique_mutation_types_t2, 'UNIQUE')
+			if subtypes_barplot:
+				create_mutation_subtypes_barplot(args, dic_unique_mutation_subtypes_t1, dic_unique_mutation_subtypes_t2, 'UNIQUE')
 		except:
 			dic_unique_mutation_types_t1, dic_unique_mutation_types_t2 = count_mutation_types(args, 'UNIQUE')
-			create_mutation_types_barplot(args, dic_unique_mutation_types_t1, dic_unique_mutation_types_t2, 'UNIQUE')
+			if types_barplot:
+				create_mutation_types_barplot(args, dic_unique_mutation_types_t1, dic_unique_mutation_types_t2, 'UNIQUE')
 	elif mutation_types_counting_method == 'TOTAL':
-		try:  # ANNOVAR
+		try:
 			dic_total_mutation_types_t1, dic_total_mutation_types_t2, dic_total_mutation_subtypes_t1, dic_total_mutation_subtypes_t2 = count_mutation_types(args, 'TOTAL')
-			create_mutation_types_barplot(args, dic_total_mutation_types_t1, dic_total_mutation_types_t2, 'TOTAL')
-			create_mutation_subtypes_barplot(args, dic_total_mutation_subtypes_t1, dic_total_mutation_subtypes_t2, 'TOTAL')
+			if types_barplot:
+				create_mutation_types_barplot(args, dic_total_mutation_types_t1, dic_total_mutation_types_t2, 'TOTAL')
+			if subtypes_barplot:
+				create_mutation_subtypes_barplot(args, dic_total_mutation_subtypes_t1, dic_total_mutation_subtypes_t2, 'TOTAL')
 		except:
 			dic_total_mutation_types_t1, dic_total_mutation_types_t2 = count_mutation_types(args, 'TOTAL')
-			create_mutation_types_barplot(args, dic_total_mutation_types_t1, dic_total_mutation_types_t2, 'TOTAL', )
+			if types_barplot:
+				create_mutation_types_barplot(args, dic_total_mutation_types_t1, dic_total_mutation_types_t2, 'TOTAL', )
+
+	if 'PIE' in args['M_types_plot'].upper() or 'BOTH' in args['M_types_plot'].upper():
+		create_mutation_types_piechart(args, dic_unique_mutation_types_t1, dic_unique_mutation_types_t2)
+	if 'PIE' in args['M_subtypes_plot'].upper() or 'BOTH' in args['M_subtypes_plot'].upper():
+		create_mutation_subtypes_piechart(args, dic_unique_mutation_subtypes_t1, dic_unique_mutation_subtypes_t2)
 
 	# Get genes infos if not None from the 6 databases
 	if infos:
@@ -1496,7 +1803,7 @@ def merge_results(args, file_paths, category, output, infos, cytoband_file, chro
 		dic_intermediate_genes[k]['Chromosome'] = v['chr']
 		dic_intermediate_genes[k]['Gene start position'] = v['start']
 		dic_intermediate_genes[k]['Gene end position'] = v['end']
-		dic_intermediate_genes[k]['Nb samples'] = int(len(v['samples']))
+		dic_intermediate_genes[k]['n samples'] = int(len(v['samples']))
 
 		# unique variants counting for each gene found in all samples from the whole dataset provided
 		try:
@@ -1567,9 +1874,9 @@ def merge_results(args, file_paths, category, output, infos, cytoband_file, chro
 	# del dic_intermediate_genes
 	df_final_genes.index.name = 'Gene'  # add a name to the index column
 
-	df_final_genes = df_final_genes.sort_values(by=['Nb samples', 'Unique variants', 'Gene'],
+	df_final_genes = df_final_genes.sort_values(by=['n samples', 'Unique variants', 'Gene'],
 												ascending=[False, False, True])  # sort columns
-	df_final_genes['Nb samples'] = df_final_genes['Nb samples'].astype('int')
+	df_final_genes['n samples'] = df_final_genes['n samples'].astype('int')
 	# if args['vcf_annotation_method'].upper() == 'FUNCOTATOR':
 	#     df_final_genes[['Unique variants', 'Total variants', 'g.(t1)', 'c.(t1)', 'p.(t1)',
 	#         'Mutations (t1)', 'g.(t2)', 'c.(t2)', 'p.(t2)', 'Mutations (t2)']] = (
@@ -1587,7 +1894,7 @@ def merge_results(args, file_paths, category, output, infos, cytoband_file, chro
 
 		rows_to_remove = []
 		for index, row in df_final_genes.iterrows():
-			sample_pairs = row['Nb samples']
+			sample_pairs = row['n samples']
 			if int(sample_pairs) < int(patients_threshold):
 				rows_to_remove.append(index)
 
@@ -1612,7 +1919,7 @@ def merge_results(args, file_paths, category, output, infos, cytoband_file, chro
 		df_final_genes.to_csv(output, sep=',', index=True)
 
 	df_variants_M = create_variants_table(args)
-	write_stats_merge(args, df_variants_M, pair_names_column)
+	write_stats_merge(args, df_variants_M, df_final_genes, pair_names_column)
 
 	# Biological process enrichment using the genes list with the ToppGene and Panther API
 	if enrichment:
@@ -1641,9 +1948,9 @@ def merge_results(args, file_paths, category, output, infos, cytoband_file, chro
 	create_merged_vcf(args, df_variants_M)
 
 	if 'VAF sample' in df_variants_M.columns:
-		create_VAF_sample_scatter_plot(args, df_variants_M)
+		create_VAF_sample_boxplot(args, df_variants_M)
 	if 'VAF pop' in df_variants_M.columns:
-		create_VAF_pop_scatter_plot(args, df_variants_M)
+		create_VAF_pop_boxplot(args, df_variants_M)
 
 	# Create the UpSetPlots
 	print('Creating upset plots...')

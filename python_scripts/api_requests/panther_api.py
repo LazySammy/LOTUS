@@ -5,8 +5,8 @@
 #   Authors: S. Besseau, G. Siekaniec, W. Gouraud
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-from openpyxl import load_workbook, Workbook
-from openpyxl.styles import Alignment, Border, Side
+from openpyxl import load_workbook
+from openpyxl.styles import PatternFill, Font, Alignment, Border, Side
 import json
 import pandas as pd
 import requests
@@ -62,11 +62,10 @@ def Panther_GOEA(module, dict_para, list_genes: list, panther_name: str, logger=
 
 			if logger:
 				if nb_unclassified_GO > 0:
-					logger.warning(f'{nb_unclassified_GO} unclassified gene onthology !')
+					logger.warning(f'{nb_unclassified_GO} unclassified gene ontology !')
 			df = pd.DataFrame.from_dict(d, orient='index', columns=col)
 			df['Genes involved'] = df['Genes involved'].astype(int)
-			df = df.sort_values(by='Genes involved', ascending=False)
-			df = df.sort_values(by=['P-value', 'FDR'])
+			df = df.sort_values(by='P-value', ascending=True)
 			df.index = [i for i in range(len(df.index))]
 			df.set_index('Id')
 
@@ -88,34 +87,45 @@ def Panther_GOEA(module, dict_para, list_genes: list, panther_name: str, logger=
 			df = df.sort_values(by='Genes involved', ascending=False)
 			df = df.drop(columns=['FDR'])
 
-			# Output files verification
 			if 'XLSX' in parameter:
-				path = path.split('.')[0] + '/'
-				xlsx = path + panther_name + '.xlsx'
+				df.to_excel(path + panther_name + '.xlsx', index=False)
+				panther_table = path + panther_name + '.xlsx'
+				try:
+					workbook = load_workbook(panther_table)
+					worksheet = workbook.active
 
-				# Export the DataFrame to Excel
-				df.to_excel(xlsx)
+					for column in worksheet.columns:
+						max_length = 0
+						column = [cell for cell in column]
+						for cell in column:
+							try:
+								if len(str(cell.value)) > max_length:
+									max_length = len(cell.value)
+							except:
+								pass
+						adjusted_width = (max_length + 2) * 1.2
+						worksheet.column_dimensions[column[0].column_letter].width = adjusted_width
 
-				# Load the existing workbook
-				workbook = load_workbook(xlsx)
-				worksheet = workbook.active
+					border_style = Border(left=Side(border_style='thin'),
+										  right=Side(border_style='thin'),
+										  top=Side(border_style='thin'),
+										  bottom=Side(border_style='thin'))
 
-				# Define border style
-				border_style = Border(left=Side(border_style='thin'),
-									  right=Side(border_style='thin'),
-									  top=Side(border_style='thin'),
-									  bottom=Side(border_style='thin'))
+					for row in worksheet.iter_rows():
+						for cell in row:
+							if cell.value:
+								cell.border = border_style
+								cell.alignment = Alignment(horizontal='center', vertical='center')
 
-				# Apply borders and center alignment to non-empty cells
-				for row in worksheet.iter_rows():
-					for cell in row:
+					first_row = worksheet[1]
+					for cell in first_row:
 						if cell.value:
-							cell.border = border_style
-							cell.alignment = Alignment(horizontal='center', vertical='center')
+							cell.font = Font(bold=True)
+							cell.fill = PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
 
-				# Save the changes to the Excel file
-				workbook.save(xlsx)
-
+					workbook.save(panther_table)
+				except:
+					print('making Panther GOEA df more lisible failed')
 
 			elif 'TSV' in parameter:
 				tsv = path + panther_name + '.tsv'
