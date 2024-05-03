@@ -174,7 +174,7 @@ Once LOncoG is done, [```job_done.wav```](input/resources/job_done.wav) is playe
 
 ## Toy-dataset
 In the [toy_dataset](toy_dataset) folder, you will find a toy dataset to test the software. \
-**It is highly recommended to use the toy dataset to understand the software functioning before using your own data.** \
+**It is highly recommended to use the toy dataset to better understand the software before using your own data.** \
 To perform a run with the toy dataset, set ```use_toy_dataset = yes``` in the [config.txt](config.txt) file. \
 It will run every module, and output the results in the [toy_output](toy_dataset/new_toy_output) folder. \
 The output you should get is available in the [toy_output](toy_dataset/toy_output) folder. \
