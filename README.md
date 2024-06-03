@@ -3,6 +3,8 @@
 </p>
 
 <p align="center"> 
+    <a href="#license" alt="License">
+        <img src="https://img.shields.io/badge/license-BSD 2-Clause-lightblue" /></a>
     <a href="#contributors" alt="Contributors">
         <img src="https://img.shields.io/badge/contributors-3-lightblue" /></a> 
     <a href="#backers" alt="Backers">
