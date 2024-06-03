@@ -21,17 +21,15 @@
         <img src="https://img.shields.io/badge/parameters-83-lightyellow" /></a>
     <a href="#example" alt="Example">
         <img src="https://img.shields.io/badge/toy dataset-available-lightyellow" /></a>
-    <a href="#validation" alt="Validation">
+    <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6132060/" alt="Validation">
         <img src="https://img.shields.io/badge/validation-TNBC-yellow" /></a>
-    <a href="#institute" alt="Institute">
+    <a href="https://www.institut-cancerologie-ouest.com" alt="Institute">
         <img src="https://img.shields.io/badge/institute-Institut de Cancérologie de l'Ouest%20-orange" /></a>
     <a href="https://opensource.org/licenses/BSD-2-Clause" alt="License">
         <img src="https://img.shields.io/badge/license-BSD 2 Clause-orange" /></a>
     <a href="#country" alt="Country">
         <img src="https://img.shields.io/badge/made in-🇫🇷-black" /></a>
 </p>
-
-[![License](https://img.shields.io/badge/License-BSD\%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)
 
 ### $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space OncoGenomics \space analysis}$$
 This software plots, compares and merges information from all exomes of a cohort of cancer patients before and after treatment. It also includes a customizable filter to help you removing remaining germline and/or non driver mutations (even without a paired normal sample). The Filter, Summarise, Compare and Merge modules can be run separately or all together. If your study is not longitudinal, you can just run the first two modules to get a graphical and statistical sumup of the most impactant variants from your WES data. The software is designed to be user-friendly and to be used by bioinformaticians, biologists and even clinicians research teams.
