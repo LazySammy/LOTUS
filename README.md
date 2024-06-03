@@ -22,13 +22,13 @@
     <a href="#example" alt="Example">
         <img src="https://img.shields.io/badge/toy dataset-available-lightyellow" /></a>
     <a href="#validation" alt="Validation">
-        <img src="https://img.shields.io/badge/validation-TNBC, glioblastoma-yellow" /></a>
+        <img src="https://img.shields.io/badge/validation-TNBC-yellow" /></a>
     <a href="#institute" alt="Institute">
         <img src="https://img.shields.io/badge/institute-Institut de Cancérologie de l'Ouest%20-orange" /></a>
     <a href="#license" alt="License">
         <img src="https://img.shields.io/badge/license-BSD 2 Clause-orange" /></a>
     <a href="#country" alt="Country">
-        <img src="https://img.shields.io/badge/made in-🇫🇷France-black" /></a>
+        <img src="https://img.shields.io/badge/made in-🇫🇷-black" /></a>
 </p>
 
 ### $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space OncoGenomics \space analysis}$$
