@@ -25,7 +25,7 @@
         <img src="https://img.shields.io/badge/validation-TNBC-yellow" /></a>
     <a href="#institute" alt="Institute">
         <img src="https://img.shields.io/badge/institute-Institut de Cancérologie de l'Ouest%20-orange" /></a>
-    <a href="[#license](https://opensource.org/licenses/BSD-2-Clause)" alt="License">
+    <a href="https://opensource.org/licenses/BSD-2-Clause" alt="License">
         <img src="https://img.shields.io/badge/license-BSD 2 Clause-orange" /></a>
     <a href="#country" alt="Country">
         <img src="https://img.shields.io/badge/made in-🇫🇷-black" /></a>
