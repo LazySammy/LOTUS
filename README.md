@@ -26,7 +26,7 @@
     <a href="#institute" alt="Institute">
         <img src="https://img.shields.io/badge/institute-Institut de Cancérologie de l'Ouest%20-orange" /></a>
     <a href="#license" alt="License">
-        <img src="https://img.shields.io/badge/license-BSD 2 Clause-orange" /></a>
+        [![License](https://img.shields.io/badge/License-BSD\%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)</a>
     <a href="#country" alt="Country">
         <img src="https://img.shields.io/badge/made in-🇫🇷-black" /></a>
 </p>
