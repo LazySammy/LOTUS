@@ -31,6 +31,8 @@
         <img src="https://img.shields.io/badge/made in-🇫🇷-black" /></a>
 </p>
 
+[![License](https://img.shields.io/badge/License-BSD\%202--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)
+
 ### $${\color{lightblue}LOncoG: \space a \space software \space for \space Longitudinal \space OncoGenomics \space analysis}$$
 This software plots, compares and merges information from all exomes of a cohort of cancer patients before and after treatment. It also includes a customizable filter to help you removing remaining germline and/or non driver mutations (even without a paired normal sample). The Filter, Summarise, Compare and Merge modules can be run separately or all together. If your study is not longitudinal, you can just run the first two modules to get a graphical and statistical sumup of the most impactant variants from your WES data. The software is designed to be user-friendly and to be used by bioinformaticians, biologists and even clinicians research teams.
 
@@ -367,3 +369,9 @@ There is no subfolder in ```merge``` subfolder, all Merge outputs are saved here
 11)  ```VAF sample plot```: a double boxplot comparing the distribution of the variant allelic frequencies in *dataset*, merging all variants, t1 *vs* t2 (t-test).
 > example [here](toy_dataset/toy_output/merge/VAF_sample_scatter.png) 
 <p><img src="tutorials/pictures/M_vaf_sample.PNG" width="65%"/></p>
+
+### Copyright
+LOncoG is a free software and is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+### Contact information
+Please address any queries or bug reports to Samuel Besseau at samuelbesseau77@gmail.com.
