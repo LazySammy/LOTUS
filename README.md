@@ -3,12 +3,8 @@
 </p>
 
 <p align="center"> 
-    <a href="#license" alt="License">
-        <img src="https://img.shields.io/badge/license-BSD 2 Clause-orange" /></a>
     <a href="#contributors" alt="Contributors">
         <img src="https://img.shields.io/badge/contributors-3-lightblue" /></a> 
-    <a href="#backers" alt="Backers">
-        <img src="https://img.shields.io/badge/backers-2-lightblue" /></a>
     <a href="#commits" alt="Commits">
         <img src="https://img.shields.io/badge/commits-241-lightblue" /></a>
     <a href="#coverage" alt="Coverage">
@@ -29,6 +25,8 @@
         <img src="https://img.shields.io/badge/validation-TNBC, glioblastoma-yellow" /></a>
     <a href="#institute" alt="Institute">
         <img src="https://img.shields.io/badge/institute-Institut de Cancérologie de l'Ouest%20-orange" /></a>
+    <a href="#license" alt="License">
+        <img src="https://img.shields.io/badge/license-BSD 2 Clause-orange" /></a>
     <a href="#country" alt="Country">
         <img src="https://img.shields.io/badge/made in-🇫🇷France-black" /></a>
 </p>
